@@ -1,8 +1,10 @@
 /* ==========================================================
-   Phoenix Components
+   Phoenix Components System
 ========================================================== */
 
-/* ---------- Buttons ---------- */
+/* ===========================================
+   BUTTONS
+=========================================== */
 
 .btn{
     display:inline-flex;
@@ -41,7 +43,9 @@
     color:#fff;
 }
 
-/* ---------- Cards ---------- */
+/* ===========================================
+   CARDS
+=========================================== */
 
 .card{
     background:var(--surface);
@@ -56,39 +60,38 @@
 }
 
 .card:hover{
-
-    transform:translateY(-6px);
-
+    transform:translateY(-8px);
     box-shadow:var(--shadow-md);
-
+    border:1px solid var(--border);
 }
 
 .card-body{
-
     padding:24px;
-
 }
 
 .card-title{
-
     font-size:1.25rem;
-
     font-weight:700;
-
     margin-bottom:12px;
-
 }
 
 .card-text{
-
     color:var(--text-light);
-
+    line-height:1.6;
+    margin-top:10px;
 }
 
-/* ---------- Badge ---------- */
+/* Make cards behave like links */
+.card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+/* ===========================================
+   BADGES
+=========================================== */
 
 .badge{
-
     display:inline-block;
 
     padding:6px 12px;
@@ -100,5 +103,163 @@
     font-size:.75rem;
 
     font-weight:600;
+}
+
+/* ===========================================
+   NAVBAR
+=========================================== */
+
+.navbar{
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.nav-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:74px;
+
+}
+
+.logo{
+
+    font-size:1.5rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    gap:2rem;
+
+}
+
+.nav-menu a{
+
+    font-weight:600;
+
+}
+
+.nav-menu a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.icon-btn{
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--surface-alt);
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.icon-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ===========================================
+   HERO
+=========================================== */
+
+.hero{
+
+    padding:90px 0;
+
+}
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.hero-title{
+
+    font-size:3.5rem;
+
+    line-height:1.1;
+
+    margin:20px 0;
+
+}
+
+.hero-text{
+
+    font-size:1.15rem;
+
+    color:var(--text-light);
+
+    max-width:600px;
+
+}
+
+.hero-buttons{
+
+    margin-top:32px;
+
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-card{
+
+    min-height:320px;
+
+    display:flex;
+
+    align-items:center;
 
 }

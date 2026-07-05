@@ -85,3 +85,8 @@
 .mb-6{margin-bottom:var(--space-6);}
 .mb-7{margin-bottom:var(--space-7);}
 .mb-8{margin-bottom:var(--space-8);}
+
+/* Better spacing for blog grids */
+.grid{
+    align-items:start;
+}
