@@ -1,0 +1,152 @@
+/* ==========================================================
+   ALEMONDEM PREMIUM THEME
+   Navigation
+========================================================== */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(226,232,240,.85);
+}
+
+.nav-container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    height:82px;
+
+}
+
+.logo{
+
+    font-size:1.65rem;
+
+    font-weight:800;
+
+    letter-spacing:-0.5px;
+
+    color:var(--primary);
+
+}
+
+.logo span{
+
+    color:#111827;
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:2rem;
+
+}
+
+.nav-menu li{
+
+    list-style:none;
+
+}
+
+.nav-menu a{
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.nav-menu a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.5rem;
+
+    padding:10px 16px;
+
+    background:#F8FAFC;
+
+    border:1px solid var(--border);
+
+    border-radius:999px;
+
+}
+
+.search-box input{
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    width:160px;
+
+    font-size:.95rem;
+
+}
+
+.subscribe-btn{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #4F46E5,
+        #2563EB
+    );
+
+    color:#fff;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.subscribe-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
