@@ -28,8 +28,13 @@
 }
 
 .btn-primary:hover{
+
     background:var(--primary-dark);
-    transform:translateY(-2px);
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
+
 }
 
 .btn-outline{
@@ -60,9 +65,11 @@
 }
 
 .card:hover{
+
     transform:translateY(-8px);
-    box-shadow:var(--shadow-md);
-    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-lg);
+
 }
 
 .card-body{
@@ -256,10 +263,170 @@
 
 .hero-card{
 
-    min-height:320px;
+    min-height:340px;
 
     display:flex;
 
     align-items:center;
 
+    border:1px solid var(--border);
+
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        #f8fafc
+    );
+
+}
+
+
+/* ===========================================
+   NEWSLETTER
+=========================================== */
+
+.newsletter{
+
+    padding-top:0;
+
+}
+
+.newsletter-box{
+
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+
+    color:#fff;
+
+    border-radius:var(--radius-xl);
+
+    padding:60px;
+
+    text-align:center;
+
+}
+
+.newsletter-text{
+
+    margin:20px auto 35px;
+
+    max-width:650px;
+
+    opacity:.9;
+
+}
+
+.newsletter-form{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.newsletter-input{
+
+    width:380px;
+
+    max-width:100%;
+
+    padding:16px 20px;
+
+    border:none;
+
+    border-radius:var(--radius-md);
+
+    font:inherit;
+
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
+
+.footer{
+
+    padding:80px 0 40px;
+
+    background:#111827;
+
+    color:#fff;
+
+}
+
+.footer h4{
+
+    margin-bottom:20px;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.footer-links a{
+
+    color:#cbd5e1;
+
+}
+
+.footer-links a:hover{
+
+    color:#fff;
+
+}
+
+.footer-divider{
+
+    margin:50px 0 25px;
+
+    border:none;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+.footer-copy{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+}
+
+/* ===========================================
+   SECTION TITLES
+=========================================== */
+
+.section-title{
+    font-size:2rem;
+    font-weight:800;
+    margin-bottom:12px;
+    color:var(--text);
+}
+
+.section-subtitle{
+    color:var(--text-light);
+    max-width:650px;
+    margin-bottom:48px;
+}
+
+/* ===========================================
+   SPACING UTILITIES
+=========================================== */
+
+.text-center{
+    text-align:center;
+}
+
+.w-100{
+    width:100%;
 }

@@ -97,3 +97,31 @@ body{
 }
 
 }
+
+@media (max-width:768px){
+
+.newsletter-box{
+
+padding:40px 24px;
+
+}
+
+.newsletter-form{
+
+flex-direction:column;
+
+}
+
+.newsletter-input{
+
+width:100%;
+
+}
+
+.footer{
+
+text-align:center;
+
+}
+
+}
