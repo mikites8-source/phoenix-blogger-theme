@@ -24,21 +24,24 @@
 
 @media (max-width:900px){
 
-.hero-grid{
-    grid-template-columns:1fr;
-}
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
 
-.nav-menu{
-    display:none;
-}
+    .hero-title{
+        font-size:2.7rem;
+    }
 
-.hero-title{
-    font-size:2.5rem;
-}
+    .hero-buttons{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-.hero-text{
-    font-size:1.05rem;
-}
+    .hero-community{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
 }
 
@@ -123,5 +126,52 @@ width:100%;
 text-align:center;
 
 }
+
+}
+
+
+/* ===========================================
+   QUICK ACCESS + STATS
+=========================================== */
+
+@media (max-width:900px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .quick-access-wrapper{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:640px){
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
 
 }
