@@ -1,71 +1,288 @@
 /* ==========================================================
    ALEMONDEM PREMIUM THEME
-   Category Cards
+   Card Components
 ========================================================== */
 
-.section-header{
-    text-align:center;
-    margin-bottom:60px;
+/* ---------- Shared Card Behavior ---------- */
+
+.category-card,
+.article-card{
+    min-width:0;
+    border-radius:24px;
+    background:#fff;
 }
 
-.section-header h2{
-    font-size:2.4rem;
-    margin-bottom:16px;
+.category-card,
+.article-link{
+    text-decoration:none;
 }
 
-.section-header p{
-    max-width:700px;
-    margin:auto;
-    color:var(--text-light);
-    line-height:1.8;
+.category-card:focus-visible,
+.article-link:focus-visible{
+    outline:3px solid rgba(79,70,229,.22);
+    outline-offset:4px;
 }
 
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
+/* ---------- Category Cards ---------- */
 
 .category-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:24px;
+    display:flex;
+    flex-direction:column;
+    height:100%;
     padding:36px;
-    box-shadow:var(--shadow-sm);
-    transition:.3s;
-    text-decoration:none;
+    border:1px solid var(--border);
     color:inherit;
+    box-shadow:var(--shadow-sm);
+    transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition-fast);
 }
 
-.category-card:hover{
+.category-card:hover,
+.category-card:focus-visible{
     transform:translateY(-8px);
+    border-color:rgba(79,70,229,.28);
     box-shadow:var(--shadow-md);
 }
 
 .category-icon{
-    width:70px;
-    height:70px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:2rem;
-    background:#EEF2FF;
-    border-radius:20px;
+    width:70px;
+    height:70px;
     margin-bottom:24px;
+    border-radius:20px;
+    background:#EEF2FF;
+    color:var(--primary);
+    font-size:1.15rem;
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1;
 }
 
 .category-card h3{
     margin-bottom:16px;
     font-size:1.35rem;
+    line-height:1.3;
 }
 
 .category-card p{
+    margin-bottom:24px;
     color:var(--text-light);
     line-height:1.8;
-    margin-bottom:24px;
 }
 
 .category-link{
+    display:inline-flex;
+    align-items:center;
+    margin-top:auto;
     color:var(--primary);
     font-weight:700;
+    line-height:1.4;
+}
+
+.category-link::after{
+    content:"";
+    width:.45em;
+    height:.45em;
+    margin-left:.5rem;
+    border-top:2px solid currentColor;
+    border-right:2px solid currentColor;
+    transform:rotate(45deg);
+}
+
+/* ---------- Article Cards ---------- */
+
+.article-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+    transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.article-card:hover,
+.article-card:focus-within{
+    transform:translateY(-10px);
+    box-shadow:0 30px 60px rgba(0,0,0,.12);
+}
+
+.article-image{
+    position:relative;
+    min-height:220px;
+    aspect-ratio:16 / 10;
+    overflow:hidden;
+}
+
+.article-image::after{
+    content:"";
+    position:absolute;
+    inset:auto -18% -48% 12%;
+    height:72%;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+}
+
+.image-ai{
+    background:linear-gradient(135deg,#4338CA,#2563EB);
+}
+
+.image-ui{
+    background:linear-gradient(135deg,#0EA5E9,#6366F1);
+}
+
+.image-dev{
+    background:linear-gradient(135deg,#2563EB,#7C3AED);
+}
+
+.article-badge{
+    position:absolute;
+    top:20px;
+    left:20px;
+    z-index:1;
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#fff;
+    color:#4338CA;
+    font-size:.8rem;
+    font-weight:700;
+    line-height:1;
+}
+
+.article-content{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    padding:32px;
+}
+
+.article-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:var(--space-3);
+    margin-bottom:18px;
+    color:var(--text-light);
+    font-size:.85rem;
+    line-height:1.5;
+}
+
+.article-content h3{
+    margin-bottom:18px;
+    font-size:1.5rem;
+    line-height:1.35;
+}
+
+.article-content p{
+    margin-bottom:28px;
+    color:var(--text-light);
+    line-height:1.8;
+}
+
+.article-link{
+    display:inline-flex;
+    align-items:center;
+    align-self:flex-start;
+    margin-top:auto;
+    color:var(--primary);
+    font-weight:700;
+    line-height:1.4;
+}
+
+.article-link::after{
+    content:"";
+    width:.45em;
+    height:.45em;
+    margin-left:.5rem;
+    border-top:2px solid currentColor;
+    border-right:2px solid currentColor;
+    transform:rotate(45deg);
+}
+
+.article-link:hover{
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+/* ---------- Responsive Cards ---------- */
+
+@media (max-width:1024px){
+    .category-card{
+        padding:32px;
+    }
+
+    .article-content{
+        padding:28px;
+    }
+}
+
+@media (max-width:768px){
+    .category-card{
+        padding:28px;
+        border-radius:22px;
+    }
+
+    .category-icon{
+        width:64px;
+        height:64px;
+        margin-bottom:20px;
+        border-radius:18px;
+    }
+
+    .article-card{
+        border-radius:22px;
+    }
+
+    .article-image{
+        min-height:200px;
+    }
+
+    .article-content{
+        padding:26px;
+    }
+
+    .article-meta{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:4px;
+    }
+
+    .article-content h3{
+        font-size:1.35rem;
+    }
+}
+
+@media (max-width:480px){
+    .category-card,
+    .article-content{
+        padding:24px;
+    }
+
+    .category-card,
+    .article-card{
+        border-radius:20px;
+    }
+
+    .category-card h3{
+        font-size:1.25rem;
+    }
+
+    .article-image{
+        min-height:180px;
+    }
+
+    .article-badge{
+        top:16px;
+        left:16px;
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .category-card,
+    .article-card{
+        transition:none;
+    }
 }
