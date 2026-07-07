@@ -1,213 +1,316 @@
 /* ==========================================================
-   HERO
+   Phoenix Blogger Theme
+   Hero Section
 ========================================================== */
 
+/* ---------- Hero Layout ---------- */
+
 .hero{
-
-    padding:80px 0 70px;
-
+    padding-block:80px 70px;
 }
 
 .hero-grid{
-
     display:grid;
-
-    grid-template-columns:1.1fr .9fr;
-
-    gap:70px;
-
+    grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);
     align-items:center;
-
+    gap:clamp(48px,6vw,70px);
 }
 
+.hero-content{
+    min-width:0;
+}
+
+/* ---------- Hero Typography ---------- */
+
 .hero-label{
-
     display:inline-block;
-
-    color:var(--primary);
-
-    font-weight:700;
-
-    letter-spacing:.08em;
-
-    font-size:.85rem;
-
     margin-bottom:24px;
-
+    color:var(--primary);
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    line-height:1.4;
+    text-transform:uppercase;
 }
 
 .hero-title{
-
-    font-size:4rem;
-
-    line-height:1.05;
-
+    max-width:760px;
     margin-bottom:24px;
-
+    font-size:clamp(3rem,5.4vw,4rem);
     font-weight:800;
-
+    line-height:1.05;
 }
 
 .hero-description{
-
     max-width:620px;
-
     color:var(--text-light);
-
     font-size:1.15rem;
-
     line-height:1.8;
-
 }
+
+/* ---------- Hero Actions ---------- */
 
 .hero-buttons{
-
     display:flex;
-
+    align-items:center;
+    flex-wrap:wrap;
     gap:20px;
-
     margin:40px 0;
-
 }
 
+.hero-buttons .btn{
+    min-height:48px;
+}
+
+/* ---------- Reader Community ---------- */
+
 .hero-community{
-
     display:flex;
-
     align-items:center;
-
     gap:20px;
+}
 
+.hero-community strong{
+    display:block;
+    line-height:1.3;
+}
+
+.hero-community p{
+    margin-top:4px;
+    color:var(--text-light);
 }
 
 .avatar-group{
-
     display:flex;
-
+    flex:0 0 auto;
+    align-items:center;
+    padding-left:10px;
 }
 
 .avatar{
-
-    width:44px;
-
-    height:44px;
-
-    border-radius:50%;
-
-    background:linear-gradient(135deg,#4F46E5,#2563EB);
-
-    color:#fff;
-
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
-
+    justify-content:center;
+    width:44px;
+    height:44px;
     margin-left:-10px;
-
+    border:3px solid #fff;
+    border-radius:50%;
+    background:linear-gradient(135deg,#4F46E5,#2563EB);
+    color:#fff;
+    font-size:.95rem;
     font-weight:700;
-
-    border:3px solid white;
-
+    line-height:1;
+    box-shadow:0 6px 18px rgba(37,99,235,.16);
 }
 
 .avatar:first-child{
-
     margin-left:0;
-
 }
 
-/* Featured Card */
+/* ---------- Featured Article ---------- */
 
 .featured-post{
-
+    min-width:0;
     padding:48px;
-
-    border-radius:24px;
-
-    background:white;
-
     border:1px solid var(--border);
-
+    border-radius:24px;
+    background:#fff;
     box-shadow:var(--shadow-md);
-
 }
 
 .featured-post h2{
-
     margin:24px 0 18px;
-
-    font-size:2rem;
-
+    font-size:clamp(1.65rem,2.4vw,2rem);
+    line-height:1.25;
 }
 
 .featured-post p{
-
     margin-bottom:30px;
-
     color:var(--text-light);
-
     line-height:1.8;
-
 }
 
-/* ===========================================
-   FEATURED IMAGE
-=========================================== */
+.featured-post .btn{
+    min-height:48px;
+}
+
+/* ---------- Featured Image ---------- */
 
 .featured-image{
-
-    height:220px;
-
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        #4F46E5,
-        #2563EB
-    );
-
-    margin-bottom:30px;
-
     position:relative;
-
+    height:220px;
+    margin-bottom:30px;
     overflow:hidden;
+    border-radius:18px;
+    background:linear-gradient(135deg,#4F46E5,#2563EB);
+}
 
+.featured-image::after{
+    content:"";
+    position:absolute;
+    inset:auto -20% -45% 12%;
+    height:70%;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
 }
 
 .featured-overlay{
-
     position:absolute;
-
     top:20px;
-
     left:20px;
-
-    background:white;
-
-    color:#2563EB;
-
+    z-index:1;
     padding:8px 14px;
-
     border-radius:999px;
-
-    font-weight:700;
-
+    background:#fff;
+    color:#2563EB;
     font-size:.8rem;
-
+    font-weight:700;
+    line-height:1;
 }
 
 .featured-meta{
-
     display:flex;
-
+    align-items:center;
     justify-content:space-between;
-
+    gap:var(--space-3);
     margin:24px 0;
-
     color:var(--text-light);
-
     font-size:.9rem;
+}
 
+/* ---------- Responsive Hero ---------- */
+
+@media (max-width:1024px){
+    .hero{
+        padding-block:70px 64px;
+    }
+
+    .hero-grid{
+        grid-template-columns:minmax(0,1fr) minmax(300px,.9fr);
+        gap:44px;
+    }
+
+    .featured-post{
+        padding:40px;
+    }
+}
+
+@media (max-width:900px){
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .hero-title{
+        max-width:680px;
+        font-size:clamp(2.6rem,7vw,3.2rem);
+    }
+
+    .hero-description{
+        max-width:680px;
+    }
+
+    .featured-post{
+        max-width:680px;
+    }
+}
+
+@media (max-width:768px){
+    .hero{
+        padding-block:60px;
+    }
+
+    .hero-label{
+        margin-bottom:18px;
+        font-size:.78rem;
+    }
+
+    .hero-title{
+        margin-bottom:20px;
+        font-size:clamp(2.2rem,10vw,2.7rem);
+        line-height:1.12;
+    }
+
+    .hero-description{
+        font-size:1.05rem;
+        line-height:1.75;
+    }
+
+    .hero-buttons{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+        margin:32px 0;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .hero-community{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .avatar-group{
+        padding-left:0;
+    }
+
+    .featured-post{
+        padding:32px;
+        border-radius:22px;
+    }
+
+    .featured-image{
+        height:200px;
+        margin-bottom:26px;
+    }
+
+    .featured-meta{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:8px;
+    }
+}
+
+@media (max-width:480px){
+    .hero{
+        padding-block:52px;
+    }
+
+    .hero-title{
+        font-size:2.2rem;
+    }
+
+    .hero-buttons .btn,
+    .featured-post .btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .featured-post{
+        padding:24px;
+        border-radius:20px;
+    }
+
+    .featured-image{
+        height:180px;
+        border-radius:16px;
+    }
+
+    .featured-overlay{
+        top:16px;
+        left:16px;
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .avatar,
+    .featured-post,
+    .featured-image{
+        transition:none;
+    }
 }
