@@ -175,3 +175,100 @@ text-align:center;
     }
 
 }
+
+@media (max-width:900px){
+
+    .article-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .section-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .editor-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE HEADER
+========================================== */
+
+@media (max-width:768px){
+
+.search-box{
+
+    display:none;
+
+}
+
+     .hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+   }
+
+    .hero-content,
+   .hero-image{
+
+    width:100%;
+
+   }
+
+   .categories-grid,
+    .posts-grid,
+   .stats-grid{
+
+    grid-template-columns:1fr;
+
+   }
+
+   .ad-banner{
+
+    width:100%;
+
+}
+
+.ad-banner img{
+
+    width:100%;
+
+    height:auto;
+
+}
+
+.hero h1{
+
+    font-size:2.2rem;
+
+    line-height:1.15;
+
+}
+
+.section-title{
+
+    font-size:2rem;
+
+}
+
+}
