@@ -3,6 +3,20 @@
    Layout System
 ========================================================== */
 
+/* ---------- Page Flow ---------- */
+
+body{
+    min-width:320px;
+}
+
+main{
+    min-width:0;
+}
+
+main > *{
+    min-width:0;
+}
+
 /* ---------- Container ---------- */
 
 .container{
@@ -13,40 +27,51 @@
 /* ---------- Sections ---------- */
 
 .section{
-    padding:var(--space-8) 0;
+    padding-block:var(--space-8);
 }
 
 .section-sm{
-    padding:var(--space-6) 0;
+    padding-block:var(--space-6);
 }
 
 .section-lg{
-    padding:var(--space-9) 0;
+    padding-block:var(--space-9);
 }
 
-/* ---------- Grid ---------- */
+.section + .section{
+    padding-top:var(--space-7);
+}
+
+/* ---------- Grid System ---------- */
 
 .grid{
     display:grid;
+    align-items:start;
     gap:var(--space-5);
+    min-width:0;
+}
+
+.grid > *{
+    min-width:0;
 }
 
 .grid-2{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
 .grid-3{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,minmax(0,1fr));
 }
 
 .grid-4{
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,minmax(0,1fr));
 }
 
-/* ---------- Flex ---------- */
+/* ---------- Flex Utilities ---------- */
 
 .flex{
     display:flex;
+    min-width:0;
 }
 
 .flex-center{
@@ -59,6 +84,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:var(--space-4);
 }
 
 .flex-column{
@@ -66,7 +92,14 @@
     flex-direction:column;
 }
 
-/* ---------- Spacing ---------- */
+.flex > *,
+.flex-center > *,
+.flex-between > *,
+.flex-column > *{
+    min-width:0;
+}
+
+/* ---------- Spacing Utilities ---------- */
 
 .mt-1{margin-top:var(--space-1);}
 .mt-2{margin-top:var(--space-2);}
@@ -86,7 +119,57 @@
 .mb-7{margin-bottom:var(--space-7);}
 .mb-8{margin-bottom:var(--space-8);}
 
-/* Better spacing for blog grids */
-.grid{
-    align-items:start;
+/* ---------- Responsive Layout ---------- */
+
+@media (max-width:1024px){
+    .grid-4{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .section{
+        padding-block:var(--space-7);
+    }
+
+    .section-lg{
+        padding-block:var(--space-8);
+    }
+}
+
+@media (max-width:768px){
+    .container{
+        width:min(100% - 1.5rem, var(--container));
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .grid{
+        gap:var(--space-4);
+    }
+
+    .section,
+    .section-sm,
+    .section-lg{
+        padding-block:var(--space-6);
+    }
+
+    .flex-between{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+}
+
+@media (max-width:480px){
+    .container{
+        width:min(100% - 1rem, var(--container));
+    }
+
+    .section,
+    .section-sm,
+    .section-lg{
+        padding-block:var(--space-5);
+    }
 }

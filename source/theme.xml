@@ -1688,25 +1688,61 @@ head.appendChild(script);
 
           <a expr:name='data:post.id'/>
           <b:if cond='data:post.title'>
-            <h3 class='post-title entry-title' itemprop='name'>
-              <b:if cond='data:post.link'>
-                <a expr:href='data:post.link'><data:post.title/></a>
-              <b:elseif cond='data:post.url and data:blog.url != data:post.url'/>
-                <a expr:href='data:post.url'><data:post.title/></a>
-              <b:else/>
-                <data:post.title/>
-              </b:if>
-            </h3>
-          </b:if>
+
+  <h2 class='post-title' itemprop='headline'>
+
+    <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
+
+      <a class='post-title-link'
+         expr:href='data:post.link ? data:post.link : data:post.url'>
+
+        <data:post.title/>
+
+      </a>
+
+    <b:else/>
+
+      <data:post.title/>
+
+    </b:if>
+
+  </h2>
+
+</b:if>
 
           <div class='post-header'>
             <div class='post-header-line-1'/>
           </div>
 
-          <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
-            <data:post.body/>
-            <div style='clear: both;'/> <!-- clear for photos floats -->
-          </div>
+          <div class='post-excerpt'>
+
+  <b:if cond='data:blog.pageType == "index"'>
+
+    <b:if cond='data:post.snippet'>
+
+      <data:post.snippet/>
+
+    <b:else/>
+
+      <data:post.body/>
+
+    </b:if>
+
+  <b:else/>
+
+    <div class='post-body entry-content'
+         expr:id='"post-body-" + data:post.id'
+         expr:itemprop='(data:blog.metaDescription ? "" : "description ") + "articleBody"'>
+
+      <data:post.body/>
+
+      <div style='clear:both;'/>
+
+    </div>
+
+  </b:if>
+
+</div>
 
           <div class='post-footer'>
             <div class='post-footer-line post-footer-line-1'>
@@ -1788,19 +1824,46 @@ head.appendChild(script);
     <b:if cond='data:post.firstImageUrl'>
       <meta expr:content='data:post.firstImageUrl' itemprop='image_url'/>
     </b:if>
+    <b:if cond='data:post.firstImageUrl'>
+
+  <a class='post-image-link'
+     expr:href='data:post.url'>
+
+    <img
+      class='post-image'
+      expr:alt='data:post.title'
+      expr:src='data:post.firstImageUrl'
+      itemprop='image'/>
+
+  </a>
+
+</b:if>
     <meta expr:content='data:blog.blogId' itemprop='blogId'/>
     <meta expr:content='data:post.id' itemprop='postId'/>
 
     <a expr:name='data:post.id'/>
-    <b:if cond='data:post.title'>
-      <h3 class='post-title entry-title' itemprop='name'>
-      <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
-        <a expr:href='data:post.link ? data:post.link : data:post.url'><data:post.title/></a>
-      <b:else/>
+   <b:if cond='data:post.title'>
+
+  <h2 class='post-title' itemprop='headline'>
+
+    <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
+
+      <a class='post-title-link'
+         expr:href='data:post.link ? data:post.link : data:post.url'>
+
         <data:post.title/>
-      </b:if>
-      </h3>
+
+      </a>
+
+    <b:else/>
+
+      <data:post.title/>
+
     </b:if>
+
+  </h2>
+
+</b:if>
 
     <div class='post-header'>
     <div class='post-header-line-1'/>
@@ -1813,10 +1876,20 @@ head.appendChild(script);
     </div>
 
     <b:if cond='data:post.hasJumpLink'>
-      <div class='jump-link'>
-        <a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a>
-      </div>
-    </b:if>
+
+  <div class='post-footer'>
+
+    <a class='read-more'
+       expr:href='data:post.url + "#more"'
+       expr:title='data:post.title'>
+
+      Read Article →
+
+    </a>
+
+  </div>
+
+</b:if>
 
     <div class='post-footer'>
     <div class='post-footer-line post-footer-line-1'>
@@ -1838,15 +1911,34 @@ head.appendChild(script);
         </b:if>
       </span>
 
-      <span class='post-timestamp'>
-        <b:if cond='data:top.showTimestamp'>
-          <data:top.timestampLabel/>
-          <b:if cond='data:post.url'>
-            <meta expr:content='data:post.url.canonical' itemprop='url'/>
-            <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></a>
-          </b:if>
-        </b:if>
-      </span>
+      <div class='post-meta'>
+
+  <b:if cond='data:top.showTimestamp and data:post.url'>
+
+    <span class='post-date'>
+
+      <meta expr:content='data:post.url.canonical'
+            itemprop='url'/>
+
+      <a class='timestamp-link'
+         expr:href='data:post.url'
+         rel='bookmark'>
+
+        <abbr class='published'
+              expr:title='data:post.timestampISO8601'
+              itemprop='datePublished'>
+
+          <data:post.timestamp/>
+
+        </abbr>
+
+      </a>
+
+    </span>
+
+  </b:if>
+
+</div>
 
       <span class='post-comment-link'>
         <b:include cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                          and data:post.allowComments' data='post' name='comment_count_picker'/>
@@ -1874,14 +1966,25 @@ head.appendChild(script);
       </div>
 
       <div class='post-footer-line post-footer-line-2'>
-      <span class='post-labels'>
-        <b:if cond='data:top.showPostLabels and data:post.labels'>
-          <data:postLabelsLabel/>
-          <b:loop values='data:post.labels' var='label'>
-            <a expr:href='data:label.url' rel='tag'><data:label.name/></a><b:if cond='not data:label.isLast'>,</b:if>
-          </b:loop>
-        </b:if>
-      </span>
+      <div class='post-labels'>
+
+  <b:if cond='data:top.showPostLabels and data:post.labels'>
+
+    <b:loop values='data:post.labels' var='label'>
+
+      <a class='post-badge'
+         expr:href='data:label.url'
+         rel='tag'>
+
+        <data:label.name/>
+
+      </a>
+
+    </b:loop>
+
+  </b:if>
+
+</div>
       </div>
 
       <div class='post-footer-line post-footer-line-3'>
@@ -2222,7 +2325,7 @@ head.appendChild(script);
               </b:widget-settings>
               <b:includable id='main'>
   <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
-  <div class='widget-content popular-posts'>
+  <div class='widget-content sidebar-widget popular-posts'>
     <ul>
       <b:loop values='data:posts' var='post'>
       <li>
@@ -2306,7 +2409,7 @@ head.appendChild(script);
     </div>
     </div>
 
-    <footer>
+    <footer class='site-footer'>
     <div class='footer-outer'>
     <div class='footer-cap-top cap-top'>
       <div class='cap-left'/>
@@ -2737,7 +2840,7 @@ head.appendChild(script);
   <b:if cond='data:title != &quot;&quot;'>
     <h2><data:title/></h2>
   </b:if>
-  <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
+  <div expr:class='&quot;widget-content sidebar-widget labels-widget &quot; + data:display + &quot;-label-widget-content&quot;'>
     <b:if cond='data:display == &quot;list&quot;'>
       <ul>
         <b:loop values='data:labels' var='label'>
