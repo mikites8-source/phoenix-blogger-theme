@@ -1,0 +1,20 @@
+# -------------------------
+# Phoenix Theme
+# -------------------------
+
+# Backup files
+*.bak
+*-backup.xml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp

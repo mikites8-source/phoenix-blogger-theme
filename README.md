@@ -1,6 +1,41 @@
 # Phoenix Blogger Theme
 
-Phoenix is a premium modern Blogger theme rebuilt from the legacy Awesome Inc. template.
+> A modern, responsive Blogger theme built with a modular architecture, premium UI, and performance-first design.
+
+---
+
+## Overview
+
+Phoenix is a next-generation Blogger theme created to modernize the Blogger platform with a clean design system, responsive layouts, and maintainable code architecture.
+
+The project is designed as a production-ready foundation for content creators, technology blogs, digital magazines, and creative publishers.
+
+---
+
+## Features
+
+- Responsive Desktop, Tablet & Mobile Layout
+- Modern Navigation with Mobile Menu
+- Premium Hero Section
+- Modular CSS Architecture
+- Flexible Card System
+- Optimized Blog Reading Experience
+- Accessible Components
+- Performance-Oriented Design
+- Blogger Compatible
+
+---
+
+## Technology Stack
+
+- HTML5
+- CSS3
+- Blogger XML
+- Vanilla JavaScript
+- Git & GitHub
+
+---
+
 
 ## Goals
 
@@ -25,5 +60,112 @@ Phoenix is a premium modern Blogger theme rebuilt from the legacy Awesome Inc. t
 - Phase 6 – Optimization
 
 ---
+
+## Project Structure
+
+```
+phoenix-blogger-theme/
+│
+├── source/
+│   ├── css/
+│   ├── images/
+│   ├── js/
+│   └── theme.xml
+│
+├── docs/
+│
+├── .gitignore
+│
+└── README.md
+```
+
+---
+
+## Development Workflow
+
+Phoenix RC1 was developed using an incremental release workflow.
+
+Major milestones included:
+
+- Responsive Navigation
+- Layout Refactoring
+- Hero Redesign
+- Homepage Sections
+- Card System
+- Blog Typography
+- Footer Modernization
+- Release Candidate QA
+
+---
+
+## Current Status
+
+**Version**
+
+```
+Phoenix v1.0.0 RC1
+```
+
+Status:
+
+```
+Release Candidate
+```
+
+---
+
+## Roadmap
+
+### RC1
+
+- Responsive Layout
+- Modern Homepage
+- Blog System
+- Footer Redesign
+- QA & Performance Review
+
+### v1.1
+
+- Blogger XML Modernization
+- Widget Refactoring
+- Modular Partials Integration
+- Footer Enhancement
+- Theme Customization Improvements
+
+---
+
+## Installation
+
+1. Clone the repository.
+
+```
+git clone https://github.com/YOUR_USERNAME/phoenix-blogger-theme.git
+```
+
+2. Open the project in Visual Studio Code.
+
+3. Launch using Live Server.
+
+4. Import `theme.xml` into Blogger for testing.
+
+---
+
+## License
+
+This project is released under the MIT License.
+
+---
+
+## Author
+
+**Mikiyas Tesfaye**
+
+UX Designer • Front-End Developer • Digital Experience Designer
+
+---
+
+## Acknowledgements
+
+Special thanks to everyone who contributed ideas, testing, and feedback throughout the Phoenix RC1 development cycle.
 
 Created with ❤️ using ChatGPT and GitHub.
