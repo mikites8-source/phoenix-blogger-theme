@@ -20,6 +20,5 @@ Thumbs.db
 *.temp
 
 # Phoenix v1.1 work (not part of RC1)
-docs/
 source/partials/
 source/css/ads.css
