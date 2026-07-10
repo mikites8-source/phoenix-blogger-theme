@@ -28,3 +28,12 @@
 | Sidebar | Multiple Widgets | Yes |
 | Newsletter | HTML | Yes |
 | Footer | HTML | Yes |
+
+---
+
+## Header
+
+| Component | Blogger Source            | Phoenix Status                  |
+| --------- | ------------------------- | ------------------------------- |
+| Header    | Header Widget (`Header1`) | **HTML Architecture Completed** |
+
