@@ -1439,41 +1439,37 @@ head.appendChild(script);
     <!-- PHOENIX HEADER END -->
     <!-- ======================= -->
 
-    <div class='tabs-outer'>
-    <div class='tabs-cap-top cap-top'>
-      <div class='cap-left'/>
-      <div class='cap-right'/>
-    </div>
-    <div class='fauxborder-left tabs-fauxborder-left'>
+<div class='tabs-outer'>
+  <div class='tabs-cap-top cap-top'>
+    <div class='cap-left'/>
+    <div class='cap-right'/>
+  </div>
+
+  <div class='fauxborder-left tabs-fauxborder-left'>
     <div class='fauxborder-right tabs-fauxborder-right'/>
     <div class='region-inner tabs-inner'>
-      <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
-        <b:widget id='AdSense4' locked='false' title='' type='AdSense'>
-          <b:widget-settings>
-            <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-            <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
-            <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-            <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
-            <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
-            <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
-            <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-          </b:widget-settings>
-          <b:includable id='main'>
-  <div class='widget-content'>
-    <data:adCode/>
-    <b:include name='quickedit'/>
+
+      <b:section
+          class='tabs'
+          id='crosscol'
+          maxwidgets='1'
+          name='Cross-Column'
+          showaddelement='yes'/>
+
+      <b:section
+          class='tabs'
+          id='crosscol-overflow'
+          name='Cross-Column 2'
+          showaddelement='no'/>
+
+    </div>
   </div>
-</b:includable>
-        </b:widget>
-      </b:section>
-      <b:section class='tabs' id='crosscol-overflow' name='Cross-Column 2' showaddelement='no'/>
-    </div>
-    </div>
-    <div class='tabs-cap-bottom cap-bottom'>
-      <div class='cap-left'/>
-      <div class='cap-right'/>
-    </div>
-    </div>
+
+  <div class='tabs-cap-bottom cap-bottom'>
+    <div class='cap-left'/>
+    <div class='cap-right'/>
+  </div>
+</div>
 
     <div class='main-outer'>
     <div class='main-cap-top cap-top'>
@@ -2817,7 +2813,8 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </b:includable>
   </b:widget>
-</b:section-contents><b:section-contents id='sidebar-right-1'>
+</b:section-contents>
+<b:section-contents id='sidebar-right-1'>
   <b:widget id='AdSense14' locked='false' title='' type='AdSense'>
     <b:widget-settings>
       <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
@@ -3014,7 +3011,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <b:include name='quickedit'/>
 </b:includable>
   </b:widget>
-</b:section-contents><b:section-contents id='sidebar-right-2-1'>
+</b:section-contents>
+<b:section-contents id='sidebar-right-2-1'>
   <b:widget id='AdSense11' locked='false' title='' type='AdSense'>
     <b:widget-settings>
       <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
