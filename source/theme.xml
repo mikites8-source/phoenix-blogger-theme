@@ -27,6 +27,18 @@
     <title><data:blog.pageTitle/></title>
 
     <b:skin><![CDATA[/*
+
+/* ======================================================
+   PHOENIX BLOGGER THEME
+   Version : 1.0.0
+   Sprint 5
+   Commit 1A
+   Component : Foundation Cleanup
+   ------------------------------------------------------
+   Blogger manages data.
+   Phoenix manages presentation.
+====================================================== */
+
 -----------------------------------------------
 Blogger Template Style
 Name:     Awesome Inc.
@@ -271,9 +283,19 @@ URL:      tinachen.org
     color:#777;
 }
 
+/* ======================================================
+   PHOENIX NAVIGATION
+====================================================== */
+
 .phoenix-navigation{
 
-    display:none;
+    display:flex;
+
+    align-items:center;
+
+    position:static;
+
+    width:auto;
 
     position:absolute;
 
@@ -299,6 +321,7 @@ URL:      tinachen.org
 
 .phoenix-menu{
     display:flex;
+    
     flex-wrap:wrap;
 
     gap:2rem;
@@ -441,6 +464,64 @@ URL:      tinachen.org
 
     }
 
+/* ======================================================
+   PHOENIX LAYOUT
+====================================================== */
+
+.phoenix-shell {
+    background:#ffffff;
+    border-bottom:1px solid #E5E7EB;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+}
+
+/* ======================================================
+   PHOENIX HEADER
+====================================================== */
+
+.phoenix-header-container {
+    max-width:1280px;
+    margin:0 auto;
+    padding:18px 32px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.phoenix-brand {
+    display:flex;
+    flex-direction:column;
+}
+
+.phoenix-logo-text {
+    font-size:2rem;
+    font-weight:700;
+    color:#111827;
+    text-decoration:none;
+}
+
+.phoenix-tagline{
+    margin-top:6px;
+    color:#6B7280;
+    font-size:.9rem;
+}
+
+.phoenix-menu{
+    display:flex;
+    gap:32px;
+
+    list-style:none;
+
+    margin:0;
+    padding:0;
+}
+
+.phoenix-menu a{
+    text-decoration:none;
+    color:#111827;
+    font-weight:600;
+}
+
 }
 }
 
@@ -449,6 +530,11 @@ URL:      tinachen.org
 
 /* Content
 ----------------------------------------------- */
+
+/* ======================================================
+   PHOENIX BASE
+====================================================== */
+
 body {
   font: $(body.font);
   color: $(body.text.color);
@@ -493,14 +579,18 @@ a:hover {
   padding: 0;
 }
 
-.header-inner .section {
-  margin: 0 16px;
+.header-inner .section{
+    max-width:1280px;
+    margin:0 auto;
+    padding:18px 32px;
 }
 
-.tabs-inner .section {
-  margin: 0 16px;
+.tabs-inner .section{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 32px;
 }
-
+    
 .main-inner {
   padding-top: $(date.space);
 }
@@ -521,15 +611,26 @@ a:hover {
 
 /* Header
 ----------------------------------------------- */
-.header-outer {
-  margin: $(header.margin.top) 0 $(header.margin.bottom) 0;
-  background: $(header.background.color) $(header.background.gradient) repeat scroll 0 0;
+
+/* ======================================================
+   LEGACY BLOGGER STYLES
+   (Temporary - Scheduled for Phoenix Migration)
+====================================================== */
+
+.header-outer{
+    margin:0;
+    padding:0;
+    background:#ffffff;
+    border-bottom:1px solid #E5E7EB;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 
 .Header h1 {
-  font: $(header.font);
-  color: $(header.text.color);
-  text-shadow: 0 0 $(title.shadow.spread) #000000;
+  font-size:2rem;
+  font-weight:700;
+  line-height:1.2;
+  margin:0;
+  color:#111827;
 }
 
 .Header h1 a {
@@ -554,10 +655,11 @@ a:hover {
 
 /* Tabs
 ----------------------------------------------- */
-.tabs-outer {
-  overflow: hidden;
-  position: relative;
-  background: $(tabs.background.color) $(tabs.background.gradient) repeat scroll 0 0;
+.tabs-outer{
+    margin:0;
+    padding:0;
+    background:#ffffff;
+    border-bottom:1px solid #E5E7EB;
 }
 
 #layout .tabs-outer {
@@ -1259,12 +1361,6 @@ body.mobile {
 
   <body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
 
-
-    <!-- PHOENIX TEST 2026 -->
- <div style='background:red;color:white;padding:10px;text-align:center;'>
-    PHOENIX TEST
-</div>
-
   <b:section class='navbar' id='navbar' maxwidgets='1' name='Navbar' showaddelement='no'>
     <b:widget id='Navbar1' locked='false' title='Navbar' type='Navbar'>
       <b:includable id='main'>&lt;script type=&quot;text/javascript&quot;&gt;
@@ -1358,6 +1454,12 @@ head.appendChild(script);
   <div class='fauxborder-right content-fauxborder-right'/>
   <div class='content-inner'>
 
+
+<!-- ====================================================== -->
+<!-- PHOENIX HEADER FRAMEWORK BEGIN                         -->
+<!-- Sprint 5 – Commit 1                                   -->
+<!-- ====================================================== -->
+
     <header>
     <div class='header-outer'>
     <div class='header-cap-top cap-top'>
@@ -1373,44 +1475,79 @@ head.appendChild(script);
             <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiGo54B-CXDAVoiyX2G3RL-lSpftezMrzgHr8mpkUDuXqAMcuRQ6OYSBvzlRIHRrbOMyxFnmQW0xIt6B2TrsJUz5o7k5YqzUCPSPRxZarMeSWZtqcA99ebuq3uBi1-93K-DsMubt7w6bSPMA6K6xnxL1so2fAq4Vnfiw7pu1NhwLNOC6kwtM5BkDGXKYxk=s1286</b:widget-setting>
             <b:widget-setting name='displayHeight'>190</b:widget-setting>
             <b:widget-setting name='sectionWidth'>1286</b:widget-setting>
-            <b:widget-setting name='useImage'>true</b:widget-setting>
+            <b:widget-setting name='useImage'>false</b:widget-setting>
             <b:widget-setting name='shrinkToFit'>true</b:widget-setting>
             <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
             <b:widget-setting name='displayWidth'>1286</b:widget-setting>
           </b:widget-settings>
 <b:includable id='main'>
 
-  <div class='phoenix-brand'>
+<header class='phoenix-header'>
 
-    <a class='phoenix-logo'
-       expr:href='data:blog.homepageUrl'>
+    <div class='phoenix-header-container'>
 
-      <b:if cond='data:useImage'>
+        <div class='phoenix-brand'>
 
-        <img
-            class='phoenix-logo-image'
-            expr:src='data:sourceUrl'
-            expr:alt='data:title'/>
+            <a class='phoenix-logo'
+               expr:href='data:blog.homepageUrl'>
 
-      <b:else/>
+                <span class='phoenix-logo-text'>
+                    <data:title/>
+                </span>
 
-        <span class='phoenix-logo-text'>
-          <data:title/>
-        </span>
+            </a>
 
-      </b:if>
+            <b:if cond='data:description'>
 
-    </a>
+                <p class='phoenix-tagline'>
+                    <data:description/>
+                </p>
 
-    <b:if cond='data:description'>
+            </b:if>
 
-      <p class='phoenix-tagline'>
-        <data:description/>
-      </p>
+        </div>
 
-    </b:if>
+        <nav class='phoenix-navigation'>
 
-  </div>
+            <ul class='phoenix-menu'>
+
+                <li>
+                    <a expr:href='data:blog.homepageUrl'>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href='/p/services.html'>
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href='/p/about-us.html'>
+                        About
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class='phoenix-header-actions'>
+
+            <button
+                class='phoenix-menu-toggle'
+                aria-label='Open Menu'>
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
 
 </b:includable>
           <b:includable id='description'>
@@ -1435,15 +1572,16 @@ head.appendChild(script);
 
     </header>
 
-    <!-- ======================= -->
-    <!-- PHOENIX HEADER END -->
-    <!-- ======================= -->
-
 <div class='tabs-outer'>
   <div class='tabs-cap-top cap-top'>
     <div class='cap-left'/>
     <div class='cap-right'/>
   </div>
+
+<!-- ====================================================== -->
+<!-- PHOENIX HEADER FRAMEWORK END                           -->
+<!-- ====================================================== -->
+
 
   <div class='fauxborder-left tabs-fauxborder-left'>
     <div class='fauxborder-right tabs-fauxborder-right'/>
@@ -2843,7 +2981,9 @@ document.addEventListener('DOMContentLoaded', function () {
     </b:widget-settings>
     <b:includable id='main'>
 
-<b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
+<!-- Phoenix Navigation -->
+
+
  <div class='widget-content'>
    <ul>
      <b:loop values='data:links' var='link'>
