@@ -1,18 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultmessages='false' b:responsive='true' b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultmessages='false' b:responsive='true' b:version='2' class='v2'
+  expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale'
+  xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b'
+  xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    
-    <b:include data='blog' name='all-head-content'/>
-    
-    <title><data:blog.pageName/> | <data:blog.title/></title>
+  <head>
+    <meta charset='UTF-8' />
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <b:include data='blog' name='all-head-content' />
+
+    <title><data:blog.pageName /> | <data:blog.title /></title>
+
+    <link href='https://fonts.googleapis.com' rel='preconnect' />
+    <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect' />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap'
+      rel='stylesheet' />
 
     <b:skin><![CDATA[
 
@@ -115,7 +120,7 @@
         align-items: center;
     }
     .logo {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: 800;
         color: var(--secondary-color);
         letter-spacing: -0.5px;
@@ -128,10 +133,25 @@
         align-items: center;
     }
     .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 28px;
+       display: flex;
+       gap: 1.5rem;
+       list-style: none;
+       margin: 0;
+       padding: 0;
     }
+
+    .nav-item a {
+       text-decoration: none;
+       color: #333333;
+       transition: color 0.2s ease;
+  }
+
+/* Style for the current page state */
+    .nav-item.active a {
+       color: #ff5722; /* Matches an accent theme variable */
+       font-weight: bold;
+}
+    
     .nav-menu a {
         font-weight: 500;
         font-size: 15px;
@@ -145,6 +165,25 @@
         align-items: center;
         gap: 20px;
     }
+
+    /* Forces the navigation links to sit on top of any overlapping layout containers */
+.site-navigation {
+  position: relative;
+  z-index: 99;
+}
+
+.nav-menu {
+  position: relative;
+  z-index: 100;
+}
+
+.nav-menu a {
+  position: relative;
+  z-index: 101;
+  pointer-events: auto !important; /* Forces the browser to recognize the click */
+}
+
+
     .search-box {
         display: flex;
         align-items: center;
@@ -573,6 +612,29 @@
         position: relative;
         overflow: hidden;
     }
+
+    .featured-story-image-link {
+    display:block;
+    width:100%;
+    height:100%;
+    }
+
+    .featured-story-img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .featured-story-img:hover {
+      transform: scale(1.05);
+      transition: var(--transition);
+    }
+
+    .featured-story-img a:hover {
+      transform: scale(1.05);
+      transition: var(--transition);
+    }
+
     .story-badge {
         position: absolute;
         top: 24px;
@@ -594,6 +656,14 @@
         letter-spacing: 1px;
         margin-bottom: 16px;
     }
+     
+    .featured-story-content {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
     .featured-story-content h2 {
         font-size: 40px;
         color: var(--secondary-color);
@@ -608,11 +678,12 @@
         line-height: 1.7;
     }
     .story-meta {
-        display: flex;
-        gap: 24px;
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 32px;
+        display:flex;
+        gap:16px;
+        align-items:center;
+        margin-bottom:32px;
+        color:var(--text-muted);
+        font-size:14px;
     }
 
     /* Editors Picks Grid */
@@ -771,6 +842,79 @@
     .post-outer:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-lg);
+    }
+
+    /* Single Post Page Styles */
+    .post-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 48px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+    }
+    .post-title {
+        font-size: 42px;
+        color: var(--secondary-color);
+        margin-bottom: 24px;
+        line-height: 1.2;
+    }
+    .post-body {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-color);
+    }
+    .post-body img {
+        border-radius: 12px;
+        margin: 24px 0;
+    }
+    .post-body h2, .post-body h3, .post-body h4 {
+        color: var(--secondary-color);
+        margin: 32px 0 16px;
+    }
+    .post-body p {
+        margin-bottom: 20px;
+    }
+    .post-body ul, .post-body ol {
+        margin: 16px 0;
+        padding-left: 24px;
+    }
+    .post-body li {
+        margin-bottom: 8px;
+    }
+    .post-body a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+    .post-body blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 20px;
+        margin: 24px 0;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+    .post-body pre {
+        background: var(--bg-color);
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 20px 0;
+    }
+    .post-body code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+
+    /* Static Page Styles */
+    .static-page-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 48px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
     }
 
     /* ==========================================================================
@@ -961,7 +1105,6 @@
         .site-navigation {
             display: none;
         }
-        /* Mobile Navigation Overrides */
         .navbar.is-nav-open .site-navigation {
             display: block;
             position: absolute;
@@ -982,7 +1125,7 @@
             display: block;
         }
         .nav-right .search-box, .nav-right .subscribe-btn {
-            display: none; /* Can add inside nav overlay for small devices */
+            display: none;
         }
 
         .category-grid, .editor-grid, .article-grid, .footer-navigation, .stats-grid {
@@ -1004,511 +1147,1799 @@
             gap: 16px;
             text-align: center;
         }
+        .post-container, .static-page-container {
+            padding: 24px;
+        }
+        .post-title {
+            font-size: 32px;
+        }
     }
     ]]></b:skin>
-</head>
+  </head>
 
-<body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+  <body>
+    <a class='skip-link' href='#main-content'>Skip to content</a>
 
-    <header class="navbar" role="banner">
-        <div class="container nav-container">
-            <a class="logo" href="/" aria-label="Alemondem home">
-                Alemon<span>dem</span>
-            </a>
+    <!-- ============================================ -->
+    <!-- GLOBAL HEADER - APPEARS ON ALL PAGES -->
+    <!-- ============================================ -->
+    <header class='navbar' role='banner'>
+      <div class='container nav-container'>
+        <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='Alemondem (Header)' type='Header' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='displayUrl' />
+              <b:widget-setting name='displayHeight'>0</b:widget-setting>
+              <b:widget-setting name='sectionWidth'>-1</b:widget-setting>
+              <b:widget-setting name='useImage'>false</b:widget-setting>
+              <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+              <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+              <b:widget-setting name='displayWidth'>0</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <a aria-label='Alemondem home' class='logo' href='/'> Alemon<span>dem</span>
+              </a>
+            </b:includable>
+            <b:includable id='description'>
+              <div class='descriptionwrapper'>
+                <p class='description'>
+                  <span>
+                    <data:description />
+                  </span>
+                </p>
+              </div>
+            </b:includable>
+            <b:includable id='title'>
+              <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl'
+                name='a'>
+                <data:title />
+              </b:tag>
+            </b:includable>
+          </b:widget>
+        </b:section>
 
-            <nav class="site-navigation" id="primary-navigation" aria-label="Primary navigation">
-                <ul class="nav-menu">
-                    <li><a aria-current="page" href="/">Home</a></li>
-                    <li><a href="/search/label/AI">AI</a></li>
-                    <li><a href="/search/label/UI-UX">UI/UX</a></li>
-                    <li><a href="/search/label/Marketing">Marketing</a></li>
-                    <li><a href="/search/label/Tutorials">Tutorials</a></li>
-                    <li><a href="/search/label/TechNews">Tech News</a></li>
-                </ul>
-            </nav>
+        <nav aria-label='Primary navigation' class='site-navigation' id='primary-navigation'>
+          <b:section class='main-menu-section' id='main-menu-section' maxwidgets='1'
+            showaddelement='no'>
+            <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
+              <b:widget-settings>
+                <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"https://alemondem.blogspot.com/uiux","position":2,"title":"UI/UX"},"link0":{"href":"http://alemondem.blogspot.com/","position":0,"title":"Home"},"5677845707664360958":{"href":"https://alemondem.blogspot.com/p/artificial-intelligent-ai.html","position":1,"title":"Artificial Intelligent (AI)"},"link3":{"href":"https://alemondem.blogspot.com/p/about.html","position":4,"title":"About Alemondem"},"link2":{"href":"https://alemondem.blogspot.com/marketing","position":3,"title":"Marketing"}}]]></b:widget-setting>
+                <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <b:if cond='data:links'>
+                  <ul class='nav-menu'>
+                    <b:loop values='data:links' var='link'>
+                      <li class='nav-item'>
+                        <b:if cond='data:link.isCurrentPage'>
+                          <a aria-current='page' expr:href='data:link.href'>
+                            <data:link.title />
+                          </a>
+                          <b:else />
+                          <a expr:href='data:link.href'>
+                            <data:link.title />
+                          </a>
+                        </b:if>
+                      </li>
+                    </b:loop>
+                  </ul>
+                </b:if>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </nav>
 
-            <div class="nav-right">
-                <form action="/search" class="search-box" method="get" role="search">
-                    <label class="sr-only" for="site-search">Search articles</label>
-                    <span aria-hidden="true">
-                        <svg focusable="false" height="18" viewBox="0 0 24 24" fill="none" width="18" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.75 18.5C6.47 18.5 3 15.03 3 10.75S6.47 3 10.75 3s7.75 3.47 7.75 7.75-3.47 7.75-7.75 7.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                            <path d="M16.25 16.25 21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                        </svg>
-                    </span>
-                    <input autocomplete="off" id="site-search" name="q" placeholder="Search..." type="search"/>
-                </form>
+        <div class='nav-right'>
+          <form action='/search' class='search-box' method='get' role='search'>
+            <label class='sr-only' for='site-search'>Search articles</label>
+            <span aria-hidden='true'>
+              <svg fill='none' focusable='false' height='18' viewBox='0 0 24 24' width='18'
+                xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  d='M10.75 18.5C6.47 18.5 3 15.03 3 10.75S6.47 3 10.75 3s7.75 3.47 7.75 7.75-3.47 7.75-7.75 7.75Z'
+                  stroke='currentColor' stroke-linecap='round' stroke-linejoin='round'
+                  stroke-width='2' />
+                <path d='M16.25 16.25 21 21' stroke='currentColor' stroke-linecap='round'
+                  stroke-linejoin='round' stroke-width='2' />
+              </svg>
+            </span>
+            <input autocomplete='off' id='site-search' name='q' placeholder='Search...'
+              type='search' />
+          </form>
 
-                <a class="subscribe-btn" href="#newsletter">
-                    Subscribe
-                </a>
+          <a class='subscribe-btn' href='#newsletter'>
+            Subscribe
+          </a>
 
-                <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu">
-                    <span class="nav-toggle-line" aria-hidden="true"></span>
-                    <span class="nav-toggle-line" aria-hidden="true"></span>
-                    <span class="nav-toggle-line" aria-hidden="true"></span>
-                </button>
-            </div>
+          <button aria-controls='primary-navigation' aria-expanded='false'
+            aria-label='Open navigation menu' class='nav-toggle' type='button'>
+            <span aria-hidden='true' class='nav-toggle-line' />
+            <span aria-hidden='true' class='nav-toggle-line' />
+            <span aria-hidden='true' class='nav-toggle-line' />
+          </button>
         </div>
+      </div>
     </header>
 
-    <main id="main-content" tabindex="-1">
-        <aside class="ad-zone" aria-label="Advertisement">
-            <div class="container">
-                <div class="ad-placeholder">
-                    <span class="ad-label">Advertisement</span>
-                    <div class="ad-box" role="img" aria-label="970 by 250 leaderboard advertising placement">
-                        970 x 250 Leaderboard Ad
-                    </div>
-                </div>
-            </div>
-        </aside>
+    <main id='main-content' tabindex='-1'>
 
-        <section class="announcement-bar" aria-label="Announcement">
-            <div class="container">
-                <div class="announcement-content">
-                    <span class="announcement-badge">New</span>
-                    <span class="announcement-text">
-                        AI Tools Every Digital Marketer Should Know in 2026
-                    </span>
-                    <a class="announcement-link" href="#">
-                        Read Guide
+      <!-- ============================================ -->
+      <!-- GLOBAL AD ZONE 1 - APPEARS ON ALL PAGES -->
+      <!-- ============================================ -->
+      <b:section class='ad-zone' id='ad-zone-1' maxwidgets='1' showaddelement='yes'>
+        <b:widget id='HTML1' locked='false' title='Leaderboard Ad' type='HTML' version='1'>
+          <b:widget-settings>
+            <b:widget-setting name='content' />
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='container'>
+              <div class='ad-placeholder'>
+                <span class='ad-label'>Advertisement</span>
+                <div aria-label='970 by 250 leaderboard advertising placement' class='ad-box'
+                  role='img'>
+                  <data:content />
+                </div>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+
+      <!-- ============================================ -->
+      <!-- HOMEPAGE ONLY CONTENT -->
+      <!-- ============================================ -->
+      <b:if cond='data:blog.url == data:blog.homepageUrl'>
+
+        <b:section class='announcement-bar' id='announcement-bar' maxwidgets='1'
+          showaddelement='yes'>
+          <b:widget id='HTML2' locked='false' title='Announcement' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='announcement-content'>
+                  <span class='announcement-badge'>New</span>
+                  <span class='announcement-text'>
+                    AI Tools Every Digital Marketer Should Know in 2026
+                  </span>
+                  <a class='announcement-link' href='#'>
+                    Read Guide
+                  </a>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+
+        <b:section class='hero' id='hero' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML3' locked='false' title='Hero Section' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container hero-grid'>
+                <div class='hero-content'>
+                  <p class='hero-label'>
+                    Artificial Intelligence &#8226; UI/UX Design &#8226; Digital Marketing
+                  </p>
+                  <h1 class='hero-title' id='hero-title'>
+                    Helping Creators, Designers and Businesses Build Better Digital Experiences.
+                  </h1>
+                  <p class='hero-description'>
+                    Explore practical insights on Artificial Intelligence, UI/UX Design, Web
+                    Development, Digital Marketing, Branding, and emerging
+                    technologies&#8212;designed to
+                    help you learn, create, and grow.
+                  </p>
+                  <div aria-label='Featured actions' class='hero-buttons'>
+                    <a class='btn btn-primary' href='#latest-articles'>
+                      Explore Articles
                     </a>
+                    <a class='btn btn-outline' href='#'>
+                      Browse Tutorials
+                    </a>
+                  </div>
+                  <div aria-label='Reader community' class='hero-community'>
+                    <div aria-hidden='true' class='avatar-group'>
+                      <div class='avatar'>M</div>
+                      <div class='avatar'>A</div>
+                      <div class='avatar'>D</div>
+                      <div class='avatar'>+</div>
+                    </div>
+                    <div>
+                      <strong>Join our growing community of digital creators.</strong>
+                      <p>Learning together every week</p>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </section>
+                <article aria-labelledby='featured-post-title' class='featured-post'>
+                  <div aria-label='Featured article artwork' class='featured-image' role='img'>
+                    <span class='featured-overlay'>Featured</span>
+                  </div>
+                  <h2 id='featured-post-title'>
+                    The Future of AI in Digital Creativity
+                  </h2>
+                  <p>
+                    Discover how artificial intelligence is transforming design, marketing,
+                    branding, and software development.
+                  </p>
+                  <div aria-label='Article details' class='featured-meta'>
+                    <span>8 min read</span>
+                    <time datetime='2026-07'>July 2026</time>
+                  </div>
+                  <a class='btn btn-primary' href='#'>
+                    Read Article
+                  </a>
+                </article>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
 
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p class="hero-label">
-                        AI &#8226; UI/UX Design &#8226; Web Development
+        <b:section class='quick-access' id='quick-access' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML4' locked='false' title='Trending Topics' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='quick-access-wrapper'>
+                  <h2 class='quick-title' id='trending-title'>Trending</h2>
+                  <a class='quick-pill' href='/search/label/AI'>AI</a>
+                  <a class='quick-pill' href='/search/label/UI-UX'>UI/UX</a>
+                  <a class='quick-pill' href='/search/label/Marketing'>Digital Marketing</a>
+                  <a class='quick-pill' href='/search/label/Development'>Web Development</a>
+                  <a class='quick-pill' href='/search/label/Branding'>Branding</a>
+                  <a class='quick-pill' href='/search/label/TechNews'>Tech News</a>
+                  <a class='quick-pill' href='/search/label/Tutorials'>Tutorials</a>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+
+        <b:section class='stats' id='stats' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML5' locked='false' title='Publication Stats' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='stats-grid'>
+                  <article class='stat-card'>
+                    <h2>7+</h2>
+                    <p>Core Topics</p>
+                  </article>
+                  <article class='stat-card'>
+                    <h2>New</h2>
+                    <p>Growing Weekly</p>
+                  </article>
+                  <article class='stat-card'>
+                    <h2>100%</h2>
+                    <p>Original Content</p>
+                  </article>
+                  <article class='stat-card'>
+                    <h2>24/7</h2>
+                    <p>Continuous Learning</p>
+                  </article>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+
+        <b:section class='section' id='featured-categories' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML6' locked='false' title='Featured Categories' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='section-header'>
+                  <h2 id='categories-title'>Featured Categories</h2>
+                  <p>Explore our core topics and discover practical guides, tutorials, and industry
+                    insights.</p>
+                </div>
+                <div class='category-grid'>
+                  <a class='category-card' href='/search/label/AI'>
+                    <div aria-hidden='true' class='category-icon'>AI</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Explore AI, machine learning, automation, and LLMs.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                  <a class='category-card' href='/search/label/UI-UX'>
+                    <div aria-hidden='true' class='category-icon'>UX</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Design modern interfaces and improve user experiences.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                  <a class='category-card' href='/search/label/Development'>
+                    <div aria-hidden='true' class='category-icon'>DEV</div>
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript, and modern development practices.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                  <a class='category-card' href='/search/label/Marketing'>
+                    <div aria-hidden='true' class='category-icon'>SEO</div>
+                    <h3>Digital Marketing</h3>
+                    <p>SEO, social media, advertising, and digital strategy.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                  <a class='category-card' href='/search/label/Branding'>
+                    <div aria-hidden='true' class='category-icon'>BR</div>
+                    <h3>Branding &amp; Digital Strategy</h3>
+                    <p>Build memorable brands and engaging campaigns.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                  <a class='category-card' href='/search/label/TechNews'>
+                    <div aria-hidden='true' class='category-icon'>NEWS</div>
+                    <h3>Technology &amp; Tutorials</h3>
+                    <p>Stay updated with the latest tools, trends, and guides.</p>
+                    <span class='category-link'>Explore</span>
+                  </a>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+        <b:section class='section featured-story' id='featured-story' maxwidgets='1'
+          showaddelement='yes'>
+          <b:widget id='FeaturedPost1' locked='false' title='Featured Post' type='FeaturedPost'
+            version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='showSnippet'>true</b:widget-setting>
+              <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+              <b:widget-setting name='postId'>1795613189726659819</b:widget-setting>
+              <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+              <b:widget-setting name='useMostRecentPost'>false</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+
+              <b:include name='content' />
+
+              <b:include name='quickedit' />
+
+            </b:includable>
+            <b:includable id='content'>
+
+              <div class='container'>
+
+                <div class='featured-story-grid'>
+
+                  <!-- Featured Image -->
+                  <div class='featured-story-image'>
+
+                    <span class='story-badge'>
+                      Featured Story
+                    </span>
+
+                    <a class='featured-story-image-link' expr:href='data:postUrl'>
+
+                      <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+                        <img class='featured-story-img' expr:alt='data:postTitle'
+                          expr:src='data:postFirstImage' />
+                        <b:else />
+                        <img alt='Featured Story' class='featured-story-img'
+                          src='https://via.placeholder.com/800x450?text=Featured+Story' />
+                      </b:if>
+
+                    </a>
+
+                  </div>
+
+                  <!-- Featured Content -->
+                  <article class='featured-story-content'>
+
+                    <p class='story-category'>
+                      FEATURED INSIGHT
                     </p>
 
-                    <h1 class="hero-title" id="hero-title">
-                        Build, Create &amp; Innovate in the Digital World.
-                    </h1>
+                    <h2 id='featured-story-title'>
 
-                    <p class="hero-description">
-                        Discover the best in digital entertainment, technology, and creative innovation.
-                    </p>
+                      <a expr:href='data:postUrl'>
 
-                    <div class="hero-buttons" aria-label="Featured actions">
-                        <a class="btn btn-primary" href="#latest-articles">
-                            Explore Articles
-                        </a>
-                        <a class="btn btn-outline" href="#">
-                            Browse Tutorials
-                        </a>
-                    </div>
+                        <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+                          <data:postTitle />
+            <b:else /> Featured Story </b:if>
 
-                    <div class="hero-community" aria-label="Reader community">
-                        <div class="avatar-group" aria-hidden="true">
-                            <div class="avatar">M</div>
-                            <div class="avatar">A</div>
-                            <div class="avatar">D</div>
-                            <div class="avatar">+</div>
-                        </div>
+                      </a>
 
-                        <div>
-                            <strong>Join 10,000+ readers</strong>
-                            <p>Learning together every week</p>
-                        </div>
-                    </div>
-                </div>
-
-                <article class="featured-post" aria-labelledby="featured-post-title">
-                    <div class="featured-image" role="img" aria-label="Featured article artwork">
-                        <span class="featured-overlay">Featured</span>
-                    </div>
-
-                    <h2 id="featured-post-title">
-                        The Future of AI in Digital Creativity
                     </h2>
 
-                    <p>
-                        Discover how artificial intelligence is transforming design, marketing, branding, and software development.
-                    </p>
+                    <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+                      <p>
+                        <data:postSummary />
+                      </p>
+                      <b:else />
+                      <p>
+                        Read this featured article selected by the editor.
+                      </p>
+                    </b:if>
 
-                    <div class="featured-meta" aria-label="Article details">
-                        <span>8 min read</span>
-                        <time datetime="2026-07">July 2026</time>
+                    <div aria-label='Story details' class='story-meta'>
+
+                      <b:if cond='data:postDate'>
+                        <time expr:datetime='data:postDate'>
+                          <data:postDate />
+                        </time>
+                      </b:if>
+
                     </div>
 
-                    <a class="btn btn-primary" href="#">
-                        Read Article
+                    <a class='btn btn-primary' expr:href='data:postUrl'>
+                      Read Full Story
                     </a>
-                </article>
-            </div>
-        </section>
 
-        <section class="quick-access" aria-labelledby="trending-title">
-            <div class="container">
-                <div class="quick-access-wrapper">
-                    <h2 class="quick-title" id="trending-title">Trending</h2>
-                    <a class="quick-pill" href="/search/label/AI">AI</a>
-                    <a class="quick-pill" href="/search/label/UI-UX">UI/UX</a>
-                    <a class="quick-pill" href="/search/label/Marketing">Digital Marketing</a>
-                    <a class="quick-pill" href="/search/label/Development">Web Development</a>
-                    <a class="quick-pill" href="/search/label/Branding">Branding</a>
-                    <a class="quick-pill" href="/search/label/TechNews">Tech News</a>
-                    <a class="quick-pill" href="/search/label/Tutorials">Tutorials</a>
-                </div>
-            </div>
-        </section>
+                  </article>
 
-        <section class="stats" aria-label="Publication statistics">
-            <div class="container">
-                <div class="stats-grid">
-                    <article class="stat-card">
-                        <h2>10K+</h2>
-                        <p>Monthly Readers</p>
-                    </article>
-
-                    <article class="stat-card">
-                        <h2>250+</h2>
-                        <p>Articles Published</p>
-                    </article>
-
-                    <article class="stat-card">
-                        <h2>7</h2>
-                        <p>Content Categories</p>
-                    </article>
-
-                    <article class="stat-card">
-                        <h2>100%</h2>
-                        <p>Passion for Innovation</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="categories-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="categories-title">Featured Categories</h2>
-                    <p>Explore our core topics and discover practical guides, tutorials, and industry insights.</p>
                 </div>
 
-                <div class="category-grid">
-                    <a class="category-card" href="/search/label/AI">
-                        <div class="category-icon" aria-hidden="true">AI</div>
-                        <h3>Artificial Intelligence</h3>
-                        <p>Explore AI, machine learning, automation, and LLMs.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
+              </div>
 
-                    <a class="category-card" href="/search/label/UI-UX">
-                        <div class="category-icon" aria-hidden="true">UX</div>
-                        <h3>UI/UX Design</h3>
-                        <p>Design modern interfaces and improve user experiences.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
+            </b:includable>
+          </b:widget>
+        </b:section>
 
-                    <a class="category-card" href="/search/label/Development">
-                        <div class="category-icon" aria-hidden="true">DEV</div>
-                        <h3>Web Development</h3>
-                        <p>HTML, CSS, JavaScript, and modern development practices.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
 
-                    <a class="category-card" href="/search/label/Marketing">
-                        <div class="category-icon" aria-hidden="true">SEO</div>
-                        <h3>Digital Marketing</h3>
-                        <p>SEO, social media, advertising, and digital strategy.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
-
-                    <a class="category-card" href="/search/label/Branding">
-                        <div class="category-icon" aria-hidden="true">BR</div>
-                        <h3>Digital Activation &amp; Branding</h3>
-                        <p>Build memorable brands and engaging campaigns.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
-
-                    <a class="category-card" href="/search/label/TechNews">
-                        <div class="category-icon" aria-hidden="true">NEWS</div>
-                        <h3>Tech News &amp; Tutorials</h3>
-                        <p>Stay updated with the latest tools, trends, and guides.</p>
-                        <span class="category-link">Explore</span>
-                    </a>
+        <b:section class='ad-zone' id='ad-zone-homepage' maxwidgets='1' showaddelement='yes'>
+          <b:widget id='HTML8' locked='false' title='Sponsored Content Ad' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='ad-placeholder'>
+                  <span class='ad-label'>Sponsored Content</span>
+                  <div aria-label='Responsive in-content advertising placement' class='ad-box'
+                    role='img'>
+                    <data:content />
+                  </div>
                 </div>
-            </div>
-        </section>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
 
-        <section class="section featured-story" aria-labelledby="featured-story-title">
-            <div class="container">
-                <div class="featured-story-grid">
-                    <div class="featured-story-image" role="img" aria-label="Featured story artwork">
-                        <span class="story-badge">Featured Story</span>
-                    </div>
-
-                    <article class="featured-story-content">
-                        <p class="story-category">Artificial Intelligence</p>
-
-                        <h2 id="featured-story-title">
-                            How AI is Transforming Digital Entertainment, Branding &amp; Creative Design
-                        </h2>
-
-                        <p>
-                            Discover how modern AI tools are changing marketing, UI/UX design, branding, video production, and software development.
-                        </p>
-
-                        <div class="story-meta" aria-label="Story details">
-                            <span>8 min read</span>
-                            <time datetime="2026-07">July 2026</time>
-                        </div>
-
-                        <a class="btn btn-primary" href="#">
-                            Read Full Story
-                        </a>
-                    </article>
+        <b:section class='section editors-picks' id='editors-picks' maxwidgets='1'
+          showaddelement='yes'>
+          <b:widget id='HTML9' locked='false' title='Editor&apos;s Picks' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='container'>
+                <div class='section-header'>
+                  <div>
+                    <p class='section-label'>Editor&#39;s Picks</p>
+                    <h2 id='editors-picks-title'>Handpicked Articles</h2>
+                    <p>Our most valuable guides selected for designers, developers, and digital
+                      marketers.</p>
+                  </div>
+                  <a class='btn btn-outline' href='#'>
+                    Explore All
+                  </a>
                 </div>
-            </div>
-        </section>
-
-        <aside class="ad-zone" aria-label="Sponsored content">
-            <div class="container">
-                <div class="ad-placeholder">
-                    <span class="ad-label">Sponsored Content</span>
-                    <div class="ad-box" role="img" aria-label="Responsive in-content advertising placement">
-                        Responsive In-Content Ad
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <section class="section editors-picks" aria-labelledby="editors-picks-title">
-            <div class="container">
-                <div class="section-header">
+                <div class='editor-grid'>
+                  <article class='editor-card'>
+                    <div aria-hidden='true' class='editor-number'>01</div>
                     <div>
-                        <p class="section-label">Editor's Picks</p>
-                        <h2 id="editors-picks-title">Handpicked Articles</h2>
-                        <p>Our most valuable guides selected for designers, developers, and digital marketers.</p>
+                      <p class='editor-category'>AI</p>
+                      <h3>10 AI Tools Every Digital Marketer Should Know</h3>
+                      <p>Improve productivity, automate repetitive tasks, and create better content
+                        faster.</p>
                     </div>
-
-                    <a class="btn btn-outline" href="#">
-                        Explore All
-                    </a>
+                  </article>
+                  <article class='editor-card'>
+                    <div aria-hidden='true' class='editor-number'>02</div>
+                    <div>
+                      <p class='editor-category'>UI/UX</p>
+                      <h3>Building Interfaces People Love</h3>
+                      <p>Learn practical design techniques that increase engagement and usability.</p>
+                    </div>
+                  </article>
+                  <article class='editor-card'>
+                    <div aria-hidden='true' class='editor-number'>03</div>
+                    <div>
+                      <p class='editor-category'>Branding</p>
+                      <h3>Branding Strategies for Modern Businesses</h3>
+                      <p>Discover how memorable brands are created through consistency and
+                        storytelling.</p>
+                    </div>
+                  </article>
                 </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
 
-                <div class="editor-grid">
-                    <article class="editor-card">
-                        <div class="editor-number" aria-hidden="true">01</div>
-                        <div>
-                            <p class="editor-category">AI</p>
-                            <h3>10 AI Tools Every Digital Marketer Should Know</h3>
-                            <p>Improve productivity, automate repetitive tasks, and create better content faster.</p>
+      </b:if>
+
+      <!-- ============================================ -->
+      <!-- MAIN CONTENT SECTION - RENDERS DIFFERENT CONTENT FOR EACH PAGE TYPE -->
+      <!-- ============================================ -->
+      <section class='section'>
+        <div class='container'>
+
+          <b:section class='main' id='main' showaddelement='yes'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+              <b:widget-settings>
+                <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+                <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+                <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+                <b:widget-setting name='authorLabel'>By</b:widget-setting>
+                <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+                <b:widget-setting name='showAuthor'>false</b:widget-setting>
+                <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+                <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+                <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+                <b:widget-setting name='reactionsLabel' />
+                <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+                <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+                <b:widget-setting name='showLabels'>true</b:widget-setting>
+                <b:widget-setting name='showLocation'>true</b:widget-setting>
+                <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+                <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+                <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+                <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+                <b:widget-setting name='showReactions'>false</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main' var='top'>
+
+                <!-- HOMEPAGE: Show posts in grid with title -->
+                <b:if cond='data:blog.url == data:blog.homepageUrl'>
+                  <div class='flex-between mb-5'>
+                    <h2>Dynamic Feed Articles</h2>
+                    <a class='btn btn-outline' href='/search'>View All</a>
+                  </div>
+                  <div class='blog-posts hfeed'>
+                    <b:loop values='data:posts' var='post'>
+                      <article class='post-outer article-card'>
+                        <b:if cond='data:post.firstImageUrl'>
+                          <div aria-label='Article Image' class='article-image'
+                            expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;) center/cover;&quot;'
+                            role='img'>
+                            <span class='article-badge'>Latest</span>
+                          </div>
+                          <b:else />
+                          <div aria-label='Default Image' class='article-image' role='img'>
+                            <span class='article-badge'>Blog</span>
+                          </div>
+                        </b:if>
+                        <div class='article-content'>
+                          <div class='article-meta'>
+                            <time expr:datetime='data:post.timestampISO8601'>
+                              <data:post.timestamp />
+                            </time>
+                          </div>
+                          <h3>
+                            <a expr:href='data:post.url'>
+                              <data:post.title />
+                            </a>
+                          </h3>
+                          <p>
+                            <data:post.snippet />
+                          </p>
+                          <a class='article-link' expr:href='data:post.url'>Read Article</a>
                         </div>
-                    </article>
+                      </article>
+                    </b:loop>
+                  </div>
+                </b:if>
 
-                    <article class="editor-card">
-                        <div class="editor-number" aria-hidden="true">02</div>
-                        <div>
-                            <p class="editor-category">UI/UX</p>
-                            <h3>Building Interfaces People Love</h3>
-                            <p>Learn practical design techniques that increase engagement and usability.</p>
+                <!-- STATIC PAGES: Render full page content inside required array loops -->
+                <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                  <b:loop values='data:posts' var='post'>
+                    <div class='static-page-container'>
+                      <h1 class='post-title'>
+                        <data:post.title />
+                      </h1>
+                      <div class='post-body'>
+                        <data:post.body />
+                      </div>
+                    </div>
+                  </b:loop>
+                </b:if>
+
+                <!-- SINGLE POST PAGE: Render full post content inside required array loops -->
+                <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                  <b:loop values='data:posts' var='post'>
+                    <div class='post-container'>
+                      <h1 class='post-title'>
+                        <data:post.title />
+                      </h1>
+                      <div class='article-meta'>
+                        <time expr:datetime='data:post.timestampISO8601'>
+                          <data:post.timestamp />
+                        </time>
+                        <span>
+                          <data:post.author />
+                        </span>
+                      </div>
+                      <div class='post-body'>
+                        <data:post.body />
+                      </div>
+                    </div>
+                  </b:loop>
+                </b:if>
+
+                <!-- ARCHIVE/LABEL/SEARCH PAGES: Dynamic catch-all rule for alternative feeds -->
+                <b:if
+                  cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;} and data:blog.url != data:blog.homepageUrl'>
+                  <h2 class='mb-5'>
+                    <data:blog.pageName />
+                  </h2>
+                  <div class='blog-posts hfeed'>
+                    <b:loop values='data:posts' var='post'>
+                      <article class='post-outer article-card'>
+                        <b:if cond='data:post.firstImageUrl'>
+                          <div aria-label='Article Image' class='article-image'
+                            expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;) center/cover;&quot;'
+                            role='img'>
+                            <span class='article-badge'>Latest</span>
+                          </div>
+                          <b:else />
+                          <div aria-label='Default Image' class='article-image' role='img'>
+                            <span class='article-badge'>Blog</span>
+                          </div>
+                        </b:if>
+                        <div class='article-content'>
+                          <div class='article-meta'>
+                            <time expr:datetime='data:post.timestampISO8601'>
+                              <data:post.timestamp />
+                            </time>
+                          </div>
+                          <h3>
+                            <a expr:href='data:post.url'>
+                              <data:post.title />
+                            </a>
+                          </h3>
+                          <p>
+                            <data:post.snippet />
+                          </p>
+                          <a class='article-link' expr:href='data:post.url'>Read Article</a>
                         </div>
-                    </article>
+                      </article>
+                    </b:loop>
+                  </div>
+                </b:if>
 
-                    <article class="editor-card">
-                        <div class="editor-number" aria-hidden="true">03</div>
-                        <div>
-                            <p class="editor-category">Branding</p>
-                            <h3>Branding Strategies for Modern Businesses</h3>
-                            <p>Discover how memorable brands are created through consistency and storytelling.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+                <!-- Blog Pagination for homepage, archive, and search pages -->
+                <b:include name='nextprev' />
 
-        <section class="section" id="latest-articles" aria-labelledby="latest-articles-title">
-            <div class="container">
-                <div class="flex-between mb-5">
-                    <h2 id="latest-articles-title">Dynamic Feed Articles</h2>
-                    <a class="btn btn-outline" href="/search">
-                        View All
-                    </a>
-                </div>
-
-                <b:section class='main' id='main' showaddelement='yes'>
-                    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
-                        <b:includable id='main' var='top'>
-                            <div class='blog-posts hfeed'>
-                                <b:loop values='data:posts' var='post'>
-                                    <article class='post-outer article-card'>
-                                        <b:if cond='data:post.firstImageUrl'>
-                                            <div class='article-image' expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;) center/cover;&quot;' role='img' aria-label='Article Image'>
-                                                <span class='article-badge'>Latest</span>
-                                            </div>
-                                        <b:else/>
-                                            <div class='article-image' role='img' aria-label='Default Image'>
-                                                <span class='article-badge'>Blog</span>
-                                            </div>
-                                        </b:if>
-                                        <div class='article-content'>
-                                            <div class='article-meta'>
-                                                <time expr:datetime='data:post.timestampISO8601'><data:post.timestamp/></time>
-                                            </div>
-                                            <h3><a expr:href='data:post.url'><data:post.title/></a></h3>
-                                            <p><data:post.snippet/></p>
-                                            <a expr:href='data:post.url' class='article-link'>Read Article</a>
-                                        </div>
-                                    </article>
-                                </b:loop>
-                            </div>
-                        </b:includable>
-                    </b:widget>
-                </b:section>
-            </div>
-        </section>
-
-        <section class="section newsletter" id="newsletter" aria-labelledby="newsletter-title">
-            <div class="container">
-                <div class="newsletter-box">
-                    <h2 id="newsletter-title">Stay Updated</h2>
-                    <p class="newsletter-text">
-                        Get UX, AI, and web development articles delivered directly to your inbox.
+              </b:includable>
+              <b:includable id='backlinkDeleteIcon' var='backlink' />
+              <b:includable id='backlinks' var='post' />
+              <b:includable id='comment-form' var='post'>
+                <div class='comment-form'>
+                  <a name='comment-form' />
+                  <b:if cond='data:mobile'>
+                    <h4 id='comment-post-message'>
+                      <a expr:id='data:widget.instanceId + &quot;_comment-editor-toggle-link&quot;'
+                        href='javascript:void(0)'>
+                        <data:postCommentMsg />
+                      </a>
+                    </h4>
+                    <p>
+                      <data:blogCommentMessage />
                     </p>
-
-                    <form action="#" class="newsletter-form" method="post">
-                        <label class="sr-only" for="newsletter-email">Email address</label>
-                        <input autocomplete="email" class="newsletter-input" id="newsletter-email" name="email" placeholder="Enter your email address" required="required" type="email"/>
-
-                        <button class="btn btn-primary" type="submit">
-                            Subscribe
-                        </button>
-                    </form>
+                    <data:blogTeamBlogMessage />
+                    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' />
+                    <iframe allowtransparency='true'
+                      class='blogger-iframe-colorize blogger-comment-from-post'
+                      expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor'
+                      name='comment-editor' src='' style='display: none' width='100%' />
+                    <b:else />
+                    <h4 id='comment-post-message'>
+                      <data:postCommentMsg />
+                    </h4>
+                    <p>
+                      <data:blogCommentMessage />
+                    </p>
+                    <data:blogTeamBlogMessage />
+                    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' />
+                    <iframe allowtransparency='true'
+                      class='blogger-iframe-colorize blogger-comment-from-post'
+                      expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor'
+                      name='comment-editor' src='' width='100%' />
+                  </b:if>
+                  <data:post.cmtfpIframe />
+                  <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
                 </div>
-            </div>
-        </section>
-
-        <aside class="ad-zone" aria-label="Advertisement">
-            <div class="container">
-                <div class="ad-placeholder">
-                    <span class="ad-label">Advertisement</span>
-                    <div class="ad-box" role="img" aria-label="Responsive footer advertising placement">
-                        Responsive Footer Ad
+              </b:includable>
+              <b:includable id='commentDeleteIcon' var='comment'>
+                <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+                  <b:if cond='data:showCmtPopup'>
+                    <div class='goog-toggle-button'>
+                      <div class='goog-inline-block comment-action-icon' />
                     </div>
+                    <b:else />
+                    <a class='comment-delete' expr:href='data:comment.deleteUrl'
+                      expr:title='data:top.deleteCommentMsg'>
+                      <img src='https://resources.blogblog.com/img/icon_delete13.gif' />
+                    </a>
+                  </b:if>
+                </span>
+              </b:includable>
+              <b:includable id='comment_count_picker' var='post'>
+                <a class='comment-link' expr:href='data:post.addCommentUrl'
+                  expr:onclick='data:post.addCommentOnclick'>
+                  <data:post.commentLabelFull />: </a>
+              </b:includable>
+              <b:includable id='comment_picker' var='post'>
+                <b:if cond='data:post.showThreadedComments'>
+                  <b:include data='post' name='threaded_comments' />
+                  <b:else />
+                  <b:include data='post' name='comments' />
+                </b:if>
+              </b:includable>
+              <b:includable id='comments' var='post'>
+                <div class='comments' id='comments'>
+                  <a name='comments' />
+                  <b:if cond='data:post.allowComments'>
+                    <h4><data:post.commentLabelFull />:</h4>
+
+                    <b:if cond='data:post.commentPagingRequired'>
+                      <span class='paging-control-container'>
+                        <b:if cond='data:post.hasOlderLinks'>
+                          <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+                            <data:post.oldestLinkText />
+                          </a> &#160; <a
+                            expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+                            <data:post.olderLinkText />
+                          </a> &#160; </b:if>
+
+                        <data:post.commentRangeText />
+
+                        <b:if cond='data:post.hasNewerLinks'> &#160; <a
+                            expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
+                            <data:post.newerLinkText />
+                          </a> &#160; <a
+                            expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+                            <data:post.newestLinkText />
+                          </a>
+                        </b:if>
+                      </span>
+                    </b:if>
+
+                    <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+                      <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
+                        <b:loop values='data:post.comments' var='comment'>
+                          <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass'
+                            expr:id='data:comment.anchorName'>
+                            <b:if cond='data:comment.favicon'>
+                              <img expr:src='data:comment.favicon' height='16px'
+                                style='margin-bottom:-2px;' width='16px' />
+                            </b:if>
+                            <a expr:name='data:comment.anchorName' />
+                            <b:if cond='data:blog.enabledCommentProfileImages'>
+                              <data:comment.authorAvatarImage />
+                            </b:if>
+                            <b:if cond='data:comment.authorUrl'>
+                              <a expr:href='data:comment.authorUrl' rel='nofollow'>
+                                <data:comment.author />
+                              </a>
+                              <b:else />
+                              <data:comment.author />
+                            </b:if>
+                            <data:commentPostedByMsg />
+                          </dt>
+                          <dd class='comment-body'
+                            expr:id='data:widget.instanceId + data:comment.cmtBodyIdPostfix'>
+                            <b:if cond='data:comment.isDeleted'>
+                              <span class='deleted-comment'>
+                                <data:comment.body />
+                              </span>
+                              <b:else />
+                              <p>
+                                <data:comment.body />
+                              </p>
+                            </b:if>
+                          </dd>
+                          <dd class='comment-footer'>
+                            <span class='comment-timestamp'>
+                              <a expr:href='data:comment.url' title='comment permalink'>
+                                <data:comment.timestamp />
+                              </a>
+                              <b:include data='comment' name='commentDeleteIcon' />
+                            </span>
+                          </dd>
+                        </b:loop>
+                      </dl>
+                    </div>
+
+                    <b:if cond='data:post.commentPagingRequired'>
+                      <span class='paging-control-container'>
+                        <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+                          <data:post.oldestLinkText />
+                        </a>
+          <a
+                          expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+                          <data:post.olderLinkText />
+                        </a> &#160; <data:post.commentRangeText />
+                        &#160; <a expr:class='data:post.newLinkClass'
+                          expr:href='data:post.newerLinkUrl'>
+                          <data:post.newerLinkText />
+                        </a>
+          <a
+                          expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+                          <data:post.newestLinkText />
+                        </a>
+                      </span>
+                    </b:if>
+
+                    <p class='comment-footer'>
+                      <b:if cond='data:post.embedCommentForm'>
+                        <b:if cond='data:post.allowNewComments'>
+                          <b:include data='post' name='comment-form' />
+                          <b:else />
+                          <data:post.noNewCommentsText />
+                        </b:if>
+                        <b:elseif cond='data:post.allowComments' />
+                        <a expr:href='data:post.addCommentUrl'
+                          expr:onclick='data:post.addCommentOnclick'>
+                          <data:postCommentMsg />
+                        </a>
+                      </b:if>
+                    </p>
+                  </b:if>
+                  <b:if cond='data:showCmtPopup'>
+                    <div id='comment-popup'>
+                      <iframe allowtransparency='true' frameborder='0' id='comment-actions'
+                        name='comment-actions' scrolling='no'>
+                      </iframe>
+                    </div>
+                  </b:if>
+
                 </div>
-            </div>
-        </aside>
+              </b:includable>
+              <b:includable id='feedLinks'>
+                <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
+                  <b:if cond='data:feedLinks'>
+                    <div class='blog-feeds'>
+                      <b:include data='feedLinks' name='feedLinksBody' />
+                    </div>
+                  </b:if>
+
+                  <b:else /> <!--Post
+                  feed links -->
+                  <div class='post-feeds'>
+                    <b:loop values='data:posts' var='post'>
+                      <b:include cond='data:post.allowComments and data:post.feedLinks'
+                        data='post.feedLinks' name='feedLinksBody' />
+                    </b:loop>
+                  </div>
+                </b:if>
+              </b:includable>
+              <b:includable id='feedLinksBody' var='links'>
+                <div class='feed-links'>
+                  <data:feedLinksMsg />
+                  <b:loop values='data:links' var='f'>
+                    <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType'
+                      target='_blank'><data:f.name /> (<data:f.feedType />)</a>
+                  </b:loop>
+                </div>
+              </b:includable>
+              <b:includable id='iframe_comments' var='post'>
+                <!-- G+ comments, no longer available. The includable is retained for
+                backwards-compatibility. -->
+              </b:includable>
+              <b:includable id='mobile-index-post' var='post'>
+                <div class='mobile-date-outer date-outer'>
+                  <b:if cond='data:post.dateHeader'>
+                    <div class='date-header'>
+                      <span>
+                        <data:post.dateHeader />
+                      </span>
+                    </div>
+                  </b:if>
+
+                  <div class='mobile-post-outer'>
+                    <a expr:href='data:post.url'>
+                      <h3 class='mobile-index-title entry-title' itemprop='name'>
+                        <data:post.title />
+                      </h3>
+
+                      <div class='mobile-index-arrow'>&amp;rsaquo;</div>
+
+                      <div class='mobile-index-contents'>
+                        <b:if cond='data:post.thumbnailUrl'>
+                          <div class='mobile-index-thumbnail'>
+                            <div class='Image'>
+                              <img expr:src='data:post.thumbnailUrl' />
+                            </div>
+                          </div>
+                        </b:if>
+
+                        <div class='post-body'>
+                          <b:if cond='data:post.snippet'>
+                            <data:post.snippet />
+                          </b:if>
+                        </div>
+                      </div>
+
+                      <div style='clear: both;' />
+                    </a>
+
+                    <div class='mobile-index-comment'>
+                      <b:include
+                        cond='data:blog.pageType != &quot;static_page&quot;                          and data:post.allowComments                          and data:post.numComments != 0'
+                        data='post' name='comment_count_picker' />
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+              <b:includable id='mobile-main' var='top'>
+                <!-- posts -->
+                <div class='blog-posts hfeed'>
+
+                  <b:include data='top' name='status-message' />
+
+                  <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                    <b:loop values='data:posts' var='post'>
+                      <b:include data='post' name='mobile-index-post' />
+                    </b:loop>
+                    <b:else />
+                    <b:loop values='data:posts' var='post'>
+                      <b:include data='post' name='mobile-post' />
+                    </b:loop>
+                  </b:if>
+                </div>
+
+                <b:include name='mobile-nextprev' />
+              </b:includable>
+              <b:includable id='mobile-nextprev'>
+                <div class='blog-pager' id='blog-pager'>
+                  <b:if cond='data:newerPageUrl'>
+                    <div class='mobile-link-button' id='blog-pager-newer-link'>
+                      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl'
+                        expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+                        expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
+                    </div>
+                  </b:if>
+
+                  <b:if cond='data:olderPageUrl'>
+                    <div class='mobile-link-button' id='blog-pager-older-link'>
+                      <a class='blog-pager-older-link' expr:href='data:olderPageUrl'
+                        expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                        expr:title='data:olderPageTitle'>&amp;rsaquo;</a>
+                    </div>
+                  </b:if>
+
+                  <div class='mobile-link-button' id='blog-pager-home-link'>
+                    <a class='home-link' expr:href='data:blog.homepageUrl'>
+                      <data:homeMsg />
+                    </a>
+                  </div>
+
+                  <div class='mobile-desktop-link'>
+                    <a class='home-link' expr:href='data:desktopLinkUrl'>
+                      <data:desktopLinkMsg />
+                    </a>
+                  </div>
+
+                </div>
+                <div class='clear' />
+              </b:includable>
+              <b:includable id='mobile-post' var='post'>
+                <div class='date-outer'>
+                  <b:if cond='data:post.dateHeader'>
+                    <h2 class='date-header'>
+                      <span>
+                        <data:post.dateHeader />
+                      </span>
+                    </h2>
+                  </b:if>
+                  <div class='date-posts'>
+                    <div class='post-outer'>
+
+                      <div class='post hentry uncustomized-post-template' itemscope='itemscope'
+                        itemtype='http://schema.org/BlogPosting'>
+                        <b:if cond='data:post.thumbnailUrl'>
+                          <meta expr:content='data:post.thumbnailUrl' itemprop='image_url' />
+                        </b:if>
+                        <meta expr:content='data:blog.blogId' itemprop='blogId' />
+                        <meta expr:content='data:post.id' itemprop='postId' />
+
+                        <a expr:name='data:post.id' />
+                        <b:if cond='data:post.title'>
+                          <h3 class='post-title entry-title' itemprop='name'>
+                            <b:if cond='data:post.link'>
+                              <a expr:href='data:post.link'>
+                                <data:post.title />
+                              </a>
+                              <b:elseif cond='data:post.url and data:blog.url != data:post.url' />
+                              <a expr:href='data:post.url'>
+                                <data:post.title />
+                              </a>
+                              <b:else />
+                              <data:post.title />
+                            </b:if>
+                          </h3>
+                        </b:if>
+
+                        <div class='post-header'>
+                          <div class='post-header-line-1' />
+                        </div>
+
+                        <div class='post-body entry-content'
+                          expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
+                          <data:post.body />
+                          <div style='clear: both;' /> <!-- clear for photos floats -->
+                        </div>
+
+                        <div class='post-footer'>
+                          <div class='post-footer-line post-footer-line-1'>
+                            <span class='post-author vcard'>
+                              <b:if cond='data:top.showAuthor'>
+                                <b:if cond='data:post.authorProfileUrl'>
+                                  <span class='fn' itemprop='author' itemscope='itemscope'
+                                    itemtype='http://schema.org/Person'>
+                                    <meta expr:content='data:post.authorProfileUrl' itemprop='url' />
+                                    <a expr:href='data:post.authorProfileUrl' rel='author'
+                                      title='author profile'>
+                                      <span itemprop='name'>
+                                        <data:post.author />
+                                      </span>
+                                    </a>
+                                  </span>
+                                  <b:else />
+                                  <span class='fn' itemprop='author' itemscope='itemscope'
+                                    itemtype='http://schema.org/Person'>
+                                    <span itemprop='name'>
+                                      <data:post.author />
+                                    </span>
+                                  </span>
+                                </b:if>
+                              </b:if>
+                            </span>
+
+                            <span class='post-timestamp'>
+                              <b:if cond='data:top.showTimestamp'>
+                                <data:top.timestampLabel />
+                                <b:if cond='data:post.url'>
+                                  <meta expr:content='data:post.url.canonical' itemprop='url' />
+                                  <a class='timestamp-link' expr:href='data:post.url' rel='bookmark'
+                                    title='permanent link'>
+                                    <abbr class='published' expr:title='data:post.timestampISO8601'
+                                      itemprop='datePublished'>
+                                      <data:post.timestamp />
+                                    </abbr>
+                                  </a>
+                                </b:if>
+                              </b:if>
+                            </span>
+
+                            <span class='post-comment-link'>
+                              <b:include
+                                cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                                  and data:post.allowComments'
+                                data='post' name='comment_count_picker' />
+                            </span>
+                          </div>
+
+                          <div class='post-footer-line post-footer-line-2'>
+                            <b:if cond='data:top.showMobileShare'>
+                              <div class='mobile-link-button goog-inline-block'
+                                id='mobile-share-button'>
+                                <a href='javascript:void(0);'>
+                                  <data:shareMsg />
+                                </a>
+                              </div>
+                            </b:if>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <b:include
+                        cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}'
+                        data='post' name='comment_picker' />
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+              <b:includable id='nextprev'>
+                <div class='blog-pager' id='blog-pager'>
+                  <b:if cond='data:newerPageUrl'>
+                    <span id='blog-pager-newer-link'>
+                      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl'
+                        expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+                        expr:title='data:newerPageTitle'>
+                        <data:newerPageTitle />
+                      </a>
+                    </span>
+                  </b:if>
+
+                  <b:if cond='data:olderPageUrl'>
+                    <span id='blog-pager-older-link'>
+                      <a class='blog-pager-older-link' expr:href='data:olderPageUrl'
+                        expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                        expr:title='data:olderPageTitle'>
+                        <data:olderPageTitle />
+                      </a>
+                    </span>
+                  </b:if>
+
+                  <a class='home-link' expr:href='data:blog.homepageUrl'>
+                    <data:homeMsg />
+                  </a>
+
+                  <b:if cond='data:mobileLinkUrl'>
+                    <div class='blog-mobile-link'>
+                      <a expr:href='data:mobileLinkUrl'>
+                        <data:mobileLinkMsg />
+                      </a>
+                    </div>
+                  </b:if>
+
+                </div>
+                <div class='clear' />
+              </b:includable>
+              <b:includable id='post' var='post'>
+                <div class='post hentry uncustomized-post-template' itemprop='blogPost'
+                  itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+                  <b:if cond='data:post.firstImageUrl'>
+                    <meta expr:content='data:post.firstImageUrl' itemprop='image_url' />
+                  </b:if>
+                  <meta expr:content='data:blog.blogId' itemprop='blogId' />
+                  <meta expr:content='data:post.id' itemprop='postId' />
+
+                  <a expr:name='data:post.id' />
+                  <b:if cond='data:post.title'>
+                    <h3 class='post-title entry-title' itemprop='name'>
+                      <b:if
+                        cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
+                        <a expr:href='data:post.link ? data:post.link : data:post.url'>
+                          <data:post.title />
+                        </a>
+                        <b:else />
+                        <data:post.title />
+                      </b:if>
+                    </h3>
+                  </b:if>
+
+                  <div class='post-header'>
+                    <div class='post-header-line-1' />
+                  </div>
+
+                  <!-- Then use the post body as the schema.org description, for good G+/FB
+                  snippeting. -->
+                  <div class='post-body entry-content'
+                    expr:id='&quot;post-body-&quot; + data:post.id'
+                    expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                    <data:post.body />
+                    <div style='clear: both;' /> <!-- clear for photos floats -->
+                  </div>
+
+                  <b:if cond='data:post.hasJumpLink'>
+                    <div class='jump-link'>
+                      <a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'>
+                        <data:post.jumpText />
+                      </a>
+                    </div>
+                  </b:if>
+
+                  <div class='post-footer'>
+                    <div class='post-footer-line post-footer-line-1'>
+                      <span class='post-author vcard'>
+                        <b:if cond='data:top.showAuthor'>
+                          <data:top.authorLabel />
+                          <b:if cond='data:post.authorProfileUrl'>
+                            <span class='fn' itemprop='author' itemscope='itemscope'
+                              itemtype='http://schema.org/Person'>
+                              <meta expr:content='data:post.authorProfileUrl' itemprop='url' />
+                              <a class='g-profile' expr:href='data:post.authorProfileUrl'
+                                rel='author' title='author profile'>
+                                <span itemprop='name'>
+                                  <data:post.author />
+                                </span>
+                              </a>
+                            </span>
+                            <b:else />
+                            <span class='fn' itemprop='author' itemscope='itemscope'
+                              itemtype='http://schema.org/Person'>
+                              <span itemprop='name'>
+                                <data:post.author />
+                              </span>
+                            </span>
+                          </b:if>
+                        </b:if>
+                      </span>
+
+                      <span class='post-timestamp'>
+                        <b:if cond='data:top.showTimestamp'>
+                          <data:top.timestampLabel />
+                          <b:if cond='data:post.url'>
+                            <meta expr:content='data:post.url.canonical' itemprop='url' />
+                            <a class='timestamp-link' expr:href='data:post.url' rel='bookmark'
+                              title='permanent link'>
+                              <abbr class='published' expr:title='data:post.timestampISO8601'
+                                itemprop='datePublished'>
+                                <data:post.timestamp />
+                              </abbr>
+                            </a>
+                          </b:if>
+                        </b:if>
+                      </span>
+
+                      <span class='post-comment-link'>
+                        <b:include
+                          cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                          and data:post.allowComments'
+                          data='post' name='comment_count_picker' />
+                      </span>
+
+                      <span class='post-icons'>
+                        <!-- email post links -->
+                        <b:if cond='data:post.emailPostUrl'>
+                          <span class='item-action'>
+                            <a expr:href='data:post.emailPostUrl' expr:title='data:top.emailPostMsg'>
+                              <img alt='' class='icon-action' height='13'
+                                src='https://resources.blogblog.com/img/icon18_email.gif' width='18' />
+                            </a>
+                          </span>
+                        </b:if>
+
+                        <!-- quickedit pencil -->
+                        <b:include data='post' name='postQuickEdit' />
+                      </span>
+
+                      <!-- share buttons -->
+                      <div class='post-share-buttons goog-inline-block'>
+                        <b:include cond='data:post.sharePostUrl' data='post' name='shareButtons' />
+                      </div>
+
+                    </div>
+
+                    <div class='post-footer-line post-footer-line-2'>
+                      <span class='post-labels'>
+                        <b:if cond='data:top.showPostLabels and data:post.labels'>
+                          <data:postLabelsLabel />
+                          <b:loop values='data:post.labels' var='label'>
+                            <a expr:href='data:label.url' rel='tag'>
+                              <data:label.name />
+                            </a>
+                            <b:if cond='not data:label.isLast'>,</b:if>
+                          </b:loop>
+                        </b:if>
+                      </span>
+                    </div>
+
+                    <div class='post-footer-line post-footer-line-3'>
+                      <span class='post-location'>
+                        <b:if cond='data:top.showLocation and data:post.location'>
+                          <data:postLocationLabel />
+                          <a expr:href='data:post.location.mapsUrl' target='_blank'>
+                            <data:post.location.name />
+                          </a>
+                        </b:if>
+                      </span>
+                    </div>
+                    <b:if cond='data:post.authorAboutMe'>
+                      <div class='author-profile' itemprop='author' itemscope='itemscope'
+                        itemtype='http://schema.org/Person'>
+                        <b:if cond='data:post.authorPhoto.url'>
+                          <img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px' />
+                        </b:if>
+                        <div>
+                          <a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url'
+                            rel='author' title='author profile'>
+                            <span itemprop='name'>
+                              <data:post.author />
+                            </span>
+                          </a>
+                        </div>
+                        <span itemprop='description'>
+                          <data:post.authorAboutMe />
+                        </span>
+                      </div>
+                    </b:if>
+                  </div>
+                </div>
+              </b:includable>
+              <b:includable id='postQuickEdit' var='post'>
+                <b:if cond='data:post.editUrl'>
+                  <span expr:class='&quot;item-control &quot; + data:post.adminClass'>
+                    <a expr:href='data:post.editUrl' expr:title='data:top.editPostMsg'>
+                      <img alt='' class='icon-action' height='18'
+                        src='https://resources.blogblog.com/img/icon18_edit_allbkg.gif' width='18' />
+                    </a>
+                  </span>
+                </b:if>
+              </b:includable>
+              <b:includable id='shareButtons' var='post'>
+                <b:if cond='data:top.showEmailButton'>
+                  <a class='goog-inline-block share-button sb-email'
+                    expr:href='data:post.sharePostUrl + &quot;&amp;target=email&quot;'
+                    expr:title='data:top.emailThisMsg' target='_blank'>
+                    <span class='share-button-link-text'>
+                      <data:top.emailThisMsg />
+                    </span>
+                  </a>
+                </b:if>
+                <b:if cond='data:top.showBlogThisButton'>
+                  <a class='goog-inline-block share-button sb-blog'
+                    expr:href='data:post.sharePostUrl + &quot;&amp;target=blog&quot;'
+                    expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=270,width=475\&quot;); return false;&quot;'
+                    expr:title='data:top.blogThisMsg' target='_blank'>
+                    <span class='share-button-link-text'>
+                      <data:top.blogThisMsg />
+                    </span>
+                  </a>
+                </b:if>
+                <b:if cond='data:top.showTwitterButton'>
+                  <a class='goog-inline-block share-button sb-twitter'
+                    expr:href='data:post.sharePostUrl + &quot;&amp;target=twitter&quot;'
+                    expr:title='data:top.shareToTwitterMsg' target='_blank'>
+                    <span class='share-button-link-text'>
+                      <data:top.shareToTwitterMsg />
+                    </span>
+                  </a>
+                </b:if>
+                <b:if cond='data:top.showFacebookButton'>
+                  <a class='goog-inline-block share-button sb-facebook'
+                    expr:href='data:post.sharePostUrl + &quot;&amp;target=facebook&quot;'
+                    expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=430,width=640\&quot;); return false;&quot;'
+                    expr:title='data:top.shareToFacebookMsg' target='_blank'>
+                    <span class='share-button-link-text'>
+                      <data:top.shareToFacebookMsg />
+                    </span>
+                  </a>
+                </b:if>
+                <b:if cond='data:top.showPinterestButton'>
+                  <a class='goog-inline-block share-button sb-pinterest'
+                    expr:href='data:post.sharePostUrl + &quot;&amp;target=pinterest&quot;'
+                    expr:title='data:top.shareToPinterestMsg' target='_blank'>
+                    <span class='share-button-link-text'>
+                      <data:top.shareToPinterestMsg />
+                    </span>
+                  </a>
+                </b:if>
+              </b:includable>
+              <b:includable id='status-message'>
+                <b:if cond='data:navMessage'>
+                  <div class='status-msg-wrap'>
+                    <div class='status-msg-body'>
+                      <data:navMessage />
+                    </div>
+                    <div class='status-msg-border'>
+                      <div class='status-msg-bg'>
+                        <div class='status-msg-hidden'>
+                          <data:navMessage />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style='clear: both;' />
+                </b:if>
+              </b:includable>
+              <b:includable id='threaded-comment-form' var='post'>
+                <div class='comment-form'>
+                  <a name='comment-form' />
+                  <b:if cond='data:mobile'>
+                    <p>
+                      <data:blogCommentMessage />
+                    </p>
+                    <data:blogTeamBlogMessage />
+                    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' />
+                    <iframe allowtransparency='true'
+                      class='blogger-iframe-colorize blogger-comment-from-post'
+                      expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor'
+                      name='comment-editor' src='' style='display: none' width='100%' />
+                    <b:else />
+                    <p>
+                      <data:blogCommentMessage />
+                    </p>
+                    <data:blogTeamBlogMessage />
+                    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' />
+                    <iframe allowtransparency='true'
+                      class='blogger-iframe-colorize blogger-comment-from-post'
+                      expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor'
+                      name='comment-editor' src='' width='100%' />
+                  </b:if>
+                  <data:post.cmtfpIframe />
+                  <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+                </div>
+              </b:includable>
+              <b:includable id='threaded_comment_js' var='post'>
+                <script async='async' expr:src='data:post.commentSrc' type='text/javascript' />
+
+                <script type='text/javascript'>
+    (function() {
+      var items = <data:post.commentJso/>;
+      var msgs = <data:post.commentMsgs/>;
+      var config = <data:post.commentConfig/>;
+
+// <![CDATA[
+      var cursor = null;
+      if (items && items.length > 0) {
+        cursor = parseInt(items[items.length - 1].timestamp) + 1;
+      }
+
+      var bodyFromEntry = function(entry) {
+        var text = (entry &&
+                    ((entry.content && entry.content.$t) ||
+                     (entry.summary && entry.summary.$t))) ||
+            '';
+        if (entry && entry.gd$extendedProperty) {
+          for (var k in entry.gd$extendedProperty) {
+            if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+              return '<span class="deleted-comment">' + text + '</span>';
+            }
+          }
+        }
+        return text;
+      }
+
+      var parse = function(data) {
+        cursor = null;
+        var comments = [];
+        if (data && data.feed && data.feed.entry) {
+          for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+            var comment = {};
+            // comment ID, parsed out of the original id format
+            var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+            comment.id = id ? id[2] : null;
+            comment.body = bodyFromEntry(entry);
+            comment.timestamp = Date.parse(entry.published.$t) + '';
+            if (entry.author && entry.author.constructor === Array) {
+              var auth = entry.author[0];
+              if (auth) {
+                comment.author = {
+                  name: (auth.name ? auth.name.$t : undefined),
+                  profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                  avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                };
+              }
+            }
+            if (entry.link) {
+              if (entry.link[2]) {
+                comment.link = comment.permalink = entry.link[2].href;
+              }
+              if (entry.link[3]) {
+                var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                if (pid && pid[1]) {
+                  comment.parentId = pid[1];
+                }
+              }
+            }
+            comment.deleteclass = 'item-control blog-admin';
+            if (entry.gd$extendedProperty) {
+              for (var k in entry.gd$extendedProperty) {
+                if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                  comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                  comment.displayTime = entry.gd$extendedProperty[k].value;
+                }
+              }
+            }
+            comments.push(comment);
+          }
+        }
+        return comments;
+      };
+
+      var paginator = function(callback) {
+        if (hasMore()) {
+          var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+          if (cursor) {
+            url += '&published-min=' + new Date(cursor).toISOString();
+          }
+          window.bloggercomments = function(data) {
+            var parsed = parse(data);
+            cursor = parsed.length < 50 ? null
+                : parseInt(parsed[parsed.length - 1].timestamp) + 1
+            callback(parsed);
+            window.bloggercomments = null;
+          }
+          url += '&callback=bloggercomments';
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      };
+      var hasMore = function() {
+        return !!cursor;
+      };
+      var getMeta = function(key, comment) {
+        if ('iswriter' == key) {
+          var matches = !!comment.author
+              && comment.author.name == config.authorName
+              && comment.author.profileUrl == config.authorUrl;
+          return matches ? 'true' : '';
+        } else if ('deletelink' == key) {
+          return config.baseUri + '/comment/delete/'
+               + config.blogId + '/' + comment.id;
+        } else if ('deleteclass' == key) {
+          return comment.deleteclass;
+        }
+        return '';
+      };
+
+      var replybox = null;
+      var replyUrlParts = null;
+      var replyParent = undefined;
+
+      var onReply = function(commentId, domId) {
+        if (replybox == null) {
+          // lazily cache replybox, and adjust to suit this style:
+          replybox = document.getElementById('comment-editor');
+          if (replybox != null) {
+            replybox.height = '250px';
+            replybox.style.display = 'block';
+            replyUrlParts = replybox.src.split('#');
+          }
+        }
+        if (replybox && (commentId !== replyParent)) {
+          replybox.src = '';
+          document.getElementById(domId).insertBefore(replybox, null);
+          replybox.src = replyUrlParts[0]
+              + (commentId ? '&parentID=' + commentId : '')
+              + '#' + replyUrlParts[1];
+          replyParent = commentId;
+        }
+      };
+
+      var hash = (window.location.hash || '#').substring(1);
+      var startThread, targetComment;
+      if (/^comment-form_/.test(hash)) {
+        startThread = hash.substring('comment-form_'.length);
+      } else if (/^c[0-9]+$/.test(hash)) {
+        targetComment = hash.substring(1);
+      }
+
+      // Configure commenting API:
+      var configJso = {
+        'maxDepth': config.maxThreadDepth
+      };
+      var provider = {
+        'id': config.postId,
+        'data': items,
+        'loadNext': paginator,
+        'hasMore': hasMore,
+        'getMeta': getMeta,
+        'onReply': onReply,
+        'rendered': true,
+        'initComment': targetComment,
+        'initReplyThread': startThread,
+        'config': configJso,
+        'messages': msgs
+      };
+
+      var render = function() {
+        if (window.goog && window.goog.comments) {
+          var holder = document.getElementById('comment-holder');
+          window.goog.comments.render(holder, provider);
+        }
+      };
+
+      // render now, or queue to render when library loads:
+      if (window.goog && window.goog.comments) {
+        render();
+      } else {
+        window.goog = window.goog || {};
+        window.goog.comments = window.goog.comments || {};
+        window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+        window.goog.comments.loadQueue.push(render);
+      }
+    })();
+// ]]>
+  </script>
+              </b:includable>
+              <b:includable id='threaded_comments' var='post'>
+                <div class='comments' id='comments'>
+                  <a name='comments' />
+                  <h4><data:post.commentLabelFull />:</h4>
+
+                  <div class='comments-content'>
+                    <b:include cond='data:post.embedCommentForm' data='post'
+                      name='threaded_comment_js' />
+                    <div id='comment-holder'>
+                      <data:post.commentHtml />
+                    </div>
+                  </div>
+
+                  <p class='comment-footer'>
+                    <b:if cond='data:post.allowNewComments'>
+                      <b:include data='post' name='threaded-comment-form' />
+                      <b:else />
+                      <data:post.noNewCommentsText />
+                    </b:if>
+                  </p>
+
+                  <b:if cond='data:showCmtPopup'>
+                    <div id='comment-popup'>
+                      <iframe allowtransparency='true' frameborder='0' id='comment-actions'
+                        name='comment-actions' scrolling='no'>
+                      </iframe>
+                    </div>
+                  </b:if>
+
+                  <div id='backlinks-container'>
+                    <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-top">
-                <section class="footer-brand" aria-labelledby="footer-brand-title">
-                    <a class="footer-logo" href="/">
-                        Alemon<span>dem</span>
-                    </a>
+    <!-- ============================================ -->
+    <!-- GLOBAL NEWSLETTER - APPEARS ON ALL PAGES -->
+    <!-- ============================================ -->
+    <b:section class='section newsletter' id='newsletter-section' maxwidgets='1'
+      showaddelement='yes'>
+      <b:widget id='HTML10' locked='false' title='Newsletter' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content' />
+        </b:widget-settings>
+        <b:includable id='main'>
+          <div class='container'>
+            <div class='newsletter-box' id='newsletter'>
+              <h2 id='newsletter-title'>Never Miss an Insight</h2>
+              <p class='newsletter-text'>
+                Receive practical articles, design inspiration, AI insights, and technology updates
+                directly in your inbox.
+              </p>
+              <form action='#' class='newsletter-form' method='post'>
+                <label class='sr-only' for='newsletter-email'>Email address</label>
+                <input autocomplete='email' class='newsletter-input' id='newsletter-email'
+                  name='email' placeholder='Enter your email address' required='required'
+                  type='email' />
+                <button class='btn btn-primary' type='submit'>Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
 
-                    <p class="footer-description">
-                        Discover the Best in Digital Entertainment, Technology &amp; Creative Innovation.
-                    </p>
+    <!-- ============================================ -->
+    <!-- GLOBAL FOOTER AD - APPEARS ON ALL PAGES -->
+    <!-- ============================================ -->
+    <b:section class='ad-zone' id='ad-zone-footer' maxwidgets='1' showaddelement='yes'>
+      <b:widget id='HTML11' locked='false' title='Footer Ad' type='HTML' version='1'>
+        <b:widget-settings>
+          <b:widget-setting name='content' />
+        </b:widget-settings>
+        <b:includable id='main'>
+          <div class='container'>
+            <div class='ad-placeholder'>
+              <span class='ad-label'>Advertisement</span>
+              <div aria-label='Responsive footer advertising placement' class='ad-box' role='img'>
+                <data:content />
+              </div>
+            </div>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
 
-                    <p class="footer-tagline">
-                        Building practical knowledge in AI, UI/UX Design, Web Development, Digital Marketing and Creative Technology.
-                    </p>
+    <!-- ============================================ -->
+    <!-- GLOBAL FOOTER - APPEARS ON ALL PAGES -->
+    <!-- ============================================ -->
+    <footer class='site-footer' role='contentinfo'>
+      <div class='footer-container'>
+        <b:section class='footer' id='footer' maxwidgets='6' showaddelement='yes'>
+          <b:widget id='HTML12' locked='false' title='Footer Content' type='HTML' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='content' />
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='footer-top'>
+                <section aria-labelledby='footer-brand-title' class='footer-brand'>
+                  <a class='footer-logo' href='/'> Alemon<span>dem</span>
+                  </a>
+                  <p class='footer-description'>
+                    Discover the Best in Digital Entertainment, Technology &amp; Creative
+                    Innovation.
+                  </p>
+                  <p class='footer-tagline'>
+                    Empowering curious minds through practical knowledge, thoughtful design, and
+                    emerging technology.
+                  </p>
                 </section>
-
-                <div class="footer-navigation">
-                    <nav class="footer-column" aria-labelledby="footer-explore-title">
-                        <h2 class="footer-title" id="footer-explore-title">Explore</h2>
-                        <ul class="footer-links">
-                            <li><a href="/search/label/AI">AI</a></li>
-                            <li><a href="/search/label/UI-UX">UI/UX</a></li>
-                            <li><a href="/search/label/Marketing">Marketing</a></li>
-                            <li><a href="/search/label/Development">Web Development</a></li>
-                            <li><a href="/search/label/Tutorials">Tutorials</a></li>
-                        </ul>
-                    </nav>
-
-                    <nav class="footer-column" aria-labelledby="footer-company-title">
-                        <h2 class="footer-title" id="footer-company-title">Company</h2>
-                        <ul class="footer-links">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                        </ul>
-                    </nav>
-
-                    <section class="footer-column" aria-labelledby="footer-connect-title">
-                        <h2 class="footer-title" id="footer-connect-title">Connect</h2>
-                        <div class="footer-social">
-                            <a href="#" aria-label="GitHub">GitHub</a>
-                            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                            <a href="#" aria-label="YouTube">YouTube</a>
-                            <a href="#" aria-label="Facebook">Facebook</a>
-                        </div>
-                    </section>
+                <div class='footer-navigation'>
+                  <nav aria-labelledby='footer-explore-title' class='footer-column'>
+                    <h2 class='footer-title' id='footer-explore-title'>Explore</h2>
+                    <ul class='footer-links'>
+                      <li>
+                        <a href='/search/label/AI'>AI</a>
+                      </li>
+                      <li>
+                        <a href='/search/label/UI-UX'>UI/UX</a>
+                      </li>
+                      <li>
+                        <a href='/search/label/Marketing'>Marketing</a>
+                      </li>
+                      <li>
+                        <a href='/search/label/Development'>Web Development</a>
+                      </li>
+                      <li>
+                        <a href='/search/label/Tutorials'>Tutorials</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <nav aria-labelledby='footer-company-title' class='footer-column'>
+                    <h2 class='footer-title' id='footer-company-title'>Company</h2>
+                    <ul class='footer-links'>
+                      <li>
+                        <a href='#'>About</a>
+                      </li>
+                      <li>
+                        <a href='#'>Contact</a>
+                      </li>
+                      <li>
+                        <a href='#'>Privacy Policy</a>
+                      </li>
+                      <li>
+                        <a href='#'>Terms of Use</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <section aria-labelledby='footer-connect-title' class='footer-column'>
+                    <h2 class='footer-title' id='footer-connect-title'>Connect</h2>
+                    <div class='footer-social'>
+                      <a aria-label='GitHub' href='#'>GitHub</a>
+                      <a aria-label='LinkedIn' href='#'>LinkedIn</a>
+                      <a aria-label='YouTube' href='#'>YouTube</a>
+                      <a aria-label='Facebook' href='#'>Facebook</a>
+                    </div>
+                  </section>
                 </div>
-            </div>
-
-            <hr class="footer-divider"/>
-
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    &#169; 2026 <strong>Alemondem</strong>. All rights reserved.
-                </div>
-
-                <div class="footer-credit">
-                    Built with <a href="#">Phoenix Theme v1.0 RC1</a>
-                </div>
-            </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+        <hr class='footer-divider' />
+        <div class='footer-bottom'>
+          <div class='footer-copyright'> &#169; 2026 <strong>Alemondem</strong>. All rights
+            reserved. </div>
+          <div class='footer-credit'> Built with <a href='#'>Phoenix Theme v1.0 RC1</a>
+          </div>
         </div>
+      </div>
     </footer>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
         //<![CDATA[
         (function () {
             var navbar = document.querySelector('.navbar');
             var toggle = document.querySelector('.nav-toggle');
             var navigation = document.getElementById('primary-navigation');
-
-            if (!navbar || !toggle || !navigation) {
-                return;
-            }
-
+            if (!navbar || !toggle || !navigation) return;
             function setMenuState(isOpen) {
                 navbar.classList.toggle('is-nav-open', isOpen);
                 toggle.setAttribute('aria-expanded', String(isOpen));
                 toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
             }
-
             toggle.addEventListener('click', function () {
                 setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
             });
-
             navigation.addEventListener('click', function (event) {
-                if (event.target.closest('a')) {
-                    setMenuState(false);
-                }
+                if (event.target.closest('a')) setMenuState(false);
             });
-
             document.addEventListener('click', function (event) {
-                if (!navbar.contains(event.target)) {
-                    setMenuState(false);
-                }
+                if (!navbar.contains(event.target)) setMenuState(false);
             });
-
             document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') {
-                    setMenuState(false);
-                    toggle.focus();
-                }
+                if (event.key === 'Escape') { setMenuState(false); toggle.focus(); }
             });
-
             window.addEventListener('resize', function () {
-                if (window.matchMedia('(min-width: 901px)').matches) {
-                    setMenuState(false);
-                }
+                if (window.matchMedia('(min-width: 901px)').matches) setMenuState(false);
             });
         }());
         //]]>
     </script>
-</body>
+  </body>
 </html>
