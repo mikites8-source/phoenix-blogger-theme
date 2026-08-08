@@ -14,11 +14,20 @@ Thumbs.db
 
 # VS Code
 .vscode/
+*.code-workspace
 
 # Temporary files
 *.tmp
 *.temp
 
-# Phoenix v1.1 work (not part of RC1)
+# Phoenix v1.1 / future work
 source/partials/
 source/css/ads.css
+source/css/publication.css
+
+# Phoenix local archive / working material
+Archive/
+blog-post.html
+
+# Article-production image workspace
+source/assets/images/

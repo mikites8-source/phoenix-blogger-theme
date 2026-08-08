@@ -6,41 +6,357 @@
   xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 
   <head>
+
     <meta charset='UTF-8' />
     <meta content='width=device-width, initial-scale=1.0' name='viewport' />
 
     <b:include data='blog' name='all-head-content' />
 
-    <title><data:blog.pageName /> | <data:blog.title /></title>
+    <b:if cond='data:blog.pageType == &quot;index&quot;'>
+
+      <title>Alemondem | Digital Marketing, AI, UI/UX Design &amp; Creative Innovation</title>
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+
+        <meta
+          content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+          name='description' />
+
+        <b:else />
+
+        <meta expr:content='data:blog.metaDescription' name='description' />
+
+      </b:if>
+
+      <!-- ==========================================================
+     ROBOTS
+========================================================== -->
+
+      <b:if
+        cond='data:blog.pageType == &quot;index&quot; or data:blog.pageType == &quot;item&quot; or data:blog.pageType == &quot;static_page&quot;'>
+
+        <meta content='index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
+          name='robots' />
+
+        <b:else />
+
+        <meta content='noindex,follow' name='robots' />
+
+      </b:if>
+      <!-- ==========================================================
+     OPEN GRAPH
+========================================================== -->
+
+      <meta expr:content='data:blog.canonicalUrl' property='og:url' />
+      <meta content='website' property='og:type' />
+      <meta content='Alemondem' property='og:site_name' />
+
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+
+        <meta expr:content='data:blog.pageName ?: data:blog.title' property='og:title' />
+
+        <b:if cond='data:blog.metaDescription'>
+          <meta expr:content='data:blog.metaDescription' property='og:description' />
+          <b:else />
+          <meta
+            content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+            property='og:description' />
+        </b:if>
+        <meta
+          content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png'
+          property='og:image' />
+        <meta content='1200' property='og:image:width' />
+        <meta content='630' property='og:image:height' />
+        <meta content='image/png' property='og:image:type' />
+
+        <b:else />
+
+        <meta expr:content='data:blog.pageName' property='og:title' />
+
+        <meta expr:content='data:blog.metaDescription' property='og:description' />
+
+      </b:if>
+
+      <!-- ==========================================================
+     TWITTER CARDS
+========================================================== -->
+
+      <meta content='summary_large_image' name='twitter:card' />
+      <meta content='@Alemondem' name='twitter:site' />
+
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+
+        <meta content='Alemondem | Digital Marketing, AI, UI/UX Design &amp; Creative Innovation'
+          name='twitter:title' />
+
+        <meta
+          content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+          name='twitter:description' />
+        <meta
+          content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png'
+          name='twitter:image' />
+
+        <b:else />
+
+        <meta expr:content='data:blog.pageName' name='twitter:title' />
+
+        <meta expr:content='data:blog.metaDescription' name='twitter:description' />
+
+      </b:if>
+
+      <b:elseif cond='data:blog.pageType == &quot;static_page&quot;'>
+
+        <title><data:blog.pageName /> | <data:blog.title /></title>
+
+      </b:elseif>
+
+      <b:elseif cond='data:blog.pageType == &quot;item&quot;'>
+
+        <title><data:blog.pageName /> | <data:blog.title /></title>
+
+      </b:elseif>
+
+      <b:elseif cond='data:blog.searchLabel'>
+
+        <title><data:blog.searchLabel /> Articles | <data:blog.title /></title>
+
+      </b:elseif>
+
+      <b:elseif cond='data:view.isSearch'>
+
+        <title>Search Results | <data:blog.title /></title>
+
+      </b:elseif>
+
+      <b:else />
+
+      <title>
+        <data:blog.title />
+      </title>
+
+    </b:if>
+
+    <!-- ==========================================================
+     JSON-LD STRUCTURED DATA
+========================================================== -->
+
+    <script type='application/ld+json'>
+{
+  &quot;@context&quot;:&quot;https://schema.org&quot;,
+  &quot;@graph&quot;:[
+    {
+      &quot;@type&quot;:&quot;WebSite&quot;,
+      &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#website&quot;,
+      &quot;url&quot;:&quot;https://alemondem.blogspot.com/&quot;,
+      &quot;name&quot;:&quot;Alemondem&quot;,
+      &quot;description&quot;:&quot;Digital Marketing, Artificial Intelligence, UI/UX Design and Creative Innovation.&quot;,
+&quot;image&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png&quot;,
+&quot;publisher&quot;:{
+        &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#organization&quot;
+      },
+      &quot;potentialAction&quot;:{
+        &quot;@type&quot;:&quot;SearchAction&quot;,
+        &quot;target&quot;:&quot;https://alemondem.blogspot.com/search?q={search_term_string}&quot;,
+        &quot;query-input&quot;:&quot;required name=search_term_string&quot;
+      }
+    },
+    {
+      &quot;@type&quot;:&quot;Organization&quot;,
+      &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#organization&quot;,
+  &quot;sameAs&quot;:[
+  &quot;https://www.linkedin.com/in/mikiyas-tesfaye-251b552a/&quot;,
+  &quot;https://x.com/alemondem&quot;,
+  &quot;https://github.com/mikites8-source&quot;,
+  &quot;https://www.youtube.com/@mikiyastesfaye1872&quot;
+],
+      &quot;name&quot;:&quot;Alemondem&quot;,
+      &quot;url&quot;:&quot;https://alemondem.blogspot.com/&quot;,
+      &quot;logo&quot;:{
+  &quot;@type&quot;:&quot;ImageObject&quot;,
+  &quot;url&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvOqTHBzONCWz0FZQD1hRsLLCDz_GPDGnNnFvT8LLzk1oY6tmS9jhjOcdKX43ivkvK0CZGoNbLfYu0PHgQSk0YWoMGvf977ahnCM-2hTj9fsxAvpKj9H686NMOnZ39OqvN2KSgQmITs69oRpdjnvO6RjUIIF4PBVdBkb76PQxgM9eAk2agJrMUDcK7Tts/s512/alemondem-blogger-logo-main.png&quot;
+}
+    }
+  ]
+}
+</script>
+
+
+    <!-- ==========================================================
+     BROWSER METADATA
+========================================================== -->
+
+    <meta content='#2563EB' name='theme-color' />
+    <meta content='yes' name='apple-mobile-web-app-capable' />
+    <meta content='Alemondem' name='apple-mobile-web-app-title' />
+    <meta content='default' name='apple-mobile-web-app-status-bar-style' />
+
+    <meta content='Alemondem' name='application-name' />
+    <meta content='#2563EB' name='msapplication-TileColor' />
+
+    <link expr:href='data:blog.homepageUrl + &quot;favicon.ico&quot;' rel='icon' type='image/x-icon' />
+    <link expr:href='data:blog.homepageUrl + &quot;favicon.ico&quot;' rel='shortcut icon' />
+    <link expr:href='data:blog.homepageUrl + &quot;favicon.ico&quot;' rel='apple-touch-icon' />
 
     <link href='https://fonts.googleapis.com' rel='preconnect' />
     <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect' />
     <link
-      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap'
-      rel='stylesheet' />
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap'
+      media='print' onload='this.media=&quot;all&quot;' rel='stylesheet' />
+
+    <noscript>
+      <link
+        href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap'
+        rel='stylesheet' />
+    </noscript>
 
     <b:skin><![CDATA[
 
+    /*==================================================================
+  PHOENIX THEME DESIGNER VARIABLES
+====================================================================
 
-    
+<Group description="Phoenix Theme Colors" selector="body">
+
+<Variable name="phoenix.primary.color"
+          description="Primary Accent Color"
+          type="color"
+          default="#ff4a57"
+          value="#ff4a57"/>
+
+<Variable name="phoenix.primary.dark"
+          description="Primary Accent Hover"
+          type="color"
+          default="#e0323e"
+          value="#e0323e"/>
+
+<Variable name="phoenix.secondary.color"
+          description="Secondary Color"
+          type="color"
+          default="#1a1a2e"
+          value="#1a1a2e"/>
+
+<Variable name="phoenix.background.color"
+          description="Page Background"
+          type="color"
+          default="#f8f9fa"
+          value="#f8f9fa"/>
+
+<Variable name="phoenix.surface.color"
+          description="Card Background"
+          type="color"
+          default="#ffffff"
+          value="#ffffff"/>
+
+<Variable name="phoenix.text.color"
+          description="Primary Text"
+          type="color"
+          default="#2b2b2b"
+          value="#2b2b2b"/>
+
+<Variable name="phoenix.text.muted"
+          description="Secondary Text"
+          type="color"
+          default="#6c757d"
+          value="#6c757d"/>
+
+<Variable name="phoenix.border.color"
+          description="Border Color"
+          type="color"
+          default="#e9ecef"
+          value="#e9ecef"/>
+
+</Group>
+
+<Group description="Phoenix Typography" selector="body">
+
+<Variable
+    name="phoenix.brand.font"
+    description="Brand Font"
+    type="font"
+    default="normal normal 700 30px Playfair Display, serif"
+    value="normal normal 700 30px Playfair Display, serif"/>
+
+<Variable
+    name="phoenix.heading.font"
+    description="Heading Font"
+    type="font"
+    default="normal normal 700 48px Playfair Display, serif"
+    value="normal normal 700 48px Playfair Display, serif"/>
+
+<Variable
+    name="phoenix.body.font"
+    description="Body Font"
+    type="font"
+    default="normal normal 16px Inter, sans-serif"
+    value="normal normal 16px Inter, sans-serif"/>
+
+<Variable
+    name="phoenix.ui.font"
+    description="UI Font"
+    type="font"
+    default="normal normal 16px Inter, sans-serif"
+    value="normal normal 16px Inter, sans-serif"/>
+
+</Group>
+
+*/
     /* ==========================================================================
        VARIABLES, RESET, & BASE STYLES
        ========================================================================== */
     :root {
-        --primary-color: #ff4a57;
-        --primary-dark: #e0323e;
-        --secondary-color: #1a1a2e;
-        --bg-color: #f8f9fa;
-        --card-bg: #ffffff;
-        --text-color: #2b2b2b;
-        --text-muted: #6c757d;
-        --border-color: #e9ecef;
-        --max-width: 1200px;
-        --font-sans: 'Inter', sans-serif;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
+
+    --primary-color: $(phoenix.primary.color);
+    --primary-dark: $(phoenix.primary.dark);
+    --secondary-color: $(phoenix.secondary.color);
+
+    --bg-color: $(phoenix.background.color);
+    --card-bg: $(phoenix.surface.color);
+
+    --text-color: $(phoenix.text.color);
+    --text-muted: $(phoenix.text.muted);
+
+    --border-color: $(phoenix.border.color);
+
+    --font-sans: $(phoenix.body.font);
+
+    --max-width: 1200px;
+
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+
+    --shadow: 0 4px 6px -1px rgba(0,0,0,.1),
+              0 2px 4px -1px rgba(0,0,0,.06);
+
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1),
+                 0 4px 6px -2px rgba(0,0,0,.05);
+
+    /* Compatibility Layer */
+
+    --primary: var(--primary-color);
+
+    --surface: var(--card-bg);
+
+    --surface-alt: var(--bg-color);
+
+    --text: var(--text-color);
+
+    --text-light: var(--text-muted);
+
+    --border: var(--border-color);
+
+    --font: var(--font-sans);
+
+    --font-brand: $(phoenix.brand.font);
+
+    --font-heading: $(phoenix.heading.font);
+
+    --font-body: $(phoenix.body.font);
+
+    --font-ui: $(phoenix.ui.font);
+
+    --shadow-sm: var(--shadow);
+
+    --shadow-md: var(--shadow-lg);
+
+}
 
     * {
         box-sizing: border-box;
@@ -49,9 +365,9 @@
     }
 
     body {
-        font-family: var(--font-sans);
-        background-color: var(--bg-color);
-        color: var(--text-color);
+        font: var(--font-body);
+        background-color: var(--surface-alt);
+        color: var(--text);
         line-height: 1.6;
         overflow-x: hidden;
     }
@@ -91,7 +407,7 @@
         position: absolute;
         top: -100px;
         left: 20px;
-        background: var(--primary-color);
+        background: var(--primary);
         color: #ffffff;
         padding: 10px 20px;
         z-index: 9999;
@@ -107,9 +423,9 @@
        MODERN NAVIGATION & HEADER (FLEXBOX)
        ========================================================================== */
     .navbar {
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
-        position: sticky;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: relative;
         top: 0;
         z-index: 1000;
         padding: 16px 0;
@@ -120,45 +436,54 @@
         align-items: center;
     }
     .logo {
+        font: var(--font-brand);
         font-size: 30px;
         font-weight: 800;
-        color: var(--secondary-color);
-        letter-spacing: -0.5px;
+        color: var(--text);
+        letter-spacing: -0.03em;
+        white-space: nowrap;
     }
     .logo span {
-        color: var(--primary-color);
+        color: var(--primary);
     }
     .site-navigation {
         display: flex;
         align-items: center;
+        position: relative;
+        z-index: 99;
     }
     .nav-menu {
        display: flex;
        gap: 1.5rem;
        list-style: none;
        margin: 0;
-       padding: 0;
+       padding: 0px 0px 0px 25px;
+       position: relative;
+       z-index: 100;
     }
 
     .nav-item a {
+       font: var(--font-ui);
        text-decoration: none;
        color: #333333;
        transition: color 0.2s ease;
-  }
+    }
 
-/* Style for the current page state */
     .nav-item.active a {
-       color: #ff5722; /* Matches an accent theme variable */
+       color: var(--primary); 
        font-weight: bold;
-}
+    }
     
     .nav-menu a {
+        font: var(--font-ui);
+        color: var(--text);
         font-weight: 500;
         font-size: 15px;
-        color: var(--secondary-color);
+        transition: color .25s ease, opacity .25s ease;
     }
+
     .nav-menu a:hover, .nav-menu a[aria-current="page"] {
-        color: var(--primary-color);
+        color: var(--primary);
     }
     .nav-right {
         display: flex;
@@ -166,47 +491,30 @@
         gap: 20px;
     }
 
-    /* Forces the navigation links to sit on top of any overlapping layout containers */
-.site-navigation {
-  position: relative;
-  z-index: 99;
-}
-
-.nav-menu {
-  position: relative;
-  z-index: 100;
-}
-
-.nav-menu a {
-  position: relative;
-  z-index: 101;
-  pointer-events: auto !important; /* Forces the browser to recognize the click */
-}
-
-
     .search-box {
         display: flex;
         align-items: center;
-        background-color: var(--bg-color);
-        border: 1px solid var(--border-color);
+        background-color: var(--surface-alt);
+        border: 1px solid var(--border);
         border-radius: 30px;
         padding: 6px 16px;
         gap: 10px;
     }
     .search-box svg {
-        color: var(--text-muted);
+        color: var(--text-light);
         display: flex;
     }
     .search-box input {
+        font: var(--font-ui);
         border: none;
         background: transparent;
         outline: none;
         font-size: 14px;
-        color: var(--text-color);
-        font-family: inherit;
+        color: var(--text);
     }
     .subscribe-btn {
-        background-color: var(--primary-color);
+        font: var(--font-ui);
+        background-color: var(--primary);
         color: #ffffff;
         padding: 10px 24px;
         border-radius: 30px;
@@ -217,24 +525,45 @@
         background-color: var(--primary-dark);
         transform: translateY(-1px);
     }
-    .nav-toggle {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        flex-direction: column;
-        gap: 6px;
-        padding: 4px;
-        z-index: 1001;
+
+    .search-toggle {
+        display:none;
     }
+
+    .search-close{
+            display:none;
+        }
+.nav-toggle {
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    background:none;
+    border:none;
+
+    cursor:pointer;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:5px;
+
+    padding:4px;
+
+    z-index:1001;
+
+    transition:var(--transition);
+}
     .nav-toggle-line {
         width: 24px;
         height: 2px;
-        background-color: var(--secondary-color);
+        background-color: var(--text);
         transition: var(--transition);
     }
 
-    /* Navbar Open State for Mobile */
     .navbar.is-nav-open .nav-toggle .nav-toggle-line:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -245,13 +574,51 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: inherit;
+    }
+
     /* ==========================================================================
        HERO & FEATURED SECTION (GRID & FLEXBOX)
        ========================================================================== */
+
+    .hero-title,
+    .article-title,
+    .section-header h2,
+    .hero-spotlight h2,
+    .hero-spotlight-content h2,
+    .category-card h3,
+    .editor-card h3,
+    .article-card h3,
+    .post-title,
+    .post-body h2,
+    .post-body h3,
+    .post-body h4,
+    .newsletter-box h2,
+    .footer-title,
+    .editorial-content h2,
+    .editorial-content h3,
+    .editorial-references h4,
+    .comments h4,
+    .author-card-info h4 {
+        font-family: var(--font-heading);
+    }
+
+    .hero-title,
+    .article-title,
+    .post-title {
+        letter-spacing: -0.02em;
+    }
+    
     .hero {
         padding: 80px 0;
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
     }
     .hero-grid {
         display: grid;
@@ -264,7 +631,7 @@
         flex-direction: column;
     }
     .hero-label {
-        color: var(--primary-color);
+        color: var(--primary);
         font-weight: 700;
         text-transform: uppercase;
         font-size: 13px;
@@ -275,15 +642,15 @@
         font-size: 52px;
         font-weight: 800;
         line-height: 1.15;
-        color: var(--secondary-color);
+        color: var(--text);
         letter-spacing: -1.5px;
         margin-bottom: 24px;
     }
     .hero-description {
         font-size: 18px;
-        color: var(--text-muted);
+        color: var(--text-light);
         margin-bottom: 32px;
-        max-width: 540px;
+        max-width: 800px;
     }
     .hero-buttons {
         display: flex;
@@ -291,6 +658,7 @@
         margin-bottom: 40px;
     }
     .btn {
+        font: var(--font-ui);
         display: inline-block;
         padding: 14px 32px;
         border-radius: 30px;
@@ -299,7 +667,7 @@
         text-align: center;
     }
     .btn-primary {
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         color: #ffffff;
     }
     .btn-primary:hover {
@@ -307,19 +675,57 @@
         transform: translateY(-1.5px);
     }
     .btn-outline {
-        border: 2px solid var(--border-color);
-        color: var(--secondary-color);
+        border: 2px solid var(--border);
+        color: var(--text);
     }
     .btn-outline:hover {
-        background-color: var(--bg-color);
-        border-color: var(--secondary-color);
+        background-color: var(--surface-alt);
+        border-color: var(--text);
         transform: translateY(-1.5px);
     }
+
+    .btn-secondary {
+      background-color: var(--primary);
+      display: inline-block;
+      padding: 14px 32px;
+      border: 2px solid var(--primary);
+      border-radius: 30px;
+      background: var(--surface);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 15px;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+        transform: translateY(-1.5px);
+    }
+
+    .input,
+    .textarea,
+    .select,
+    .button {
+        font: var(--font-ui);
+    }
+    
     .hero-community {
         display: flex;
         align-items: center;
         gap: 16px;
     }
+
+    .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 32px;
+    }
+
     .avatar-group {
         display: flex;
     }
@@ -327,7 +733,7 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background-color: var(--secondary-color);
+        background-color: var(--text);
         color: #ffffff;
         display: flex;
         align-items: center;
@@ -342,36 +748,35 @@
     }
     .hero-community p {
         font-size: 13px;
-        color: var(--text-muted);
+        color: var(--text-light);
     }
 
-    /* Featured Post Card */
-    .featured-post {
-        background-color: var(--bg-color);
+    .hero-spotlight {
+        background-color: var(--surface-alt);
         border-radius: 20px;
         padding: 32px;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
         display: flex;
         flex-direction: column;
         transition: var(--transition);
     }
-    .featured-post:hover {
+    .hero-spotlight:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow-lg);
     }
-    .featured-image {
+    .hero-spotlight-image {
         height: 240px;
-        background-color: #e2e8f0;
+        background: var(--surface-alt);
         border-radius: 14px;
         margin-bottom: 24px;
         position: relative;
         overflow: hidden;
     }
-    .featured-overlay {
+    .hero-spotlight-overlay {
         position: absolute;
         top: 16px;
         left: 16px;
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         color: #ffffff;
         padding: 4px 14px;
         border-radius: 20px;
@@ -379,58 +784,56 @@
         font-weight: 700;
         text-transform: uppercase;
     }
-    .featured-post h2 {
+    .hero-spotlight h2 {
         font-size: 24px;
         line-height: 1.3;
         margin-bottom: 12px;
-        color: var(--secondary-color);
+        color: var(--text);
     }
-    .featured-post p {
-        color: var(--text-muted);
+    .hero-spotlight p {
+        color: var(--text-light);
         font-size: 15px;
         margin-bottom: 24px;
     }
-    .featured-meta {
+    .hero-spotlight-meta {
         display: flex;
         gap: 16px;
         font-size: 13px;
-        color: var(--text-muted);
+        color: var(--text-light);
         margin-bottom: 24px;
     }
 
     /* ==========================================================================
        UTILITY COMPONENTS & ZONES
        ========================================================================== */
-    /* Ad Zone */
     .ad-zone {
         padding: 24px 0;
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
     }
     .ad-placeholder {
         text-align: center;
     }
     .ad-label {
         font-size: 11px;
-        color: var(--text-muted);
+        color: var(--text-light);
         text-transform: uppercase;
         letter-spacing: 1.5px;
         display: block;
         margin-bottom: 10px;
     }
     .ad-box {
-        background-color: var(--bg-color);
-        border: 2px dashed var(--border-color);
+        background-color: var(--surface-alt);
+        border: 2px dashed var(--border);
         padding: 36px;
         font-size: 14px;
-        color: var(--text-muted);
+        color: var(--text-light);
         border-radius: 12px;
         font-weight: 500;
     }
 
-    /* Announcement Bar */
     .announcement-bar {
-        background-color: var(--secondary-color);
+        background-color: var(--text);
         color: #ffffff;
         padding: 12px 0;
         font-size: 14px;
@@ -443,7 +846,7 @@
         flex-wrap: wrap;
     }
     .announcement-badge {
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         padding: 3px 10px;
         border-radius: 6px;
         font-weight: 700;
@@ -451,16 +854,15 @@
         text-transform: uppercase;
     }
     .announcement-link {
-        color: var(--primary-color);
+        color: var(--primary);
         font-weight: 600;
         text-decoration: underline;
     }
 
-    /* Quick Access Bar */
     .quick-access {
         padding: 24px 0;
-        background-color: var(--bg-color);
-        border-bottom: 1px solid var(--border-color);
+        background-color: var(--surface-alt);
+        border-bottom: 1px solid var(--border);
     }
     .quick-access-wrapper {
         display: flex;
@@ -471,31 +873,30 @@
     .quick-title {
         font-size: 15px;
         font-weight: 700;
-        color: var(--secondary-color);
+        color: var(--text);
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-right: 12px;
     }
     .quick-pill {
-        background-color: #ffffff;
-        border: 1px solid var(--border-color);
+        background: var(--surface);
+        border: 1px solid var(--border);
         padding: 8px 18px;
         border-radius: 24px;
         font-size: 13px;
         font-weight: 600;
-        color: var(--secondary-color);
+        color: var(--text);
     }
     .quick-pill:hover {
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         color: #ffffff;
-        border-color: var(--primary-color);
+        border-color: var(--primary);
     }
 
-    /* Publication Stats */
     .stats {
         padding: 48px 0;
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
     }
     .stats-grid {
         display: grid;
@@ -509,12 +910,12 @@
     .stat-card h2 {
         font-size: 42px;
         font-weight: 800;
-        color: var(--primary-color);
+        color: var(--primary);
         margin-bottom: 6px;
         letter-spacing: -1px;
     }
     .stat-card p {
-        color: var(--text-muted);
+        color: var(--text-light);
         font-size: 14px;
         font-weight: 600;
         text-transform: uppercase;
@@ -522,7 +923,7 @@
     }
 
     /* ==========================================================================
-       SECTION WRAPPERS & GRIDS (GRID DESIGN SYSTEMS)
+       SECTION WRAPPERS & GRIDS
        ========================================================================== */
     .section {
         padding: 80px 0;
@@ -533,26 +934,25 @@
     }
     .section-header h2 {
         font-size: 36px;
-        color: var(--secondary-color);
+        color: var(--text);
         letter-spacing: -1px;
         margin-bottom: 12px;
     }
     .section-header p {
-        color: var(--text-muted);
+        color: var(--text-light);
         font-size: 16px;
     }
 
-    /* Featured Categories Grid */
     .category-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 32px;
     }
     .category-card {
-        background-color: #ffffff;
+        background: var(--surface);
         padding: 36px;
         border-radius: 16px;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
         display: flex;
         flex-direction: column;
         transition: var(--transition);
@@ -563,8 +963,8 @@
         border-color: rgba(255, 74, 87, 0.2);
     }
     .category-icon {
-        background-color: var(--bg-color);
-        color: var(--primary-color);
+        background-color: var(--surface-alt);
+        color: var(--primary);
         width: 54px;
         height: 54px;
         border-radius: 12px;
@@ -574,30 +974,29 @@
         font-weight: 800;
         font-size: 14px;
         margin-bottom: 24px;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
     }
     .category-card h3 {
         font-size: 20px;
-        color: var(--secondary-color);
+        color: var(--text);
         margin-bottom: 12px;
     }
     .category-card p {
-        color: var(--text-muted);
+        color: var(--text-light);
         font-size: 15px;
         margin-bottom: 24px;
         flex-grow: 1;
     }
     .category-link {
         font-weight: 700;
-        color: var(--primary-color);
+        color: var(--primary);
         font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
 
-    /* Featured Story Section (Split Grid Layout) */
     .featured-story {
-        background-color: var(--bg-color);
+        background-color: var(--surface-alt);
     }
     .featured-story-grid {
         display: grid;
@@ -605,41 +1004,36 @@
         gap: 60px;
         align-items: center;
     }
-    .featured-story-image {
+    .hero-spotlight-image {
         height: 400px;
-        background-color: #e2e8f0;
+        background: var(--surface-alt);
         border-radius: 20px;
         position: relative;
         overflow: hidden;
     }
 
-    .featured-story-image-link {
-    display:block;
-    width:100%;
-    height:100%;
+    .hero-spotlight-image-link {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
-    .featured-story-img {
-      display:block;
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .hero-spotlight-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .featured-story-img:hover {
+    .hero-spotlight-img:hover {
       transform: scale(1.05);
       transition: var(--transition);
     }
 
-    .featured-story-img a:hover {
-      transform: scale(1.05);
-      transition: var(--transition);
-    }
-
-    .story-badge {
+    .hero-spotlight-badge {
         position: absolute;
         top: 24px;
         left: 24px;
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         color: #ffffff;
         padding: 6px 16px;
         border-radius: 24px;
@@ -649,7 +1043,7 @@
         letter-spacing: 0.5px;
     }
     .story-category {
-        color: var(--primary-color);
+        color: var(--primary);
         font-weight: 700;
         text-transform: uppercase;
         font-size: 13px;
@@ -657,38 +1051,40 @@
         margin-bottom: 16px;
     }
      
-    .featured-story-content {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
+    .hero-spotlight-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
 
-    .featured-story-content h2 {
+    .hero-spotlight-content h2 {
         font-size: 40px;
-        color: var(--secondary-color);
+        color: var(--text);
         margin-bottom: 20px;
         line-height: 1.2;
         letter-spacing: -1px;
     }
-    .featured-story-content p {
-        color: var(--text-muted);
+    .hero-spotlight-content p {
+        color: var(--text-light);
         margin-bottom: 28px;
         font-size: 16px;
         line-height: 1.7;
     }
-    .story-meta {
-        display:flex;
-        gap:16px;
-        align-items:center;
-        margin-bottom:32px;
-        color:var(--text-muted);
-        font-size:14px;
+    .hero-spotlight-meta {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 32px;
+        color: var(--text-light);
+        font-size: 14px;
     }
+
+    
 
     /* Editors Picks Grid */
     .editors-picks {
-        background-color: #ffffff;
+        background: var(--surface);
     }
     .editors-picks .section-header {
         display: flex;
@@ -697,7 +1093,7 @@
         max-width: none;
     }
     .section-label {
-        color: var(--primary-color);
+        color: var(--primary);
         font-weight: 700;
         text-transform: uppercase;
         font-size: 13px;
@@ -708,14 +1104,16 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 32px;
+        counter-reset: editor-card;
     }
     .editor-card {
         display: flex;
         gap: 24px;
         padding: 24px;
         border-radius: 16px;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
         transition: var(--transition);
+        counter-increment: editor-card;
     }
     .editor-card:hover {
         transform: translateY(-4px);
@@ -724,11 +1122,14 @@
     .editor-number {
         font-size: 36px;
         font-weight: 800;
-        color: var(--border-color);
+        color: var(--border);
         line-height: 1;
     }
+    .editor-number::before {
+        content: counter(editor-card, decimal-leading-zero);
+    }
     .editor-category {
-        color: var(--primary-color);
+        color: var(--primary);
         font-weight: 700;
         font-size: 11px;
         text-transform: uppercase;
@@ -739,11 +1140,96 @@
         font-size: 18px;
         margin-bottom: 10px;
         line-height: 1.4;
-        color: var(--secondary-color);
+        color: var(--text);
+    }
+    .editor-card h3 a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .editor-card h3 a:hover {
+        color: var(--primary);
     }
     .editor-card p {
         font-size: 14px;
-        color: var(--text-muted);
+        color: var(--text-light);
+        align-self: flex-start;
+    }
+        
+    .editor-card-link {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .editor-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        min-width: 0;
+    }
+
+    .editor-image {
+        width: 84px;
+        height: 84px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background: var(--surface-alt);
+    }
+
+    .editor-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .35s ease;
+    }
+
+    .editor-card:hover .editor-image img {
+        transform: scale(1.05);
+    }
+
+    .editor-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    .editor-title {
+        margin: 0;
+        margin-bottom: 8px;
+        font-size: 1.15rem;
+        line-height: 1.35;
+        font-weight: 700;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .editor-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0 8px;
+    }
+
+    .editor-snippet {
+        margin: 0;
+        margin-top: 12px;
+        color: var(--text-light);
+        line-height: 1.7;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex-grow: 0;
     }
 
     /* Latest Articles Grid */
@@ -751,6 +1237,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
     }
     .mb-5 {
         margin-bottom: 40px;
@@ -761,28 +1248,35 @@
         gap: 32px;
     }
     .article-card {
-        background-color: #ffffff;
-        border-radius: 16px;
-        border: 1px solid var(--border-color);
-        overflow: hidden;
-        transition: var(--transition);
         display: flex;
         flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition);
     }
+
     .article-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
         box-shadow: var(--shadow-lg);
     }
     .article-image {
         height: 220px;
-        background-color: #e2e8f0;
+        background: var(--surface-alt);
         position: relative;
+        overflow: hidden;
+        transition: transform .35s ease;
+    }
+
+    .article-card:hover .article-image img{
+        transform: scale(1.03);
     }
     .article-badge {
         position: absolute;
         top: 16px;
         left: 16px;
-        background-color: var(--primary-color);
+        background-color: var(--primary);
         color: #ffffff;
         padding: 4px 12px;
         border-radius: 20px;
@@ -795,37 +1289,87 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        gap: 16px;
     }
     .article-meta {
         display: flex;
-        gap: 16px;
-        font-size: 12px;
-        color: var(--text-muted);
-        margin-bottom: 12px;
+        align-items: center;
+        gap: 8px;
+        font-size: .9rem;
+        color: var(--text-light);
     }
     .article-card h3 {
-        font-size: 20px;
-        margin-bottom: 12px;
-        line-height: 1.4;
-        color: var(--secondary-color);
+        margin: 0;
+        font-size: 1.7rem;
+        line-height: 1.3;
+        font-weight: 700;
     }
     .article-card p {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 24px;
-        line-height: 1.6;
-        flex-grow: 1;
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.8;
     }
     .article-link {
-        color: var(--primary-color);
+        margin-top: auto;
         font-weight: 700;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        color: var(--primary);
+        text-decoration: none;
     }
 
+    .article-link:hover {
+        text-decoration: underline;
+    }
+
+    /* ==========================================
+   ARTICLE HERO
+========================================== */
+.article-hero {
+    padding: 32px 0 16px;
+}
+
+.article-header {
+    max-width: var(--max-width);
+    margin: 0 auto 1.5rem;
+    padding: 0 24px;
+}
+
+.article-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.article-title {
+    margin: 0;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.article-summary {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 720px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.article-meta time,
+.article-meta span {
+    display: inline-flex;
+    align-items: center;
+}
+
     /* ==========================================================================
-       DYNAMIC BLOGGER WRAPPER STYLES
+       DYNAMIC BLOGGER WRAPPER STYLES & COMMENTS DESIGN SYSTEM
        ========================================================================== */
     .blog-posts {
         display: grid;
@@ -833,8 +1377,8 @@
         gap: 32px;
     }
     .post-outer {
-        background: #ffffff;
-        border: 1px solid var(--border-color);
+        background: var(--surface);
+        border: 1px solid var(--border);
         border-radius: 16px;
         overflow: hidden;
         transition: var(--transition);
@@ -848,29 +1392,45 @@
     .post-container {
         max-width: 800px;
         margin: 0 auto;
-        background: #ffffff;
-        padding: 48px;
+        background: var(--surface);
+        padding: 72px 80px;
         border-radius: 16px;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
     }
     .post-title {
         font-size: 42px;
-        color: var(--secondary-color);
+        color: var(--text);
         margin-bottom: 24px;
         line-height: 1.2;
     }
     .post-body {
         font-size: 17px;
         line-height: 1.8;
-        color: var(--text-color);
+        color: var(--text);
+    }
+    .post-body::after {
+        content: "";
+        display: block;
+        clear: both;
     }
     .post-body img {
         border-radius: 12px;
-        margin: 24px 0;
+        margin: 8px 32px 24px 0;
+        float: left;
+        max-width: 50%;
+        height: auto;
     }
-    .post-body h2, .post-body h3, .post-body h4 {
-        color: var(--secondary-color);
-        margin: 32px 0 16px;
+    .post-body h2 {
+        margin: 40px 0 1.5rem;
+        color: var(--text);
+    }
+    .post-body h3 {
+        margin: 3rem 0 1.25rem;
+        color: var(--text);
+    }
+    .post-body h4 {
+        margin: 2.25rem 0 1rem;
+        color: var(--text);
     }
     .post-body p {
         margin-bottom: 20px;
@@ -883,45 +1443,190 @@
         margin-bottom: 8px;
     }
     .post-body a {
-        color: var(--primary-color);
+        color: var(--primary);
         text-decoration: underline;
     }
     .post-body blockquote {
-        border-left: 4px solid var(--primary-color);
+        border-left: 4px solid var(--primary);
         padding-left: 20px;
         margin: 24px 0;
-        color: var(--text-muted);
+        color: var(--text-light);
         font-style: italic;
     }
     .post-body pre {
-        background: var(--bg-color);
+        background: var(--surface-alt);
         padding: 20px;
         border-radius: 8px;
         overflow-x: auto;
         margin: 20px 0;
     }
     .post-body code {
-        background: var(--bg-color);
+        background: var(--surface-alt);
         padding: 2px 6px;
         border-radius: 4px;
         font-size: 0.9em;
     }
+/* ==========================================================================
+   PHOENIX HOME HERO
+   ========================================================================== */
+
+.home-hero{
+    padding:4rem 0 3rem;
+}
+
+.home-hero__content{
+    max-width:760px;
+}
+
+.home-hero__eyebrow{
+    display:inline-block;
+    margin-bottom:1rem;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--primary);
+}
+
+.home-hero__title{
+    font-size:clamp(2.5rem,5vw,4rem);
+    line-height:1.1;
+    font-weight:800;
+    margin-bottom:1.5rem;
+    letter-spacing:-.03em;
+}
+
+.home-hero__description{
+    max-width:680px;
+    font-size:1.2rem;
+    line-height:1.8;
+    color:var(--text-light);
+    margin-bottom:2rem;
+}
+
+.home-hero__actions{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+    /* Author Card Styling */
+ 
+    .author-card-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    .author-card-info h4 {
+        font-size: 18px;
+        color: var(--text);
+        margin-bottom: 6px;
+    }
+    .author-card-info p {
+        font-size: 14px;
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Comments Section Styling Integration */
+    .comments-section-wrap {
+        margin-top: 48px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+    }
+    .comments h4 {
+        font-size: 24px;
+        color: var(--text);
+        margin-bottom: 24px;
+    }
+    #comments-block {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .comment-author {
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+    }
+    .comment-author a {
+        color: var(--primary);
+    }
+    .comment-body {
+        background: var(--surface-alt);
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        color: var(--text);
+        font-size: 15px;
+        border: 1px solid var(--border);
+    }
+    .comment-footer {
+        font-size: 13px;
+        color: var(--text-light);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .comment-footer a {
+        color: var(--text-light);
+    }
+    .comment-footer a:hover {
+        color: var(--primary);
+    }
+    .comment-form {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .comment-form h4 {
+        font-size: 20px;
+        color: var(--text);
+        margin-bottom: 12px;
+    }
+    .comment-form p {
+        color: var(--text-light);
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    #comment-editor {
+        background: var(--surface-alt);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        min-height: 250px;
+        width: 100%;
+    }
 
     /* Static Page Styles */
     .static-page-container {
-        max-width: 800px;
+        width: min(1200px, calc(100% - 48px));
         margin: 0 auto;
-        background: #ffffff;
-        padding: 48px;
-        border-radius: 16px;
-        border: 1px solid var(--border-color);
+        background: var(--surface);
+        padding: 64px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
     }
 
     /* ==========================================================================
        NEWSLETTER BOX
        ========================================================================== */
     .newsletter {
-        background-color: var(--secondary-color);
+        background-color: var(--text);
         color: #ffffff;
         padding: 96px 0;
     }
@@ -951,14 +1656,14 @@
         border-radius: 30px;
         border: 1px solid rgba(255,255,255,0.1);
         outline: none;
+        font: var(--font-ui);
         font-size: 15px;
-        font-family: inherit;
         background: rgba(255, 255, 255, 0.05);
         color: white;
         transition: var(--transition);
     }
     .newsletter-input:focus {
-        border-color: var(--primary-color);
+        border-color: var(--primary);
         background: rgba(255, 255, 255, 0.1);
     }
 
@@ -966,8 +1671,8 @@
        FOOTER (GRID & FLEXBOX SYSTEM)
        ========================================================================== */
     .site-footer {
-        background-color: #0d0d1a;
-        color: rgba(255, 255, 255, 0.7);
+        background: var(--secondary-color);
+        color: rgba(255, 255, 255, 0.72);
         padding: 80px 0 40px;
     }
     .footer-container {
@@ -986,19 +1691,22 @@
         flex-direction: column;
     }
     .footer-logo {
-        font-size: 28px;
+        font: var(--font-brand);
+        font-size: 30px;
         font-weight: 800;
+        letter-spacing: -0.03em;
         color: #ffffff;
         display: inline-block;
         margin-bottom: 16px;
     }
     .footer-logo span {
-        color: var(--primary-color);
+        color: var(--primary);
     }
     .footer-description {
         margin-bottom: 16px;
         font-size: 15px;
-        line-height: 1.6;
+        line-height: 1.8;
+        max-width: 340px;
     }
     .footer-tagline {
         font-size: 13px;
@@ -1012,11 +1720,11 @@
     }
     .footer-title {
         color: #ffffff;
-        font-size: 15px;
+        font-size: 0.9rem;
         font-weight: 700;
         margin-bottom: 24px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: .08em;
     }
     .footer-links {
         list-style: none;
@@ -1025,10 +1733,13 @@
         margin-bottom: 14px;
     }
     .footer-links a {
-        font-size: 14px;
+        font: var(--font-ui);
+        font-size: 0.95rem;
+        color: inherit;
     }
     .footer-links a:hover {
-        color: var(--primary-color);
+        color: var(--primary);
+        transition: color 0.25s ease;
     }
     .footer-social {
         display: flex;
@@ -1039,7 +1750,7 @@
         font-size: 14px;
     }
     .footer-social a:hover {
-        color: var(--primary-color);
+        color: var(--primary);
     }
     .footer-divider {
         border: none;
@@ -1050,7 +1761,11 @@
         display: flex;
         justify-content: space-between;
         font-size: 14px;
+        text-align: center;
+        flex-direction: column;
+        gap: 16px;
         align-items: center;
+        padding-top: 0.5rem;
     }
     .footer-copyright strong {
         color: #ffffff;
@@ -1060,7 +1775,7 @@
         font-weight: 600;
     }
     .footer-credit a:hover {
-        color: var(--primary-color);
+        color: var(--primary);
     }
 
     /* ==========================================================================
@@ -1101,19 +1816,41 @@
         }
         .nav-toggle {
             display: flex;
+            order:3;
         }
         .site-navigation {
-            display: none;
+            position:absolute;
+            top:100%;
+            left:0;
+            right:0;
+
+            background:#fff;
+
+            border-top:1px solid var(--border);
+
+            display:none;
+
+            z-index:999;
         }
+
+        .site-navigation
+        .main-menu-section,
+        .site-navigation
+        .widget.PageList{
+
+            width:100%;
+        }
+
+
         .navbar.is-nav-open .site-navigation {
             display: block;
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background-color: #ffffff;
+            background: var(--surface);
             padding: 30px 24px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
             box-shadow: var(--shadow-lg);
         }
         .navbar.is-nav-open .nav-menu {
@@ -1124,11 +1861,22 @@
             font-size: 18px;
             display: block;
         }
+        .nav-right {
+            gap:12px;
+            display:flex;
+            align-items:center;
+
+        }
         .nav-right .search-box, .nav-right .subscribe-btn {
             display: none;
         }
 
-        .category-grid, .editor-grid, .article-grid, .footer-navigation, .stats-grid {
+        .category-grid,
+        .editor-grid,
+        .article-grid,
+        .footer-navigation,
+        .stats-grid,
+        .blog-posts {
             grid-template-columns: 1fr;
             gap: 24px;
         }
@@ -1142,17 +1890,505 @@
         .newsletter-input {
             width: 100%;
         }
-        .footer-bottom {
-            flex-direction: column;
-            gap: 16px;
-            text-align: center;
-        }
         .post-container, .static-page-container {
             padding: 24px;
         }
         .post-title {
             font-size: 32px;
         }
+        .post-body img {
+            float: none;
+            max-width: 100%;
+            margin: 24px 0;
+            display: block;
+        }
+
+        .home-hero{
+            padding:2.5rem 0;
+        }
+
+        .home-hero__title {
+            font-size:2.2rem;
+        }
+
+        .home-hero__description {
+            font-size:1rem;
+        }
+
+        .home-hero__actions {
+            flex-direction:column;
+            align-items:stretch;
+        }
+
+        /* Latest Articles Header */
+        .flex-between{
+            flex-direction:column;
+            align-items:flex-start;
+            gap:1rem;
+        }
+
+        .flex-between .btn {
+            margin-top: 0;
+            align-self: flex-start;
+        }
+
+        .home-hero__actions .btn {
+            width:100%;
+        }
+
+        .flex-between {
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .flex-between h2 {
+            margin: 0;
+            width: 100%;
+        }
+
+        .flex-between .btn {
+            margin-top: .5rem;
+            align-self: flex-start;
+        }
+
+        .latest-articles-header {
+            margin-bottom: 2rem;
+        }
+
+        /* Mobile Search Button */
+        .search-toggle {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            width:44px;
+            height:44px;
+            border:none;
+            background:transparent;
+            cursor:pointer;
+            font-size:22px;
+            color:var(--text);
+            flex-shrink:0;
+            order:1;
+        }
+
+        .search-toggle:hover{
+            color:var(--primary);
+        }
+
+        .search-box{
+            display:none;
+            order:2;
+            position:relative;
+        }
+
+       .search-box.is-open{
+            display:flex;
+            align-items:center;
+            flex:1;
+            margin:0 12px;
+        }
+
+        .search-box.is-open input{
+            width:100%;
+        }
+
+        .search-close{
+            display:none;
+            position:absolute;
+            right:12px;
+            top:50%;
+            transform:translateY(-50%);
+            border:none;
+            background:transparent;
+            font-size:22px;
+            cursor:pointer;
+            color:var(--text-light);
+        }
+
+        .search-box.is-open .search-close{
+            display:block;
+        }
+
+        .search-box input{
+            padding-right:36px;
+        }
+
+        
+    }
+ /* ==========================================================================
+   PHOENIX MOBILE MENU
+ ========================================================================== */
+
+
+@media (max-width: 768px) {
+
+    .site-navigation {
+
+        display: none;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        background: var(--surface);
+
+        border-top: 1px solid var(--border);
+
+        box-shadow: var(--shadow-md);
+
+        z-index: 1000;
+    }
+
+    .site-navigation.active {
+        display: block;
+    }
+
+    .site-navigation .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-item a {
+        display: block;
+        padding: 1rem 1.5rem;
+    }
+}
+/* ==========================================================================
+   PHOENIX MOBILE NAVIGATION
+   ========================================================================== */
+
+
+.nav-toggle-line{
+
+    width:24px;
+    height:2px;
+
+    background:var(--text);
+
+    border-radius:999px;
+
+    transition:var(--transition);
+
+}
+    
+ /* ==========================================================================
+   PHOENIX AUTHOR CARD
+   ========================================================================== */
+
+.author-card {
+    max-width: var(--max-width);
+    margin: 3rem auto;
+    padding: 2rem;
+    transition:var(--transition);
+    background: var(--surface);
+    border: 1px solid rgba(15, 23, 42, 0.04);
+    border-radius: 28px;
+    box-shadow: 0 14px 42px rgba(15, 23, 42, 0.08);
+}
+    
+.author-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 60px rgba(15,23,42,.12);
+
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.author-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.author-card__avatar {
+    width: 124px;
+    height: 124px;
+    flex-shrink: 0;
+}
+
+.author-card__avatar svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.author-card__identity {
+    flex: 1;
+}
+
+.author-card__name {
+    margin: 0 0 0.75rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   BADGE
+   ========================================================================== */
+
+.author-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+
+    background: #E9F0FF;
+    color: #3F4E73;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.author-card__badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   BIO
+   ========================================================================== */
+
+.author-card__bio {
+    margin-bottom: 2rem;
+    padding:1.35rem 2rem;
+
+    background: #F7F9FF;
+    border: 1px solid #E8EDF9;
+    border-radius: 999px;
+
+    color: var(--text);
+
+    font-size:1.18rem;
+    font-weight:500;
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* ==========================================================================
+   ACTIONS
+   ========================================================================== */
+
+.author-card__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.author-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 60px;
+    padding: 0 1.5rem;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font: var(--font-ui);
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.author-btn--secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.author-btn--secondary:hover {
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-sm);
+}
+
+.author-btn--primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.author-btn--primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow:var(--shadow-md);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    .author-card {
+        padding: 1.5rem;
+    }
+
+    .author-card__header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .author-card__name {
+        font-size: 1.75rem;
+    }
+
+    .author-card__bio {
+        padding: 1.4rem;
+        border-radius: 22px;
+        font-size: 1.05rem;
+    }
+
+    .author-card__actions {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/*==========================
+ Buttons
+==========================*/
+
+
+.author-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    padding:1rem;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+/* Outline */
+
+
+
+.author-btn-outline:hover{
+
+    background:var(--surface-alt);
+
+}
+
+/* Primary */
+
+
+
+.author-btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/*==========================
+ Responsive
+==========================*/
+
+@media (max-width:768px){
+
+.author-card{
+
+    padding:2rem;
+
+}
+
+
+
+
+
+
+.author-actions{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+    /* PHOENIX BLOG PAGER */
+    .phoenix-pager {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      box-sizing: border-box;
+      font: var(--font-ui);
+    }
+    .phoenix-pager a {
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+    .pager-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text);
+      padding: 10px 16px;
+      background: var(--surface-alt);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pager-nav-link:hover {
+      background: var(--surface);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .pager-home-link {
+      font-weight: 500;
+      font: var(--font-ui);
+      color: var(--text-light);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    .pager-home-link:hover {
+      color: var(--primary);
+    }
+    .spacer {
+      width: 140px;
+    }
+    .mobile-desktop-link {
+      display: none; 
+    }
+    
+    @media (max-width: 768px) {
+      .phoenix-pager {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .pager-home-wrap {
+        order: 3;
+      }
+      .spacer {
+        display: none;
+      }
     }
     ]]></b:skin>
   </head>
@@ -1177,7 +2413,7 @@
               <b:widget-setting name='displayWidth'>0</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
-              <a aria-label='Alemondem home' class='logo' href='/'> Alemon<span>dem</span>
+              <a aria-label='Alemondem home' class='logo' href='/'> Alemond<span>em</span>
               </a>
             </b:includable>
             <b:includable id='description'>
@@ -1203,7 +2439,7 @@
             showaddelement='no'>
             <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
               <b:widget-settings>
-                <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"https://alemondem.blogspot.com/uiux","position":2,"title":"UI/UX"},"link0":{"href":"http://alemondem.blogspot.com/","position":0,"title":"Home"},"5677845707664360958":{"href":"https://alemondem.blogspot.com/p/artificial-intelligent-ai.html","position":1,"title":"Artificial Intelligent (AI)"},"link3":{"href":"https://alemondem.blogspot.com/p/about.html","position":4,"title":"About Alemondem"},"link2":{"href":"https://alemondem.blogspot.com/marketing","position":3,"title":"Marketing"}}]]></b:widget-setting>
+                <b:widget-setting name='pageListJson'><![CDATA[{"5660567775342434031":{"href":"https://alemondem.blogspot.com/p/digital-marketing.html","position":2,"title":"UI/UX"},"1588941907914622953":{"href":"https://alemondem.blogspot.com/p/digital-marketing_0281831331.html","position":3,"title":"Digital Mktg."},"link0":{"href":"http://alemondem.blogspot.com/","position":0,"title":"Home"},"5677845707664360958":{"href":"https://alemondem.blogspot.com/p/artificial-intelligent-ai.html","position":1,"title":"AI"},"4112724525160315749":{"href":"https://alemondem.blogspot.com/p/about-us.html","position":4,"title":"About"}}]]></b:widget-setting>
                 <b:widget-setting name='homeTitle'>Home</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
@@ -1243,13 +2479,20 @@
                   stroke-linejoin='round' stroke-width='2' />
               </svg>
             </span>
-            <input autocomplete='off' id='site-search' name='q' placeholder='Search...'
-              type='search' />
+            <input aria-label='Search articles' autocomplete='off' id='site-search' name='q'
+              placeholder='Search...' type='search' />
+            <button aria-label='Close search' class='search-close' type='button'>
+              &#215;
+            </button>
           </form>
 
           <a class='subscribe-btn' href='#newsletter'>
             Subscribe
           </a>
+          <button aria-label='Open search' class='search-toggle' type='button'>
+            🔍
+          </button>
+
 
           <button aria-controls='primary-navigation' aria-expanded='false'
             aria-label='Open navigation menu' class='nav-toggle' type='button'>
@@ -1299,11 +2542,11 @@
             <b:includable id='main'>
               <div class='container'>
                 <div class='announcement-content'>
-                  <span class='announcement-badge'>New</span>
+                  <span aria-hidden='true' class='announcement-badge'>New</span>
                   <span class='announcement-text'>
                     AI Tools Every Digital Marketer Should Know in 2026
                   </span>
-                  <a class='announcement-link' href='#'>
+                  <a class='announcement-link' href='/search'>
                     Read Guide
                   </a>
                 </div>
@@ -1312,15 +2555,24 @@
           </b:widget>
         </b:section>
 
-        <b:section class='hero' id='hero' maxwidgets='1' showaddelement='yes'>
-          <b:widget id='HTML3' locked='false' title='Hero Section' type='HTML' version='1'>
+        <b:section class='hero' id='hero' maxwidgets='3' showaddelement='yes'>
+          <b:widget id='FeaturedPost1' locked='false' title='Featured Post' type='FeaturedPost'
+            version='1'>
             <b:widget-settings>
-              <b:widget-setting name='content' />
+              <b:widget-setting name='showSnippet'>true</b:widget-setting>
+              <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+              <b:widget-setting name='postId'>1795613189726659819</b:widget-setting>
+              <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+              <b:widget-setting name='useMostRecentPost'>false</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
+              <b:include name='content' />
+              <b:include name='quickedit' />
+            </b:includable>
+            <b:includable id='content'>
               <div class='container hero-grid'>
                 <div class='hero-content'>
-                  <p class='hero-label'>
+                  <p aria-hidden='true' class='hero-label'>
                     Artificial Intelligence &#8226; UI/UX Design &#8226; Digital Marketing
                   </p>
                   <h1 class='hero-title' id='hero-title'>
@@ -1329,15 +2581,14 @@
                   <p class='hero-description'>
                     Explore practical insights on Artificial Intelligence, UI/UX Design, Web
                     Development, Digital Marketing, Branding, and emerging
-                    technologies&#8212;designed to
-                    help you learn, create, and grow.
+                    technologies&#8212;designed to help you learn, create, and grow.
                   </p>
                   <div aria-label='Featured actions' class='hero-buttons'>
-                    <a class='btn btn-primary' href='#latest-articles'>
+                    <a class='btn btn-primary' href='/search'>
                       Explore Articles
                     </a>
-                    <a class='btn btn-outline' href='#'>
-                      Browse Tutorials
+                    <a class='btn btn-outline' href='/p/about-us.html'>
+                      About Alemondem
                     </a>
                   </div>
                   <div aria-label='Reader community' class='hero-community'>
@@ -1353,46 +2604,89 @@
                     </div>
                   </div>
                 </div>
-                <article aria-labelledby='featured-post-title' class='featured-post'>
-                  <div aria-label='Featured article artwork' class='featured-image' role='img'>
-                    <span class='featured-overlay'>Featured</span>
+
+                <article class='hero-spotlight'>
+                  <div class='hero-spotlight-image'>
+                    <span aria-hidden='true' class='hero-spotlight-badge'>
+                      Today&#39;s Focus
+                    </span>
+                    <a class='hero-spotlight-image-link' expr:href='data:postUrl'>
+                      <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+                        <img class='hero-spotlight-img' decoding='async' expr:alt='data:postTitle'
+                          expr:src='data:postFirstImage' fetchpriority='high' height='450'
+                          loading='eager' width='800' />
+                        <b:else />
+                        <img alt='Featured Story' class='hero-spotlight-img'
+                          src='https://via.placeholder.com/800x450?text=Featured+Story' />
+                      </b:if>
+                    </a>
                   </div>
-                  <h2 id='featured-post-title'>
-                    The Future of AI in Digital Creativity
-                  </h2>
-                  <p>
-                    Discover how artificial intelligence is transforming design, marketing,
-                    branding, and software development.
-                  </p>
-                  <div aria-label='Article details' class='featured-meta'>
-                    <span>8 min read</span>
-                    <time datetime='2026-07'>July 2026</time>
-                  </div>
-                  <a class='btn btn-primary' href='#'>
-                    Read Article
-                  </a>
+
+                  <article class='hero-spotlight-content'>
+                    <p class='story-category'>
+                      TODAY&#39;S INSIGHT
+                    </p>
+                    <h2 id='hero-spotlight-title'>
+                      <a expr:href='data:postUrl'>
+                        <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+                          <data:postTitle />
+                        <b:else /> Featured Story </b:if>
+                      </a>
+                    </h2>
+                    <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+                      <p>
+                        <data:postSummary />
+                      </p>
+                      <b:else />
+                      <p>
+                        Read this featured article selected by the editor.
+                      </p>
+                    </b:if>
+                    <div class='hero-spotlight-meta'>
+                      <b:if cond='data:postDate'>
+                        <time expr:datetime='data:postDate'>
+                          <data:postDate />
+                        </time>
+                      </b:if>
+                    </div>
+                    <a expr:href='data:postUrl'> Read <data:postTitle />
+                    </a>
+                  </article>
                 </article>
               </div>
             </b:includable>
           </b:widget>
-        </b:section>
-
-        <b:section class='quick-access' id='quick-access' maxwidgets='1' showaddelement='yes'>
-          <b:widget id='HTML4' locked='false' title='Trending Topics' type='HTML' version='1'>
+          <b:widget id='HTML3' locked='false' title='Hero Section' type='HTML' version='1'>
             <b:widget-settings>
               <b:widget-setting name='content' />
             </b:widget-settings>
             <b:includable id='main'>
+              <!-- Reserved for future Hero enhancements -->
+            </b:includable>
+          </b:widget>
+        </b:section>
+
+        <b:section class='quick-access' id='quick-access' maxwidgets='2' showaddelement='yes'>
+          <b:widget id='Label1' locked='false' title='Labels' type='Label' version='1'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'>Artificial Intelligence,Digital
+                Marketing,UI/UX</b:widget-setting>
+              <b:widget-setting name='showType'>USER_SELECTED</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
               <div class='container'>
                 <div class='quick-access-wrapper'>
-                  <h2 class='quick-title' id='trending-title'>Trending</h2>
-                  <a class='quick-pill' href='/search/label/AI'>AI</a>
-                  <a class='quick-pill' href='/search/label/UI-UX'>UI/UX</a>
-                  <a class='quick-pill' href='/search/label/Marketing'>Digital Marketing</a>
-                  <a class='quick-pill' href='/search/label/Development'>Web Development</a>
-                  <a class='quick-pill' href='/search/label/Branding'>Branding</a>
-                  <a class='quick-pill' href='/search/label/TechNews'>Tech News</a>
-                  <a class='quick-pill' href='/search/label/Tutorials'>Tutorials</a>
+                  <h2 class='quick-title' id='trending-title'>
+                    Explore Topics
+                  </h2>
+                  <b:loop values='data:labels' var='label'>
+                    <a class='quick-pill' expr:href='data:label.url'>
+                      <data:label.name />
+                    </a>
+                  </b:loop>
                 </div>
               </div>
             </b:includable>
@@ -1408,19 +2702,19 @@
               <div class='container'>
                 <div class='stats-grid'>
                   <article class='stat-card'>
-                    <h2>7+</h2>
-                    <p>Core Topics</p>
+                    <h2>AI</h2>
+                    <p>Innovation First</p>
                   </article>
                   <article class='stat-card'>
-                    <h2>New</h2>
-                    <p>Growing Weekly</p>
+                    <h2>UX</h2>
+                    <p>Human-Centered Design</p>
                   </article>
                   <article class='stat-card'>
-                    <h2>100%</h2>
-                    <p>Original Content</p>
+                    <h2>Tech</h2>
+                    <p>Practical Tutorials</p>
                   </article>
                   <article class='stat-card'>
-                    <h2>24/7</h2>
+                    <h2>Grow/7</h2>
                     <p>Continuous Learning</p>
                   </article>
                 </div>
@@ -1442,38 +2736,38 @@
                     insights.</p>
                 </div>
                 <div class='category-grid'>
-                  <a class='category-card' href='/search/label/AI'>
-                    <div aria-hidden='true' class='category-icon'>AI</div>
+                  <a class='category-card' href='/search/label/Artificial%20Intelligence'>
+                    <span aria-hidden='true' class='category-icon'>AI</span>
                     <h3>Artificial Intelligence</h3>
                     <p>Explore AI, machine learning, automation, and LLMs.</p>
                     <span class='category-link'>Explore</span>
                   </a>
-                  <a class='category-card' href='/search/label/UI-UX'>
-                    <div aria-hidden='true' class='category-icon'>UX</div>
+                  <a class='category-card' href='/search/label/UI%2FUX'>
+                    <span aria-hidden='true' class='category-icon'>UX</span>
                     <h3>UI/UX Design</h3>
                     <p>Design modern interfaces and improve user experiences.</p>
                     <span class='category-link'>Explore</span>
                   </a>
-                  <a class='category-card' href='/search/label/Development'>
-                    <div aria-hidden='true' class='category-icon'>DEV</div>
+                  <a class='category-card' href='/search/label/Web%20Development'>
+                    <span aria-hidden='true' class='category-icon'>DEV</span>
                     <h3>Web Development</h3>
                     <p>HTML, CSS, JavaScript, and modern development practices.</p>
                     <span class='category-link'>Explore</span>
                   </a>
-                  <a class='category-card' href='/search/label/Marketing'>
-                    <div aria-hidden='true' class='category-icon'>SEO</div>
+                  <a class='category-card' href='/search/label/Digital%20Marketing'>
+                    <span aria-hidden='true' class='category-icon'>SEO</span>
                     <h3>Digital Marketing</h3>
                     <p>SEO, social media, advertising, and digital strategy.</p>
                     <span class='category-link'>Explore</span>
                   </a>
                   <a class='category-card' href='/search/label/Branding'>
-                    <div aria-hidden='true' class='category-icon'>BR</div>
+                    <span aria-hidden='true' class='category-icon'>BR</span>
                     <h3>Branding &amp; Digital Strategy</h3>
                     <p>Build memorable brands and engaging campaigns.</p>
                     <span class='category-link'>Explore</span>
                   </a>
-                  <a class='category-card' href='/search/label/TechNews'>
-                    <div aria-hidden='true' class='category-icon'>NEWS</div>
+                  <a class='category-card' href='/search/label/Tech%20News'>
+                    <span aria-hidden='true' class='category-icon'>NEWS</span>
                     <h3>Technology &amp; Tutorials</h3>
                     <p>Stay updated with the latest tools, trends, and guides.</p>
                     <span class='category-link'>Explore</span>
@@ -1484,103 +2778,7 @@
           </b:widget>
         </b:section>
         <b:section class='section featured-story' id='featured-story' maxwidgets='1'
-          showaddelement='yes'>
-          <b:widget id='FeaturedPost1' locked='false' title='Featured Post' type='FeaturedPost'
-            version='1'>
-            <b:widget-settings>
-              <b:widget-setting name='showSnippet'>true</b:widget-setting>
-              <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-              <b:widget-setting name='postId'>1795613189726659819</b:widget-setting>
-              <b:widget-setting name='showFirstImage'>true</b:widget-setting>
-              <b:widget-setting name='useMostRecentPost'>false</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main'>
-
-              <b:include name='content' />
-
-              <b:include name='quickedit' />
-
-            </b:includable>
-            <b:includable id='content'>
-
-              <div class='container'>
-
-                <div class='featured-story-grid'>
-
-                  <!-- Featured Image -->
-                  <div class='featured-story-image'>
-
-                    <span class='story-badge'>
-                      Featured Story
-                    </span>
-
-                    <a class='featured-story-image-link' expr:href='data:postUrl'>
-
-                      <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
-                        <img class='featured-story-img' expr:alt='data:postTitle'
-                          expr:src='data:postFirstImage' />
-                        <b:else />
-                        <img alt='Featured Story' class='featured-story-img'
-                          src='https://via.placeholder.com/800x450?text=Featured+Story' />
-                      </b:if>
-
-                    </a>
-
-                  </div>
-
-                  <!-- Featured Content -->
-                  <article class='featured-story-content'>
-
-                    <p class='story-category'>
-                      FEATURED INSIGHT
-                    </p>
-
-                    <h2 id='featured-story-title'>
-
-                      <a expr:href='data:postUrl'>
-
-                        <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
-                          <data:postTitle />
-            <b:else /> Featured Story </b:if>
-
-                      </a>
-
-                    </h2>
-
-                    <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
-                      <p>
-                        <data:postSummary />
-                      </p>
-                      <b:else />
-                      <p>
-                        Read this featured article selected by the editor.
-                      </p>
-                    </b:if>
-
-                    <div aria-label='Story details' class='story-meta'>
-
-                      <b:if cond='data:postDate'>
-                        <time expr:datetime='data:postDate'>
-                          <data:postDate />
-                        </time>
-                      </b:if>
-
-                    </div>
-
-                    <a class='btn btn-primary' expr:href='data:postUrl'>
-                      Read Full Story
-                    </a>
-
-                  </article>
-
-                </div>
-
-              </div>
-
-            </b:includable>
-          </b:widget>
-        </b:section>
-
+          showaddelement='yes' />
 
         <b:section class='ad-zone' id='ad-zone-homepage' maxwidgets='1' showaddelement='yes'>
           <b:widget id='HTML8' locked='false' title='Sponsored Content Ad' type='HTML' version='1'>
@@ -1601,58 +2799,72 @@
           </b:widget>
         </b:section>
 
-        <b:section class='section editors-picks' id='editors-picks' maxwidgets='1'
+        <b:section class='section editors-picks' id='editors-picks' maxwidgets='3'
           showaddelement='yes'>
-          <b:widget id='HTML9' locked='false' title='Editor&apos;s Picks' type='HTML' version='1'>
+          <b:widget id='PopularPosts1' locked='false' title='' type='PopularPosts' version='1'>
             <b:widget-settings>
-              <b:widget-setting name='content' />
+              <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+              <b:widget-setting name='showSnippets'>true</b:widget-setting>
+              <b:widget-setting name='timeRange'>LAST_YEAR</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
               <div class='container'>
                 <div class='section-header'>
                   <div>
                     <p class='section-label'>Editor&#39;s Picks</p>
-                    <h2 id='editors-picks-title'>Handpicked Articles</h2>
+                    <b:if cond='data:title != &quot;&quot;'>
+                      <h2 id='editors-picks-title'>
+                        <data:title />
+                      </h2>
+                      <b:else />
+                      <h2 id='editors-picks-title'>Handpicked Articles</h2>
+                    </b:if>
                     <p>Our most valuable guides selected for designers, developers, and digital
                       marketers.</p>
                   </div>
-                  <a class='btn btn-outline' href='#'>
+                  <a class='btn btn-outline' href='/search'>
                     Explore All
                   </a>
                 </div>
-                <div class='editor-grid'>
-                  <article class='editor-card'>
-                    <div aria-hidden='true' class='editor-number'>01</div>
-                    <div>
-                      <p class='editor-category'>AI</p>
-                      <h3>10 AI Tools Every Digital Marketer Should Know</h3>
-                      <p>Improve productivity, automate repetitive tasks, and create better content
-                        faster.</p>
-                    </div>
-                  </article>
-                  <article class='editor-card'>
-                    <div aria-hidden='true' class='editor-number'>02</div>
-                    <div>
-                      <p class='editor-category'>UI/UX</p>
-                      <h3>Building Interfaces People Love</h3>
-                      <p>Learn practical design techniques that increase engagement and usability.</p>
-                    </div>
-                  </article>
-                  <article class='editor-card'>
-                    <div aria-hidden='true' class='editor-number'>03</div>
-                    <div>
-                      <p class='editor-category'>Branding</p>
-                      <h3>Branding Strategies for Modern Businesses</h3>
-                      <p>Discover how memorable brands are created through consistency and
-                        storytelling.</p>
-                    </div>
-                  </article>
+                <div class='editor-grid popular-posts'>
+                  <b:loop values='data:posts' var='post'>
+                    <article class='editor-card'>
+                      <a class='editor-card-link' expr:href='data:post.href'>
+                        <div class='editor-header'>
+                          <div class='editor-image'>
+                            <b:if cond='data:post.featuredImage'>
+                              <img expr:alt='data:post.title'
+                                expr:src='resizeImage(data:post.featuredImage, 320, &quot;16:9&quot;)' />
+                            </b:if>
+                          </div>
+                        </div>
+
+                        <div class='editor-content'>
+                          <h3 class='editor-title'>
+                            <data:post.title />
+                          </h3>
+                          <div class='editor-meta'>
+                            <div aria-hidden='true' class='editor-number' />
+                            <p class='editor-category'>
+                              <b:if cond='data:post.labels'>
+                                <data:post.labels.first.name />
+                              <b:else /> Article </b:if>
+                            </p>
+                          </div>
+                          <p class='editor-snippet'>
+                            <data:post.snippet />
+                          </p>
+                        </div>
+                      </a>
+                    </article>
+                  </b:loop>
                 </div>
+                <b:include name='quickedit' />
               </div>
             </b:includable>
           </b:widget>
         </b:section>
-
       </b:if>
 
       <!-- ============================================ -->
@@ -1660,7 +2872,6 @@
       <!-- ============================================ -->
       <section class='section'>
         <div class='container'>
-
           <b:section class='main' id='main' showaddelement='yes'>
             <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
               <b:widget-settings>
@@ -1690,8 +2901,9 @@
 
                 <!-- HOMEPAGE: Show posts in grid with title -->
                 <b:if cond='data:blog.url == data:blog.homepageUrl'>
-                  <div class='flex-between mb-5'>
-                    <h2>Dynamic Feed Articles</h2>
+                  <b:include name='phoenix-home-hero' />
+                  <div class='flex-between latest-articles-header'>
+                    <h2>Latest Articles</h2>
                     <a class='btn btn-outline' href='/search'>View All</a>
                   </div>
                   <div class='blog-posts hfeed'>
@@ -1701,7 +2913,7 @@
                           <div aria-label='Article Image' class='article-image'
                             expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;) center/cover;&quot;'
                             role='img'>
-                            <span class='article-badge'>Latest</span>
+                            <span aria-hidden='true' class='article-badge'>Latest</span>
                           </div>
                           <b:else />
                           <div aria-label='Default Image' class='article-image' role='img'>
@@ -1743,29 +2955,55 @@
                   </b:loop>
                 </b:if>
 
-                <!-- SINGLE POST PAGE: Render full post content inside required array loops -->
+                <!-- SINGLE POST PAGE -->
                 <b:if cond='data:blog.pageType == &quot;item&quot;'>
                   <b:loop values='data:posts' var='post'>
-                    <div class='post-container'>
-                      <h1 class='post-title'>
-                        <data:post.title />
-                      </h1>
-                      <div class='article-meta'>
-                        <time expr:datetime='data:post.timestampISO8601'>
-                          <data:post.timestamp />
-                        </time>
-                        <span>
-                          <data:post.author />
-                        </span>
-                      </div>
-                      <div class='post-body'>
-                        <data:post.body />
-                      </div>
+                    <div class='article-page'>
+                      <section class='article-hero'>
+                        <div class='container'>
+                          <div class='article-header'>
+                            <span class='article-eyebrow'>ARTICLE</span>
+                            <h1 class='article-title'>
+                              <data:post.title />
+                            </h1>
+                            <p class='article-summary'>
+                              <data:post.snippet />
+                            </p>
+                            <div class='article-meta'>
+                              <time expr:datetime='data:post.timestampISO8601'>
+                                <data:post.timestamp />
+                              </time>
+                              <span class='meta-divider'>&#8226;</span>
+                              <span class='article-author'>
+                                <data:post.author />
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class='article-content'>
+                        <div class='container'>
+                          <div class='post-body'>
+                            <data:post.body />
+                          </div>
+
+                          <!-- Phoenix Author Card -->
+                          <b:include data='post' name='phoenix-author-card' />
+
+                          <!-- Comments Section Integration -->
+                          <div class='comments-section-wrap'>
+                            <b:include data='post' name='comment_picker' />
+                          </div>
+                        </div>
+                      </section>
                     </div>
+                    <b:include name='nextprev' />
+
                   </b:loop>
                 </b:if>
 
-                <!-- ARCHIVE/LABEL/SEARCH PAGES: Dynamic catch-all rule for alternative feeds -->
+                <!-- ARCHIVE/LABEL/SEARCH PAGES -->
                 <b:if
                   cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;} and data:blog.url != data:blog.homepageUrl'>
                   <h2 class='mb-5'>
@@ -1792,7 +3030,9 @@
                             </time>
                           </div>
                           <h3>
-                            <a expr:href='data:post.url'>
+                            <a
+                              expr:aria-label='data:post.title ? data:post.title : &quot;Read article&quot;'
+                              expr:href='data:post.url'>
                               <data:post.title />
                             </a>
                           </h3>
@@ -1805,9 +3045,6 @@
                     </b:loop>
                   </div>
                 </b:if>
-
-                <!-- Blog Pagination for homepage, archive, and search pages -->
-                <b:include name='nextprev' />
 
               </b:includable>
               <b:includable id='backlinkDeleteIcon' var='backlink' />
@@ -1847,8 +3084,8 @@
                   </b:if>
                   <data:post.cmtfpIframe />
                   <script type='text/javascript'>
-      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
-    </script>
+                    BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                  </script>
                 </div>
               </b:includable>
               <b:includable id='commentDeleteIcon' var='comment'>
@@ -1860,7 +3097,7 @@
                     <b:else />
                     <a class='comment-delete' expr:href='data:comment.deleteUrl'
                       expr:title='data:top.deleteCommentMsg'>
-                      <img src='https://resources.blogblog.com/img/icon_delete13.gif' />
+                      <img alt='' src='https://resources.blogblog.com/img/icon_delete13.gif' />
                     </a>
                   </b:if>
                 </span>
@@ -1882,7 +3119,6 @@
                   <a name='comments' />
                   <b:if cond='data:post.allowComments'>
                     <h4><data:post.commentLabelFull />:</h4>
-
                     <b:if cond='data:post.commentPagingRequired'>
                       <span class='paging-control-container'>
                         <b:if cond='data:post.hasOlderLinks'>
@@ -1892,9 +3128,7 @@
                             expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
                             <data:post.olderLinkText />
                           </a> &#160; </b:if>
-
                         <data:post.commentRangeText />
-
                         <b:if cond='data:post.hasNewerLinks'> &#160; <a
                             expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
                             <data:post.newerLinkText />
@@ -1905,15 +3139,14 @@
                         </b:if>
                       </span>
                     </b:if>
-
                     <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
                       <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
                         <b:loop values='data:post.comments' var='comment'>
                           <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass'
                             expr:id='data:comment.anchorName'>
                             <b:if cond='data:comment.favicon'>
-                              <img expr:src='data:comment.favicon' height='16px'
-                                style='margin-bottom:-2px;' width='16px' />
+                              <img alt='Comment author icon' expr:src='data:comment.favicon'
+                                height='16px' style='margin-bottom:-2px;' width='16px' />
                             </b:if>
                             <a expr:name='data:comment.anchorName' />
                             <b:if cond='data:blog.enabledCommentProfileImages'>
@@ -1951,27 +3184,6 @@
                         </b:loop>
                       </dl>
                     </div>
-
-                    <b:if cond='data:post.commentPagingRequired'>
-                      <span class='paging-control-container'>
-                        <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
-                          <data:post.oldestLinkText />
-                        </a>
-          <a
-                          expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
-                          <data:post.olderLinkText />
-                        </a> &#160; <data:post.commentRangeText />
-                        &#160; <a expr:class='data:post.newLinkClass'
-                          expr:href='data:post.newerLinkUrl'>
-                          <data:post.newerLinkText />
-                        </a>
-          <a
-                          expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
-                          <data:post.newestLinkText />
-                        </a>
-                      </span>
-                    </b:if>
-
                     <p class='comment-footer'>
                       <b:if cond='data:post.embedCommentForm'>
                         <b:if cond='data:post.allowNewComments'>
@@ -1987,26 +3199,16 @@
                       </b:if>
                     </p>
                   </b:if>
-                  <b:if cond='data:showCmtPopup'>
-                    <div id='comment-popup'>
-                      <iframe allowtransparency='true' frameborder='0' id='comment-actions'
-                        name='comment-actions' scrolling='no'>
-                      </iframe>
-                    </div>
-                  </b:if>
-
                 </div>
               </b:includable>
               <b:includable id='feedLinks'>
-                <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
+                <b:if cond='data:blog.pageType != &quot;item&quot;'>
                   <b:if cond='data:feedLinks'>
                     <div class='blog-feeds'>
                       <b:include data='feedLinks' name='feedLinksBody' />
                     </div>
                   </b:if>
-
-                  <b:else /> <!--Post
-                  feed links -->
+                  <b:else />
                   <div class='post-feeds'>
                     <b:loop values='data:posts' var='post'>
                       <b:include cond='data:post.allowComments and data:post.feedLinks'
@@ -2025,8 +3227,6 @@
                 </div>
               </b:includable>
               <b:includable id='iframe_comments' var='post'>
-                <!-- G+ comments, no longer available. The includable is retained for
-                backwards-compatibility. -->
               </b:includable>
               <b:includable id='mobile-index-post' var='post'>
                 <div class='mobile-date-outer date-outer'>
@@ -2037,48 +3237,34 @@
                       </span>
                     </div>
                   </b:if>
-
                   <div class='mobile-post-outer'>
                     <a expr:href='data:post.url'>
                       <h3 class='mobile-index-title entry-title' itemprop='name'>
                         <data:post.title />
                       </h3>
-
                       <div class='mobile-index-arrow'>&amp;rsaquo;</div>
-
                       <div class='mobile-index-contents'>
                         <b:if cond='data:post.thumbnailUrl'>
                           <div class='mobile-index-thumbnail'>
                             <div class='Image'>
-                              <img expr:src='data:post.thumbnailUrl' />
+                              <img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl' />
                             </div>
                           </div>
                         </b:if>
-
                         <div class='post-body'>
                           <b:if cond='data:post.snippet'>
                             <data:post.snippet />
                           </b:if>
                         </div>
                       </div>
-
                       <div style='clear: both;' />
                     </a>
-
-                    <div class='mobile-index-comment'>
-                      <b:include
-                        cond='data:blog.pageType != &quot;static_page&quot;                          and data:post.allowComments                          and data:post.numComments != 0'
-                        data='post' name='comment_count_picker' />
-                    </div>
                   </div>
                 </div>
               </b:includable>
               <b:includable id='mobile-main' var='top'>
-                <!-- posts -->
                 <div class='blog-posts hfeed'>
-
                   <b:include data='top' name='status-message' />
-
                   <b:if cond='data:blog.pageType == &quot;index&quot;'>
                     <b:loop values='data:posts' var='post'>
                       <b:include data='post' name='mobile-index-post' />
@@ -2089,7 +3275,6 @@
                     </b:loop>
                   </b:if>
                 </div>
-
                 <b:include name='mobile-nextprev' />
               </b:includable>
               <b:includable id='mobile-nextprev'>
@@ -2101,7 +3286,6 @@
                         expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
                     </div>
                   </b:if>
-
                   <b:if cond='data:olderPageUrl'>
                     <div class='mobile-link-button' id='blog-pager-older-link'>
                       <a class='blog-pager-older-link' expr:href='data:olderPageUrl'
@@ -2109,19 +3293,11 @@
                         expr:title='data:olderPageTitle'>&amp;rsaquo;</a>
                     </div>
                   </b:if>
-
                   <div class='mobile-link-button' id='blog-pager-home-link'>
                     <a class='home-link' expr:href='data:blog.homepageUrl'>
                       <data:homeMsg />
                     </a>
                   </div>
-
-                  <div class='mobile-desktop-link'>
-                    <a class='home-link' expr:href='data:desktopLinkUrl'>
-                      <data:desktopLinkMsg />
-                    </a>
-                  </div>
-
                 </div>
                 <div class='clear' />
               </b:includable>
@@ -2136,7 +3312,6 @@
                   </b:if>
                   <div class='date-posts'>
                     <div class='post-outer'>
-
                       <div class='post hentry uncustomized-post-template' itemscope='itemscope'
                         itemtype='http://schema.org/BlogPosting'>
                         <b:if cond='data:post.thumbnailUrl'>
@@ -2144,7 +3319,6 @@
                         </b:if>
                         <meta expr:content='data:blog.blogId' itemprop='blogId' />
                         <meta expr:content='data:post.id' itemprop='postId' />
-
                         <a expr:name='data:post.id' />
                         <b:if cond='data:post.title'>
                           <h3 class='post-title entry-title' itemprop='name'>
@@ -2161,123 +3335,162 @@
                             </b:if>
                           </h3>
                         </b:if>
-
-                        <div class='post-header'>
-                          <div class='post-header-line-1' />
-                        </div>
-
                         <div class='post-body entry-content'
                           expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
                           <data:post.body />
-                          <div style='clear: both;' /> <!-- clear for photos floats -->
-                        </div>
-
-                        <div class='post-footer'>
-                          <div class='post-footer-line post-footer-line-1'>
-                            <span class='post-author vcard'>
-                              <b:if cond='data:top.showAuthor'>
-                                <b:if cond='data:post.authorProfileUrl'>
-                                  <span class='fn' itemprop='author' itemscope='itemscope'
-                                    itemtype='http://schema.org/Person'>
-                                    <meta expr:content='data:post.authorProfileUrl' itemprop='url' />
-                                    <a expr:href='data:post.authorProfileUrl' rel='author'
-                                      title='author profile'>
-                                      <span itemprop='name'>
-                                        <data:post.author />
-                                      </span>
-                                    </a>
-                                  </span>
-                                  <b:else />
-                                  <span class='fn' itemprop='author' itemscope='itemscope'
-                                    itemtype='http://schema.org/Person'>
-                                    <span itemprop='name'>
-                                      <data:post.author />
-                                    </span>
-                                  </span>
-                                </b:if>
-                              </b:if>
-                            </span>
-
-                            <span class='post-timestamp'>
-                              <b:if cond='data:top.showTimestamp'>
-                                <data:top.timestampLabel />
-                                <b:if cond='data:post.url'>
-                                  <meta expr:content='data:post.url.canonical' itemprop='url' />
-                                  <a class='timestamp-link' expr:href='data:post.url' rel='bookmark'
-                                    title='permanent link'>
-                                    <abbr class='published' expr:title='data:post.timestampISO8601'
-                                      itemprop='datePublished'>
-                                      <data:post.timestamp />
-                                    </abbr>
-                                  </a>
-                                </b:if>
-                              </b:if>
-                            </span>
-
-                            <span class='post-comment-link'>
-                              <b:include
-                                cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                                  and data:post.allowComments'
-                                data='post' name='comment_count_picker' />
-                            </span>
-                          </div>
-
-                          <div class='post-footer-line post-footer-line-2'>
-                            <b:if cond='data:top.showMobileShare'>
-                              <div class='mobile-link-button goog-inline-block'
-                                id='mobile-share-button'>
-                                <a href='javascript:void(0);'>
-                                  <data:shareMsg />
-                                </a>
-                              </div>
-                            </b:if>
-                          </div>
-
+                          <div style='clear: both;' />
                         </div>
                       </div>
-
-                      <b:include
-                        cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}'
-                        data='post' name='comment_picker' />
                     </div>
                   </div>
                 </div>
               </b:includable>
               <b:includable id='nextprev'>
-                <div class='blog-pager' id='blog-pager'>
+                <div class='blog-pager phoenix-pager' id='blog-pager'>
                   <b:if cond='data:newerPageUrl'>
-                    <span id='blog-pager-newer-link'>
-                      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl'
+                    <div class='mobile-link-button' id='blog-pager-newer-link'>
+                      <a class='pager-nav-link' expr:href='data:newerPageUrl'
                         expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
                         expr:title='data:newerPageTitle'>
-                        <data:newerPageTitle />
-                      </a>
-                    </span>
-                  </b:if>
-
-                  <b:if cond='data:olderPageUrl'>
-                    <span id='blog-pager-older-link'>
-                      <a class='blog-pager-older-link' expr:href='data:olderPageUrl'
-                        expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
-                        expr:title='data:olderPageTitle'>
-                        <data:olderPageTitle />
-                      </a>
-                    </span>
-                  </b:if>
-
-                  <a class='home-link' expr:href='data:blog.homepageUrl'>
-                    <data:homeMsg />
-                  </a>
-
-                  <b:if cond='data:mobileLinkUrl'>
-                    <div class='blog-mobile-link'>
-                      <a expr:href='data:mobileLinkUrl'>
-                        <data:mobileLinkMsg />
+                        &#8592; Previous Article
                       </a>
                     </div>
+                    <b:else />
+                    <div class='spacer' />
                   </b:if>
 
+                  <div class='mobile-link-button pager-home-wrap' id='blog-pager-home-link'>
+                    <a class='pager-home-link' expr:href='data:blog.homepageUrl'>
+                      Back to Home
+                    </a>
+                  </div>
+
+                  <b:if cond='data:olderPageUrl'>
+                    <div class='mobile-link-button' id='blog-pager-older-link'>
+                      <a class='pager-nav-link' expr:href='data:olderPageUrl'
+                        expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                        expr:title='data:olderPageTitle'>
+                        Next Article &#8594;
+                      </a>
+                    </div>
+                    <b:else />
+                    <div class='spacer' />
+                  </b:if>
                 </div>
                 <div class='clear' />
+              </b:includable>
+              <b:includable id='phoenix-author-card' var='post'>
+
+                <section class='author-card'>
+
+                  <div class='author-card__header'>
+
+                    <div class='author-card__avatar'>
+
+                      <svg aria-hidden='true' viewBox='0 0 120 120'>
+
+                        <defs>
+
+                          <linearGradient id='phoenixAvatar' x1='0%' x2='100%' y1='0%' y2='100%'>
+
+                            <stop offset='0%' stop-color='#EEF2FF' />
+
+                            <stop offset='100%' stop-color='#DCE7FF' />
+
+                          </linearGradient>
+
+                        </defs>
+
+                        <circle cx='60' cy='60' fill='url(#phoenixAvatar)' r='56' />
+
+                        <circle cx='60' cy='42' fill='#6D7CA6' r='18' />
+
+                        <path
+                          d='M30 92                    C30 72 45 62 60 62                    C75 62 90 72 90 92'
+                          fill='#6D7CA6' />
+
+                      </svg>
+
+                    </div>
+
+                    <div class='author-card__identity'>
+
+                      <h3 class='author-card__name'>
+
+                        <data:post.author />
+
+                      </h3>
+
+                      <div class='author-card__badge'> Founder <span>&#8226;</span> Alemondem </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class='author-card__bio'>
+
+                    Helping businesses and creators build modern digital experiences through UI/UX
+                    design, branding, digital marketing and artificial intelligence.
+
+                  </div>
+
+                  <div class='author-card__actions'>
+
+                    <a class='author-btn author-btn--secondary' href='/p/about-us.html'>
+
+                      About Me
+
+                    </a>
+
+                    <a class='author-btn author-btn--primary' href='/search'>
+
+                      All Articles
+
+                    </a>
+
+                  </div>
+
+                </section>
+
+              </b:includable>
+              <b:includable id='phoenix-home-hero'>
+
+                <section class='home-hero'>
+
+                  <div class='container'>
+
+                    <div class='home-hero__content'>
+
+                      <span class='home-hero__eyebrow'>
+                        JOIN OUR EDITORIAL
+                      </span>
+
+                      <h1 class='home-hero__title'> Empower Your Creativity With Knowl<span>edge.</span>
+                      </h1>
+
+                      <p class='home-hero__description'>
+                        Discover practical insights on Artificial Intelligence, UI/UX Design,
+                        Digital Marketing and Web Development.
+                      </p>
+
+                      <div class='home-hero__actions'>
+
+                        <a class='btn btn-primary' href='/search'>
+                          Explore Articles
+                        </a>
+
+                        <a class='btn btn-outline' href='/p/about-us.html'>
+                          About Alemondem
+                        </a>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </section>
+
               </b:includable>
               <b:includable id='post' var='post'>
                 <div class='post hentry uncustomized-post-template' itemprop='blogPost'
@@ -2422,7 +3635,8 @@
                       <div class='author-profile' itemprop='author' itemscope='itemscope'
                         itemtype='http://schema.org/Person'>
                         <b:if cond='data:post.authorPhoto.url'>
-                          <img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px' />
+                          <img expr:alt='data:post.author' expr:src='data:post.authorPhoto.url'
+                            itemprop='image' width='50px' />
                         </b:if>
                         <div>
                           <a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url'
@@ -2439,6 +3653,47 @@
                     </b:if>
                   </div>
                 </div>
+                <script type='application/ld+json'>
+{
+  &quot;@context&quot;:&quot;https://schema.org&quot;,
+  &quot;@type&quot;:&quot;BlogPosting&quot;,
+
+  &quot;headline&quot;:&quot;<data:post.title/>&quot;,
+
+  &quot;description&quot;:&quot;<data:blog.metaDescription/>&quot;,
+
+  &quot;mainEntityOfPage&quot;:{
+    &quot;@type&quot;:&quot;WebPage&quot;,
+    &quot;@id&quot;:&quot;<data:post.url.canonical/>&quot;
+  },
+
+  &quot;url&quot;:&quot;<data:post.url.canonical/>&quot;,
+
+  &quot;datePublished&quot;:&quot;<data:post.timestampISO8601/>&quot;,
+
+  &quot;dateModified&quot;:&quot;<data:post.timestampISO8601/>&quot;,
+
+  &quot;author&quot;:{
+    &quot;@type&quot;:&quot;Person&quot;,
+    &quot;name&quot;:&quot;<data:post.author/>&quot;
+  },
+
+  &quot;publisher&quot;:{
+    &quot;@type&quot;:&quot;Organization&quot;,
+    &quot;name&quot;:&quot;Alemondem&quot;,
+    &quot;logo&quot;:{
+      &quot;@type&quot;:&quot;ImageObject&quot;,
+      &quot;url&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvOqTHBzONCWz0FZQD1hRsLLCDz_GPDGnNnFvT8LLzk1oY6tmS9jhjOcdKX43ivkvK0CZGoNbLfYu0PHgQSk0YWoMGvf977ahnCM-2hTj9fsxAvpKj9H686NMOnZ39OqvN2KSgQmITs69oRpdjnvO6RjUIIF4PBVdBkb76PQxgM9eAk2agJrMUDcK7Tts/s512/alemondem-blogger-logo-main.png&quot;
+    }
+  }
+
+  <b:if cond='data:post.firstImageUrl'>
+  ,
+  &quot;image&quot;:&quot;<data:post.firstImageUrl/>&quot;
+  </b:if>
+
+}
+</script>
               </b:includable>
               <b:includable id='postQuickEdit' var='post'>
                 <b:if cond='data:post.editUrl'>
@@ -2769,177 +4024,171 @@
               </b:includable>
             </b:widget>
           </b:section>
+
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- NEWSLETTER SECTION -->
+      <!-- ============================================ -->
+      <section class='newsletter' id='newsletter'>
+        <div class='container'>
+          <div class='newsletter-box'>
+            <h2>Subscribe to Our Newsletter</h2>
+            <p class='newsletter-text'>Get the latest digital marketing, AI, and UX design insights
+              delivered straight to your inbox.</p>
+            <form class='newsletter-form' onsubmit='return false;'>
+              <input aria-label='Email address' class='newsletter-input'
+                placeholder='Enter your email address' required='required' type='email' />
+              <button aria-label='Subscribe to newsletter' class='subscribe-btn'
+                onclick='alert(&apos;Newsletter integration will be configured by the site owner.&apos;)'
+                type='button'>
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
     </main>
 
     <!-- ============================================ -->
-    <!-- GLOBAL NEWSLETTER - APPEARS ON ALL PAGES -->
+    <!-- GLOBAL FOOTER -->
     <!-- ============================================ -->
-    <b:section class='section newsletter' id='newsletter-section' maxwidgets='1'
-      showaddelement='yes'>
-      <b:widget id='HTML10' locked='false' title='Newsletter' type='HTML' version='1'>
-        <b:widget-settings>
-          <b:widget-setting name='content' />
-        </b:widget-settings>
-        <b:includable id='main'>
-          <div class='container'>
-            <div class='newsletter-box' id='newsletter'>
-              <h2 id='newsletter-title'>Never Miss an Insight</h2>
-              <p class='newsletter-text'>
-                Receive practical articles, design inspiration, AI insights, and technology updates
-                directly in your inbox.
-              </p>
-              <form action='#' class='newsletter-form' method='post'>
-                <label class='sr-only' for='newsletter-email'>Email address</label>
-                <input autocomplete='email' class='newsletter-input' id='newsletter-email'
-                  name='email' placeholder='Enter your email address' required='required'
-                  type='email' />
-                <button class='btn btn-primary' type='submit'>Subscribe</button>
-              </form>
-            </div>
-          </div>
-        </b:includable>
-      </b:widget>
-    </b:section>
-
-    <!-- ============================================ -->
-    <!-- GLOBAL FOOTER AD - APPEARS ON ALL PAGES -->
-    <!-- ============================================ -->
-    <b:section class='ad-zone' id='ad-zone-footer' maxwidgets='1' showaddelement='yes'>
-      <b:widget id='HTML11' locked='false' title='Footer Ad' type='HTML' version='1'>
-        <b:widget-settings>
-          <b:widget-setting name='content' />
-        </b:widget-settings>
-        <b:includable id='main'>
-          <div class='container'>
-            <div class='ad-placeholder'>
-              <span class='ad-label'>Advertisement</span>
-              <div aria-label='Responsive footer advertising placement' class='ad-box' role='img'>
-                <data:content />
-              </div>
-            </div>
-          </div>
-        </b:includable>
-      </b:widget>
-    </b:section>
-
-    <!-- ============================================ -->
-    <!-- GLOBAL FOOTER - APPEARS ON ALL PAGES -->
-    <!-- ============================================ -->
-    <footer class='site-footer' role='contentinfo'>
+    <footer class='site-footer'>
       <div class='footer-container'>
-        <b:section class='footer' id='footer' maxwidgets='6' showaddelement='yes'>
-          <b:widget id='HTML12' locked='false' title='Footer Content' type='HTML' version='1'>
-            <b:widget-settings>
-              <b:widget-setting name='content' />
-            </b:widget-settings>
-            <b:includable id='main'>
-              <div class='footer-top'>
-                <section aria-labelledby='footer-brand-title' class='footer-brand'>
-                  <a class='footer-logo' href='/'> Alemon<span>dem</span>
-                  </a>
-                  <p class='footer-description'>
-                    Discover the Best in Digital Entertainment, Technology &amp; Creative
-                    Innovation.
-                  </p>
-                  <p class='footer-tagline'>
-                    Empowering curious minds through practical knowledge, thoughtful design, and
-                    emerging technology.
-                  </p>
-                </section>
-                <div class='footer-navigation'>
-                  <nav aria-labelledby='footer-explore-title' class='footer-column'>
-                    <h2 class='footer-title' id='footer-explore-title'>Explore</h2>
-                    <ul class='footer-links'>
-                      <li>
-                        <a href='/search/label/AI'>AI</a>
-                      </li>
-                      <li>
-                        <a href='/search/label/UI-UX'>UI/UX</a>
-                      </li>
-                      <li>
-                        <a href='/search/label/Marketing'>Marketing</a>
-                      </li>
-                      <li>
-                        <a href='/search/label/Development'>Web Development</a>
-                      </li>
-                      <li>
-                        <a href='/search/label/Tutorials'>Tutorials</a>
-                      </li>
-                    </ul>
-                  </nav>
-                  <nav aria-labelledby='footer-company-title' class='footer-column'>
-                    <h2 class='footer-title' id='footer-company-title'>Company</h2>
-                    <ul class='footer-links'>
-                      <li>
-                        <a href='#'>About</a>
-                      </li>
-                      <li>
-                        <a href='#'>Contact</a>
-                      </li>
-                      <li>
-                        <a href='#'>Privacy Policy</a>
-                      </li>
-                      <li>
-                        <a href='#'>Terms of Use</a>
-                      </li>
-                    </ul>
-                  </nav>
-                  <section aria-labelledby='footer-connect-title' class='footer-column'>
-                    <h2 class='footer-title' id='footer-connect-title'>Connect</h2>
-                    <div class='footer-social'>
-                      <a aria-label='GitHub' href='#'>GitHub</a>
-                      <a aria-label='LinkedIn' href='#'>LinkedIn</a>
-                      <a aria-label='YouTube' href='#'>YouTube</a>
-                      <a aria-label='Facebook' href='#'>Facebook</a>
-                    </div>
-                  </section>
-                </div>
-              </div>
-            </b:includable>
-          </b:widget>
-        </b:section>
+        <div class='footer-top'>
+          <div class='footer-brand'>
+            <a class='footer-logo' href='/'>Alemond<span>em</span></a>
+            <p class='footer-description'>Helping creators, designers, and businesses build
+              exceptional digital experiences through practical insights.</p>
+            <p class='footer-tagline'>&#169; 2026 Alemondem. All rights reserved.</p>
+          </div>
+          <div class='footer-navigation'>
+            <div>
+              <h3 class='footer-title'>Categories</h3>
+              <ul class='footer-links'>
+                <li>
+                  <a href='/search/label/Artificial%20Intelligence'>Artificial Intelligence</a>
+                </li>
+                <li>
+                  <a href='/search/label/UI%2FUX'>UI/UX Design</a>
+                </li>
+                <li>
+                  <a href='/search/label/Web%20Development'>Web Development</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class='footer-title'>Resources</h3>
+              <ul class='footer-links'>
+                <li>
+                  <a href='/search/label/Digital%20Marketing'>Digital Marketing</a>
+                </li>
+                <li>
+                  <a href='/search/label/Branding'>Branding</a>
+                </li>
+                <li>
+                  <a href='/search/label/Tech%20News'>Tech News</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class='footer-title'>Company</h3>
+              <ul class='footer-links'>
+                <li>
+                  <a href='/p/about-us.html'>About Us</a>
+                </li>
+                <li>
+                  <a href='/p/contact.html'>Contact</a>
+                </li>
+                <li>
+                  <a href='/p/privacy-policy.html'>Privacy Policy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <hr class='footer-divider' />
         <div class='footer-bottom'>
-          <div class='footer-copyright'> &#169; 2026 <strong>Alemondem</strong>. All rights
-            reserved. </div>
-          <div class='footer-credit'> Built with <a href='#'>Phoenix Theme v1.0 RC1</a>
-          </div>
+          <p class='footer-copyright'>Designed with <strong>Phoenix Theme</strong></p>
         </div>
       </div>
     </footer>
 
     <script type='text/javascript'>
-        //<![CDATA[
-        (function () {
-            var navbar = document.querySelector('.navbar');
-            var toggle = document.querySelector('.nav-toggle');
-            var navigation = document.getElementById('primary-navigation');
-            if (!navbar || !toggle || !navigation) return;
-            function setMenuState(isOpen) {
-                navbar.classList.toggle('is-nav-open', isOpen);
-                toggle.setAttribute('aria-expanded', String(isOpen));
-                toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-            }
-            toggle.addEventListener('click', function () {
-                setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
-            });
-            navigation.addEventListener('click', function (event) {
-                if (event.target.closest('a')) setMenuState(false);
-            });
-            document.addEventListener('click', function (event) {
-                if (!navbar.contains(event.target)) setMenuState(false);
-            });
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') { setMenuState(false); toggle.focus(); }
-            });
-            window.addEventListener('resize', function () {
-                if (window.matchMedia('(min-width: 901px)').matches) setMenuState(false);
-            });
-        }());
-        //]]>
+      //<![CDATA[
+      (function () {
+        var toggle = document.querySelector('.nav-toggle');
+        var navigation = document.getElementById('primary-navigation');
+        var navbar = toggle && toggle.closest('.navbar');
+        var searchToggle = document.querySelector('.search-toggle');
+        var searchBox = document.querySelector('.search-box');
+        var searchInput = searchBox && searchBox.querySelector('input');
+        var searchClose = document.querySelector('.search-close');
+
+        if (!navbar || !toggle || !navigation) return;
+
+        function setMenuState(isOpen) {
+          navbar.classList.toggle('is-nav-open', isOpen);
+          toggle.setAttribute('aria-expanded', String(isOpen));
+          toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        toggle.addEventListener('click', function () {
+          setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+
+        navigation.addEventListener('click', function (event) {
+          if (event.target.closest('a')) setMenuState(false);
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            setMenuState(false);
+            toggle.focus();
+          }
+        });
+        if (searchToggle && searchBox) {
+
+    searchToggle.addEventListener('click', function () {
+  
+
+    searchBox.classList.toggle('is-open');
+    searchToggle.style.display =
+    searchBox.classList.contains('is-open') ? 'none' : 'flex';
+
+   
+
+    if (searchBox.classList.contains('is-open') && searchInput) {
+        searchInput.focus();
+        searchInput.select();
+    }
+
+});
+
+}
+if (searchClose) {
+
+    searchClose.addEventListener('click', function () {
+
+    if (searchInput) {
+        searchInput.value = '';
+    }
+
+    searchBox.classList.remove('is-open');
+
+    searchToggle.style.display = 'flex';
+
+    searchInput.blur();
+
+});
+
+}
+      }());
+      //]]>
     </script>
+
   </body>
 </html>
