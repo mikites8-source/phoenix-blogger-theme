@@ -68,12 +68,17 @@ phoenix-blogger-theme/
 │
 ├── source/
 │   ├── css/
-│   ├── images/
 │   ├── js/
+│   ├── index.html
+│   ├── README.md
 │   └── theme.xml
 │
+├── build/
 ├── docs/
 │
+├── CHANGELOG.md
+├── LICENSE
+├── THIRD_PARTY_NOTICES.md
 ├── .gitignore
 │
 └── README.md
@@ -153,6 +158,9 @@ git clone https://github.com/YOUR_USERNAME/phoenix-blogger-theme.git
 ## License
 
 This project is released under the MIT License.
+
+Third-party services and components are documented in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ---
 
