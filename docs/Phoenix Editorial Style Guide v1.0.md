@@ -1,7 +1,7 @@
 Phoenix Blogger Design System
 Editorial Style Guide v1.0
 Purpose
-This document defines the editorial standards for the Phoenix Blogger Design System and the Alemondem publication. It complements the Phoenix Design System by ensuring every article delivers a consistent, premium reading experience.
+This document defines optional editorial standards for publications using the Phoenix Blogger Theme. It complements the design system by helping articles deliver a consistent reading experience.
 
 Editorial Philosophy
 Every article should teach, inspire, and respect the reader's time. Articles should feel professional, modern, practical, trustworthy, easy to scan, and beautiful to read.

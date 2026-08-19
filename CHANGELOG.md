@@ -1,63 +1,38 @@
 # Changelog
 
-All notable changes to the Phoenix Blogger Theme are documented in this file.
+Notable changes to Phoenix are recorded here. Dates use `YYYY-MM-DD`.
 
-This project follows a release-based versioning workflow.
+## [Unreleased]
 
----
+### Added
 
-# [v1.0.0-RC1] - 2026-07
+- Public installation and customization documentation.
+- Third-party notices and a self-contained featured-image fallback.
 
-## Added
+### Changed
 
-- Modern responsive homepage
-- Premium navigation system
-- Mobile hamburger navigation
-- Hero section redesign
-- Modular CSS architecture
-- Responsive layout system
-- Blog reading layout
-- Premium footer structure
-- Improved accessibility support
-- Git release workflow
-- Project documentation
+- Generalized publication branding and metadata for reuse.
+- Tightened homepage section spacing.
+- Corrected the homepage statistics section rendering.
+- Clarified that `source/theme.xml` is the Blogger installation file.
 
-## Changed
+### Removed
 
-- Refactored `index.html`
-- Rebuilt navigation layout
-- Redesigned homepage sections
-- Standardized card components
-- Improved typography
-- Improved responsive behavior
-- Updated project structure
+- Account-specific advertising and affiliate identifiers from repository history.
+- Legacy and backup material with unresolved third-party provenance.
+- External placeholder-image dependency.
+- Duplicated, publication-specific release documentation.
 
-## Fixed
+### Security
 
-- Tablet navigation layout
-- Mobile navigation visibility
-- Footer alignment
-- Search icon rendering
-- CSS organization
-- Responsive spacing issues
+- Rewrote reachable branch and tag history after sensitive identifier cleanup.
+- Requested GitHub Support cleanup of obsolete hidden pull-request references.
 
-## Known Issues
+## [1.0.0-rc1] - 2026-07-08
 
-- Blogger `theme.xml` still contains legacy Awesome Inc. CSS.
-- Footer design will receive additional visual polish in v1.1.
-- Placeholder links will be connected during Blogger integration.
+### Added
 
----
+- Initial responsive homepage, navigation, card system, reading layout, footer, modular prototype assets, and Blogger XML integration.
 
-# Upcoming
-
-## v1.1
-
-Planned improvements:
-
-- Blogger XML modernization
-- Modular partial integration
-- Widget architecture improvements
-- Theme customization enhancements
-- Footer visual redesign
-- Performance optimization
+[Unreleased]: https://github.com/mikites8-source/phoenix-blogger-theme/compare/v1.0.0-rc1...HEAD
+[1.0.0-rc1]: https://github.com/mikites8-source/phoenix-blogger-theme/releases/tag/v1.0.0-rc1

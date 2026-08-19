@@ -1,5 +1,5 @@
 /* ==========================================================
-   ALEMONDEM PREMIUM THEME
+   PHOENIX BLOGGER THEME
    Homepage Sections
 ========================================================== */
 
@@ -378,23 +378,59 @@
 /* ---------- Newsletter ---------- */
 
 .newsletter{
-    padding-top:0;
+    padding:72px 0;
+    background:#2b2b2b;
+    color:#fff;
 }
 
 .newsletter-box{
-    max-width:980px;
+    max-width:640px;
     margin-inline:auto;
-    padding:60px;
+    padding:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    text-align:center;
+}
+
+.newsletter-box h2{
+    margin-bottom:16px;
+    font-size:38px;
+    font-weight:800;
+    letter-spacing:-1px;
 }
 
 .newsletter-text{
-    margin:20px auto 35px;
-    max-width:650px;
-    line-height:1.8;
+    margin:0 0 36px;
+    color:rgba(255,255,255,.8);
+    font-size:16px;
 }
 
 .newsletter-form{
+    display:flex;
     align-items:center;
+    gap:16px;
+    flex-wrap:nowrap;
+}
+
+.newsletter-input{
+    flex:1;
+    width:auto;
+    padding:16px 28px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:30px;
+    outline:none;
+    background:rgba(255,255,255,.05);
+    color:#fff;
+}
+
+.newsletter-form .btn-primary{
+    background:#ff4a57;
+}
+
+.newsletter-form .btn-primary:hover,
+.newsletter-form .btn-primary:focus-visible{
+    background:#e0323e;
 }
 
 /* ---------- Responsive Sections ---------- */
@@ -476,7 +512,7 @@
     }
 
     .newsletter-box{
-        padding:40px 24px;
+        padding:0 24px;
     }
 }
 
