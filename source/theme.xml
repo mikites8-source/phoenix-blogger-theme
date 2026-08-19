@@ -4138,6 +4138,29 @@
         var searchInput = searchBox && searchBox.querySelector('input');
         var searchClose = document.querySelector('.search-close');
 
+        document.querySelectorAll('.hero-spotlight-image-link').forEach(function (link) {
+          var fallback = link.querySelector('.hero-spotlight-fallback');
+          var image = link.querySelector('.hero-spotlight-img');
+
+          if (!fallback) {
+            fallback = document.createElement('span');
+            fallback.className = 'hero-spotlight-fallback';
+            fallback.setAttribute('role', 'img');
+            fallback.setAttribute('aria-label', 'Featured story image placeholder');
+            fallback.textContent = 'Featured Story';
+            link.insertBefore(fallback, link.firstChild);
+          }
+
+          if (image) {
+            var hideBrokenImage = function () {
+              image.style.display = 'none';
+            };
+
+            image.addEventListener('error', hideBrokenImage);
+            if (image.complete && image.naturalWidth === 0) hideBrokenImage();
+          }
+        });
+
         if (!navbar || !toggle || !navigation) return;
 
         function setMenuState(isOpen) {
