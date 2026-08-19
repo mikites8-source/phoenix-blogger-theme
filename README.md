@@ -1,179 +1,68 @@
 # Phoenix Blogger Theme
 
-> A modern, responsive Blogger theme built with a modular architecture, premium UI, and performance-first design.
+Phoenix is a responsive, accessible Blogger theme for publications, creator blogs, and digital magazines. It uses native Blogger widgets and a self-contained XML template; no build process is required to install it.
 
----
-
-## Overview
-
-Phoenix is a next-generation Blogger theme created to modernize the Blogger platform with a clean design system, responsive layouts, and maintainable code architecture.
-
-The project is designed as a production-ready foundation for content creators, technology blogs, digital magazines, and creative publishers.
-
----
+> **Release status:** v1.0.0 is being prepared. The repository remains private while the final release audit is completed.
 
 ## Features
 
-- Responsive Desktop, Tablet & Mobile Layout
-- Modern Navigation with Mobile Menu
-- Premium Hero Section
-- Modular CSS Architecture
-- Flexible Card System
-- Optimized Blog Reading Experience
-- Accessible Components
-- Performance-Oriented Design
-- Blogger Compatible
+- Responsive desktop, tablet, and mobile layouts
+- Native Blogger post, page, label, search, and archive support
+- Configurable navigation, featured post, topic links, and footer
+- Accessible keyboard navigation and reduced-motion support
+- SEO, Open Graph, and structured metadata
+- Self-contained featured-image fallback
+- Vanilla JavaScript with no required runtime framework
 
----
+## Install on Blogger
 
-## Technology Stack
+1. In Blogger, open **Theme**, use the menu beside **Customize**, and select **Backup**.
+2. Download [`source/theme.xml`](source/theme.xml) from this repository.
+3. In Blogger, open **Theme** again, choose **Restore**, and upload `source/theme.xml`.
+4. Open **Layout** and configure the Page List, Featured Post, and other visible widgets.
+5. Review the homepage, a post, a static page, a label page, and search on desktop and mobile.
 
-- HTML5
-- CSS3
-- Blogger XML
-- Vanilla JavaScript
-- Git & GitHub
+See [INSTALLATION.md](INSTALLATION.md) for the complete checklist and rollback instructions.
 
----
+## Customize
 
+Use Blogger's **Theme > Customize** controls first. Widget content and links are managed in **Layout**. For source-level changes, edit `source/theme.xml`; the files in `source/css/` and `source/js/` support the standalone prototype and are not uploaded separately to Blogger.
 
-## Goals
+See [CUSTOMIZATION.md](CUSTOMIZATION.md) for supported options and safe editing guidance.
 
-- Modern UI
-- Mobile First
-- SEO Optimized
-- Dark Mode
-- Fast Loading
-- Blogger Compatible
-- Clean XML
-- Material Design Inspired
+## Repository layout
 
----
-
-## Development Phases
-
-- Phase 1 – Foundation
-- Phase 2 – Navigation
-- Phase 3 – Homepage
-- Phase 4 – Widgets
-- Phase 5 – Blog Post
-- Phase 6 – Optimization
-
----
-
-## Project Structure
-
-```
-phoenix-blogger-theme/
-│
-├── source/
-│   ├── css/
-│   ├── js/
-│   ├── index.html
-│   ├── README.md
-│   └── theme.xml
-│
-├── build/
-├── docs/
-│
-├── CHANGELOG.md
-├── LICENSE
-├── THIRD_PARTY_NOTICES.md
-├── .gitignore
-│
-└── README.md
+```text
+source/
+  theme.xml        Installable Blogger theme
+  index.html       Standalone development prototype
+  css/             Prototype styles
+  js/              Prototype scripts
+docs/              Architecture and implementation reference
+CHANGELOG.md        Release history
+LICENSE             MIT license
+THIRD_PARTY_NOTICES.md
 ```
 
----
+## Development preview
 
-## Development Workflow
+The standalone prototype can be served locally from `source/index.html`. It is useful for visual development, but Blogger-specific widgets and template expressions must be tested in a Blogger test blog using `source/theme.xml`.
 
-Phoenix RC1 was developed using an incremental release workflow.
+## Demo
 
-Major milestones included:
+An official public demo is not yet published. Screenshots or third-party sites should not be treated as the canonical release; the installable file in this repository is the source of truth.
 
-- Responsive Navigation
-- Layout Refactoring
-- Hero Redesign
-- Homepage Sections
-- Card System
-- Blog Typography
-- Footer Modernization
-- Release Candidate QA
+## Known limitations
 
----
+- The newsletter form is presentation-only until the site owner connects a subscription provider.
+- Navigation destinations and publication content must be configured by the site owner.
+- Blogger may rewrite or proxy uploaded post images.
+- Dark mode is not included in v1.0.0.
 
-## Current Status
+## License and third-party services
 
-**Version**
-
-```
-Phoenix v1.0.0 RC1
-```
-
-Status:
-
-```
-Release Candidate
-```
-
----
-
-## Roadmap
-
-### RC1
-
-- Responsive Layout
-- Modern Homepage
-- Blog System
-- Footer Redesign
-- QA & Performance Review
-
-### v1.1
-
-- Blogger XML Modernization
-- Widget Refactoring
-- Modular Partials Integration
-- Footer Enhancement
-- Theme Customization Improvements
-
----
-
-## Installation
-
-1. Clone the repository.
-
-```
-git clone https://github.com/YOUR_USERNAME/phoenix-blogger-theme.git
-```
-
-2. Open the project in Visual Studio Code.
-
-3. Launch using Live Server.
-
-4. Import `theme.xml` into Blogger for testing.
-
----
-
-## License
-
-This project is released under the MIT License.
-
-Third-party services and components are documented in
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-
----
+Phoenix is available under the [MIT License](LICENSE). External fonts, icons, Blogger services, and optional integrations are described in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Author
 
-**Mikiyas Tesfaye**
-
-UX Designer • Front-End Developer • Digital Experience Designer
-
----
-
-## Acknowledgements
-
-Special thanks to everyone who contributed ideas, testing, and feedback throughout the Phoenix RC1 development cycle.
-
-Created with ❤️ using ChatGPT and GitHub.
+Created by **Mikiyas Tesfaye**.
