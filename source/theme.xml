@@ -1010,6 +1010,8 @@
 
     .hero-spotlight-img {
       display: block;
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1020,11 +1022,11 @@
     }
 
     .hero-spotlight-fallback {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
       background: linear-gradient(135deg, var(--surface-alt), #DCE7FF);
       color: var(--text-light);
       font-family: var(--font-heading);
@@ -1035,6 +1037,7 @@
 
     .hero-spotlight-badge {
         position: absolute;
+        z-index: 2;
         top: 24px;
         left: 24px;
         background-color: var(--primary);
@@ -2627,13 +2630,12 @@
                       Today&#39;s Focus
                     </span>
                     <a class='hero-spotlight-image-link' expr:href='data:postUrl'>
+                      <span aria-label='Featured story image placeholder'
+                        class='hero-spotlight-fallback' role='img'>Featured Story</span>
                       <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
                         <img class='hero-spotlight-img' decoding='async' expr:alt='data:postTitle'
                           expr:src='data:postFirstImage' fetchpriority='high' height='450'
-                          loading='eager' width='800' />
-                        <b:else />
-                        <span aria-label='Featured story image placeholder'
-                          class='hero-spotlight-fallback' role='img'>Featured Story</span>
+                          loading='eager' onerror='this.style.display=&quot;none&quot;' width='800' />
                       </b:if>
                     </a>
                   </div>
