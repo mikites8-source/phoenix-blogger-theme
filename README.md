@@ -38,7 +38,6 @@ source/
   index.html       Standalone development prototype
   css/             Prototype styles
   js/              Prototype scripts
-docs/              Architecture and implementation reference
 CHANGELOG.md        Release history
 LICENSE             MIT license
 THIRD_PARTY_NOTICES.md
