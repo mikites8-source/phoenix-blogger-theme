@@ -14,11 +14,11 @@
 
     <b:if cond='data:blog.pageType == &quot;index&quot;'>
 
-      <title>Alemondem | Digital Marketing, AI, UI/UX Design &amp; Creative Innovation</title>
+      <title><data:blog.title /></title>
       <b:if cond='data:blog.pageType == &quot;index&quot;'>
 
         <meta
-          content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+          expr:content='data:blog.metaDescription ?: data:blog.title'
           name='description' />
 
         <b:else />
@@ -48,7 +48,7 @@
 
       <meta expr:content='data:blog.canonicalUrl' property='og:url' />
       <meta content='website' property='og:type' />
-      <meta content='Alemondem' property='og:site_name' />
+      <meta expr:content='data:blog.title' property='og:site_name' />
 
       <b:if cond='data:blog.pageType == &quot;index&quot;'>
 
@@ -58,15 +58,9 @@
           <meta expr:content='data:blog.metaDescription' property='og:description' />
           <b:else />
           <meta
-            content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+            expr:content='data:blog.metaDescription ?: data:blog.title'
             property='og:description' />
         </b:if>
-        <meta
-          content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png'
-          property='og:image' />
-        <meta content='1200' property='og:image:width' />
-        <meta content='630' property='og:image:height' />
-        <meta content='image/png' property='og:image:type' />
 
         <b:else />
 
@@ -81,19 +75,15 @@
 ========================================================== -->
 
       <meta content='summary_large_image' name='twitter:card' />
-      <meta content='@Alemondem' name='twitter:site' />
 
       <b:if cond='data:blog.pageType == &quot;index&quot;'>
 
-        <meta content='Alemondem | Digital Marketing, AI, UI/UX Design &amp; Creative Innovation'
+        <meta expr:content='data:blog.title'
           name='twitter:title' />
 
         <meta
-          content='Alemondem is a modern technology and creative publication covering Artificial Intelligence, UI/UX Design, Digital Marketing, Web Development, Branding, Productivity, and Creative Innovation.'
+          expr:content='data:blog.metaDescription ?: data:blog.title'
           name='twitter:description' />
-        <meta
-          content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png'
-          name='twitter:image' />
 
         <b:else />
 
@@ -145,35 +135,28 @@
   &quot;@graph&quot;:[
     {
       &quot;@type&quot;:&quot;WebSite&quot;,
-      &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#website&quot;,
-      &quot;url&quot;:&quot;https://alemondem.blogspot.com/&quot;,
-      &quot;name&quot;:&quot;Alemondem&quot;,
-      &quot;description&quot;:&quot;Digital Marketing, Artificial Intelligence, UI/UX Design and Creative Innovation.&quot;,
-&quot;image&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-059hfn11XktymSwA2LUkCsVfjZnEqTSmcMFj7wRBEaXlPAevn0gRJjCv3EvU8tTXfdT4z8GwBpOJIw_ArJNwL6XWnMP6gtrv7of8WhpPBcRJaJn21j4jMJCxQyul1858Yu04DBrQBoEasDOTV2hHstDIpus-A82D6kiKj0c64IQucbN_76gZ7xa4UBk/s1731/ChatGPT%20Image%20Aug%206,%202026,%2008_49_33%20AM.png&quot;,
-&quot;publisher&quot;:{
-        &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#organization&quot;
+      &quot;@id&quot;:&quot;<data:blog.homepageUrl/>#website&quot;,
+      &quot;url&quot;:&quot;<data:blog.homepageUrl/>&quot;,
+      &quot;name&quot;:&quot;<data:blog.title/>&quot;,
+      &quot;description&quot;:&quot;<data:blog.metaDescription/>&quot;,
+      &quot;publisher&quot;:{
+        &quot;@id&quot;:&quot;<data:blog.homepageUrl/>#organization&quot;
       },
       &quot;potentialAction&quot;:{
         &quot;@type&quot;:&quot;SearchAction&quot;,
-        &quot;target&quot;:&quot;https://alemondem.blogspot.com/search?q={search_term_string}&quot;,
+        &quot;target&quot;:&quot;<data:blog.homepageUrl/>search?q={search_term_string}&quot;,
         &quot;query-input&quot;:&quot;required name=search_term_string&quot;
       }
     },
     {
       &quot;@type&quot;:&quot;Organization&quot;,
-      &quot;@id&quot;:&quot;https://alemondem.blogspot.com/#organization&quot;,
-  &quot;sameAs&quot;:[
-  &quot;https://www.linkedin.com/in/mikiyas-tesfaye-251b552a/&quot;,
-  &quot;https://x.com/alemondem&quot;,
-  &quot;https://github.com/mikites8-source&quot;,
-  &quot;https://www.youtube.com/@mikiyastesfaye1872&quot;
-],
-      &quot;name&quot;:&quot;Alemondem&quot;,
-      &quot;url&quot;:&quot;https://alemondem.blogspot.com/&quot;,
+      &quot;@id&quot;:&quot;<data:blog.homepageUrl/>#organization&quot;,
+      &quot;name&quot;:&quot;<data:blog.title/>&quot;,
+      &quot;url&quot;:&quot;<data:blog.homepageUrl/>&quot;,
       &quot;logo&quot;:{
-  &quot;@type&quot;:&quot;ImageObject&quot;,
-  &quot;url&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvOqTHBzONCWz0FZQD1hRsLLCDz_GPDGnNnFvT8LLzk1oY6tmS9jhjOcdKX43ivkvK0CZGoNbLfYu0PHgQSk0YWoMGvf977ahnCM-2hTj9fsxAvpKj9H686NMOnZ39OqvN2KSgQmITs69oRpdjnvO6RjUIIF4PBVdBkb76PQxgM9eAk2agJrMUDcK7Tts/s512/alemondem-blogger-logo-main.png&quot;
-}
+        &quot;@type&quot;:&quot;ImageObject&quot;,
+        &quot;url&quot;:&quot;<data:blog.homepageUrl/>favicon.ico&quot;
+      }
     }
   ]
 }
@@ -186,10 +169,10 @@
 
     <meta content='#2563EB' name='theme-color' />
     <meta content='yes' name='apple-mobile-web-app-capable' />
-    <meta content='Alemondem' name='apple-mobile-web-app-title' />
+    <meta expr:content='data:blog.title' name='apple-mobile-web-app-title' />
     <meta content='default' name='apple-mobile-web-app-status-bar-style' />
 
-    <meta content='Alemondem' name='application-name' />
+    <meta expr:content='data:blog.title' name='application-name' />
     <meta content='#2563EB' name='msapplication-TileColor' />
 
     <link expr:href='data:blog.homepageUrl + &quot;favicon.ico&quot;' rel='icon' type='image/x-icon' />
@@ -430,6 +413,13 @@
         z-index: 1000;
         padding: 16px 0;
     }
+    .navbar .header,
+    .navbar .main-menu-section,
+    .navbar .widget {
+        margin: 0;
+        padding: 0;
+        min-height: 0;
+    }
     .nav-container {
         display: flex;
         justify-content: space-between;
@@ -616,7 +606,7 @@
     }
     
     .hero {
-        padding: 80px 0;
+        padding: 64px 0;
         background: var(--surface);
         border-bottom: 1px solid var(--border);
     }
@@ -894,7 +884,7 @@
     }
 
     .stats {
-        padding: 48px 0;
+        padding: 36px 0;
         background: var(--surface);
         border-bottom: 1px solid var(--border);
     }
@@ -926,7 +916,7 @@
        SECTION WRAPPERS & GRIDS
        ========================================================================== */
     .section {
-        padding: 80px 0;
+        padding: 56px 0;
     }
     .section-header {
         margin-bottom: 48px;
@@ -1628,7 +1618,7 @@
     .newsletter {
         background-color: var(--text);
         color: #ffffff;
-        padding: 96px 0;
+        padding: 72px 0;
     }
     .newsletter-box {
         text-align: center;
@@ -1673,7 +1663,7 @@
     .site-footer {
         background: var(--secondary-color);
         color: rgba(255, 255, 255, 0.72);
-        padding: 80px 0 40px;
+        padding: 64px 0 32px;
     }
     .footer-container {
         max-width: var(--max-width);
@@ -1813,6 +1803,19 @@
     @media (max-width: 768px) {
         .navbar {
             padding: 12px 0;
+        }
+        .hero,
+        .section {
+            padding: 48px 0;
+        }
+        .stats {
+            padding: 32px 0;
+        }
+        .newsletter {
+            padding: 56px 0;
+        }
+        .site-footer {
+            padding: 56px 0 28px;
         }
         .nav-toggle {
             display: flex;
@@ -2402,7 +2405,7 @@
     <header class='navbar' role='banner'>
       <div class='container nav-container'>
         <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
-          <b:widget id='Header1' locked='true' title='Alemondem (Header)' type='Header' version='1'>
+          <b:widget id='Header1' locked='true' title='Blog Header' type='Header' version='1'>
             <b:widget-settings>
               <b:widget-setting name='displayUrl' />
               <b:widget-setting name='displayHeight'>0</b:widget-setting>
@@ -2413,8 +2416,7 @@
               <b:widget-setting name='displayWidth'>0</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
-              <a aria-label='Alemondem home' class='logo' href='/'> Alemond<span>em</span>
-              </a>
+              <a class='logo' expr:aria-label='data:blog.title + &quot; home&quot;' expr:href='data:blog.homepageUrl'><data:blog.title /></a>
             </b:includable>
             <b:includable id='description'>
               <div class='descriptionwrapper'>
@@ -2439,7 +2441,7 @@
             showaddelement='no'>
             <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
               <b:widget-settings>
-                <b:widget-setting name='pageListJson'><![CDATA[{"5660567775342434031":{"href":"https://alemondem.blogspot.com/p/digital-marketing.html","position":2,"title":"UI/UX"},"1588941907914622953":{"href":"https://alemondem.blogspot.com/p/digital-marketing_0281831331.html","position":3,"title":"Digital Mktg."},"link0":{"href":"http://alemondem.blogspot.com/","position":0,"title":"Home"},"5677845707664360958":{"href":"https://alemondem.blogspot.com/p/artificial-intelligent-ai.html","position":1,"title":"AI"},"4112724525160315749":{"href":"https://alemondem.blogspot.com/p/about-us.html","position":4,"title":"About"}}]]></b:widget-setting>
+                <b:widget-setting name='pageListJson'><![CDATA[{}]]></b:widget-setting>
                 <b:widget-setting name='homeTitle'>Home</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
@@ -2588,7 +2590,7 @@
                       Explore Articles
                     </a>
                     <a class='btn btn-outline' href='/p/about-us.html'>
-                      About Alemondem
+                      About this site
                     </a>
                   </div>
                   <div aria-label='Reader community' class='hero-community'>
@@ -2693,35 +2695,28 @@
           </b:widget>
         </b:section>
 
-        <b:section class='stats' id='stats' maxwidgets='1' showaddelement='yes'>
-          <b:widget id='HTML5' locked='false' title='Publication Stats' type='HTML' version='1'>
-            <b:widget-settings>
-              <b:widget-setting name='content' />
-            </b:widget-settings>
-            <b:includable id='main'>
-              <div class='container'>
-                <div class='stats-grid'>
-                  <article class='stat-card'>
-                    <h2>AI</h2>
-                    <p>Innovation First</p>
-                  </article>
-                  <article class='stat-card'>
-                    <h2>UX</h2>
-                    <p>Human-Centered Design</p>
-                  </article>
-                  <article class='stat-card'>
-                    <h2>Tech</h2>
-                    <p>Practical Tutorials</p>
-                  </article>
-                  <article class='stat-card'>
-                    <h2>Grow/7</h2>
-                    <p>Continuous Learning</p>
-                  </article>
-                </div>
-              </div>
-            </b:includable>
-          </b:widget>
-        </b:section>
+        <section class='stats' id='stats'>
+          <div class='container'>
+            <div class='stats-grid'>
+              <article class='stat-card'>
+                <h2>AI</h2>
+                <p>Innovation First</p>
+              </article>
+              <article class='stat-card'>
+                <h2>UX</h2>
+                <p>Human-Centered Design</p>
+              </article>
+              <article class='stat-card'>
+                <h2>Tech</h2>
+                <p>Practical Tutorials</p>
+              </article>
+              <article class='stat-card'>
+                <h2>Grow/7</h2>
+                <p>Continuous Learning</p>
+              </article>
+            </div>
+          </div>
+        </section>
 
         <b:section class='section' id='featured-categories' maxwidgets='1' showaddelement='yes'>
           <b:widget id='HTML6' locked='false' title='Featured Categories' type='HTML' version='1'>
@@ -3421,7 +3416,7 @@
 
                       </h3>
 
-                      <div class='author-card__badge'> Founder <span>&#8226;</span> Alemondem </div>
+                      <div class='author-card__badge'> Contributor <span>&#8226;</span> <data:blog.title /> </div>
 
                     </div>
 
@@ -3480,7 +3475,7 @@
                         </a>
 
                         <a class='btn btn-outline' href='/p/about-us.html'>
-                          About Alemondem
+                          About this site
                         </a>
 
                       </div>
@@ -3680,10 +3675,10 @@
 
   &quot;publisher&quot;:{
     &quot;@type&quot;:&quot;Organization&quot;,
-    &quot;name&quot;:&quot;Alemondem&quot;,
+    &quot;name&quot;:&quot;<data:blog.title/>&quot;,
     &quot;logo&quot;:{
       &quot;@type&quot;:&quot;ImageObject&quot;,
-      &quot;url&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvOqTHBzONCWz0FZQD1hRsLLCDz_GPDGnNnFvT8LLzk1oY6tmS9jhjOcdKX43ivkvK0CZGoNbLfYu0PHgQSk0YWoMGvf977ahnCM-2hTj9fsxAvpKj9H686NMOnZ39OqvN2KSgQmITs69oRpdjnvO6RjUIIF4PBVdBkb76PQxgM9eAk2agJrMUDcK7Tts/s512/alemondem-blogger-logo-main.png&quot;
+      &quot;url&quot;:&quot;<data:blog.homepageUrl/>favicon.ico&quot;
     }
   }
 
@@ -4059,10 +4054,10 @@
       <div class='footer-container'>
         <div class='footer-top'>
           <div class='footer-brand'>
-            <a class='footer-logo' href='/'>Alemond<span>em</span></a>
+            <a class='footer-logo' expr:href='data:blog.homepageUrl'><data:blog.title /></a>
             <p class='footer-description'>Helping creators, designers, and businesses build
               exceptional digital experiences through practical insights.</p>
-            <p class='footer-tagline'>&#169; 2026 Alemondem. All rights reserved.</p>
+            <p class='footer-tagline'>&#169; <data:blog.title />. All rights reserved.</p>
           </div>
           <div class='footer-navigation'>
             <div>
