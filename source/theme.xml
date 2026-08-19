@@ -1010,6 +1010,8 @@
 
     .hero-spotlight-img {
       display: block;
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1019,8 +1021,23 @@
       transition: var(--transition);
     }
 
+    .hero-spotlight-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--surface-alt), #DCE7FF);
+      color: var(--text-light);
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
     .hero-spotlight-badge {
         position: absolute;
+        z-index: 2;
         top: 24px;
         left: 24px;
         background-color: var(--primary);
@@ -2613,13 +2630,12 @@
                       Today&#39;s Focus
                     </span>
                     <a class='hero-spotlight-image-link' expr:href='data:postUrl'>
+                      <span aria-label='Featured story image placeholder'
+                        class='hero-spotlight-fallback' role='img'>Featured Story</span>
                       <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
                         <img class='hero-spotlight-img' decoding='async' expr:alt='data:postTitle'
                           expr:src='data:postFirstImage' fetchpriority='high' height='450'
-                          loading='eager' width='800' />
-                        <b:else />
-                        <img alt='Featured Story' class='hero-spotlight-img'
-                          src='https://via.placeholder.com/800x450?text=Featured+Story' />
+                          loading='eager' onerror='this.style.display=&quot;none&quot;' width='800' />
                       </b:if>
                     </a>
                   </div>
@@ -4121,6 +4137,29 @@
         var searchBox = document.querySelector('.search-box');
         var searchInput = searchBox && searchBox.querySelector('input');
         var searchClose = document.querySelector('.search-close');
+
+        document.querySelectorAll('.hero-spotlight-image-link').forEach(function (link) {
+          var fallback = link.querySelector('.hero-spotlight-fallback');
+          var image = link.querySelector('.hero-spotlight-img');
+
+          if (!fallback) {
+            fallback = document.createElement('span');
+            fallback.className = 'hero-spotlight-fallback';
+            fallback.setAttribute('role', 'img');
+            fallback.setAttribute('aria-label', 'Featured story image placeholder');
+            fallback.textContent = 'Featured Story';
+            link.insertBefore(fallback, link.firstChild);
+          }
+
+          if (image) {
+            var hideBrokenImage = function () {
+              image.style.display = 'none';
+            };
+
+            image.addEventListener('error', hideBrokenImage);
+            if (image.complete && image.naturalWidth === 0) hideBrokenImage();
+          }
+        });
 
         if (!navbar || !toggle || !navigation) return;
 
