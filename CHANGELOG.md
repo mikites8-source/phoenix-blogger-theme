@@ -2,7 +2,7 @@
 
 Notable changes to Phoenix are recorded here. Dates use `YYYY-MM-DD`.
 
-## [Unreleased]
+## [1.0.0] - 2026-08-20
 
 ### Added
 
@@ -34,3 +34,5 @@ Notable changes to Phoenix are recorded here. Dates use `YYYY-MM-DD`.
 ### Added
 
 - Initial responsive homepage, navigation, card system, reading layout, footer, modular prototype assets, and Blogger XML integration.
+
+[1.0.0]: https://github.com/mikites8-source/phoenix-blogger-theme/releases/tag/v1.0.0
