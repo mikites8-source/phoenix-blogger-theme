@@ -2,8 +2,6 @@
 
 Phoenix is a responsive, accessible Blogger theme for publications, creator blogs, and digital magazines. It uses native Blogger widgets and a self-contained XML template; no build process is required to install it.
 
-> **Release status:** v1.0.0 is being prepared. The repository remains private until the final launch checks are complete.
-
 **[View the live demo on Alemondem](https://alemondem.blogspot.com/)**
 
 ## Features

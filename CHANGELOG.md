@@ -27,7 +27,7 @@ Notable changes to Phoenix are recorded here. Dates use `YYYY-MM-DD`.
 ### Security
 
 - Rewrote reachable branch and tag history after sensitive identifier cleanup.
-- Requested GitHub Support cleanup of obsolete hidden pull-request references.
+- Completed GitHub Support cleanup of obsolete hidden pull-request references.
 
 ## 1.0.0-rc1 - 2026-07-08
 
