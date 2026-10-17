@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased] — develop-v2 (2026-10-17)
+
+### Fixed
+- Corrected Blogger-rendered article and static-page HTML titles.
+- Added label-specific and keyword-search titles; applied `noindex,follow` only to keyword-search pages.
+- Removed duplicate Phoenix Open Graph declarations in favor of Blogger-native head metadata.
+- Removed the unresolved/empty `WebSite.description` JSON-LD property.
+
+### Validated on staging
+- Blogger accepted the V2 XML at `almdmtest.blogspot.com`.
+- Verified homepage, article, static page, label archive, and keyword-search title/canonical behavior.
+- Confirmed keyword-search `noindex,follow` without inadvertently applying it to the label archive.
+- Confirmed the updated WebSite/Organization JSON-LD no longer contains the defective description field.
+
+### Pending
+- Refine generic native Open Graph titles on label/search pages; retest with search descriptions enabled.
+- Validate image/Twitter previews, full structured data, and remaining V2 release gates.
+
 Notable changes to Phoenix are recorded here. Dates use `YYYY-MM-DD`.
 
 ## [1.0.0] - 2026-08-20
