@@ -48,7 +48,6 @@
       &quot;@id&quot;:&quot;<data:blog.homepageUrl/>#website&quot;,
       &quot;url&quot;:&quot;<data:blog.homepageUrl/>&quot;,
       &quot;name&quot;:&quot;<data:blog.title/>&quot;,
-      &quot;description&quot;:&quot;<data:blog.metaDescription/>&quot;,
       &quot;publisher&quot;:{
         &quot;@id&quot;:&quot;<data:blog.homepageUrl/>#organization&quot;
       },
