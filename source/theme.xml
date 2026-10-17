@@ -12,117 +12,27 @@
 
     <b:include data='blog' name='all-head-content' />
 
-    <b:if cond='data:blog.pageType == &quot;index&quot;'>
-
-      <title><data:blog.title /></title>
-      <b:if cond='data:blog.pageType == &quot;index&quot;'>
-
-        <meta
-          expr:content='data:blog.metaDescription ?: data:blog.title'
-          name='description' />
-
-        <b:else />
-
-        <meta expr:content='data:blog.metaDescription' name='description' />
-
-      </b:if>
-
-      <!-- ==========================================================
-     ROBOTS
-========================================================== -->
-
-      <b:if
-        cond='data:blog.pageType == &quot;index&quot; or data:blog.pageType == &quot;item&quot; or data:blog.pageType == &quot;static_page&quot;'>
-
-        <meta content='index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
-          name='robots' />
-
-        <b:else />
-
-        <meta content='noindex,follow' name='robots' />
-
-      </b:if>
-      <!-- ==========================================================
-     OPEN GRAPH
-========================================================== -->
-
-      <meta expr:content='data:blog.canonicalUrl' property='og:url' />
-      <meta content='website' property='og:type' />
-      <meta expr:content='data:blog.title' property='og:site_name' />
-
-      <b:if cond='data:blog.pageType == &quot;index&quot;'>
-
-        <meta expr:content='data:blog.pageName ?: data:blog.title' property='og:title' />
-
-        <b:if cond='data:blog.metaDescription'>
-          <meta expr:content='data:blog.metaDescription' property='og:description' />
-          <b:else />
-          <meta
-            expr:content='data:blog.metaDescription ?: data:blog.title'
-            property='og:description' />
+    <!-- PHOENIX SEO FOUNDATION: one title per Blogger view.
+         Keep native Blogger canonical, descriptions, and Open Graph tags
+         from all-head-content. Do not duplicate them here. -->
+    <b:if cond='data:blog.pageType == &quot;item&quot; or data:blog.pageType == &quot;static_page&quot;'>
+      <title><data:blog.pageName/> | <data:blog.title/></title>
+    <b:else/>
+      <b:if cond='data:blog.searchLabel'>
+        <title><data:blog.searchLabel/> Articles | <data:blog.title/></title>
+      <b:else/>
+        <b:if cond='data:blog.searchQuery'>
+          <title>Search Results for <data:blog.searchQuery/> | <data:blog.title/></title>
+        <b:else/>
+          <title><data:blog.title/></title>
         </b:if>
-
-        <b:else />
-
-        <meta expr:content='data:blog.pageName' property='og:title' />
-
-        <meta expr:content='data:blog.metaDescription' property='og:description' />
-
       </b:if>
+    </b:if>
 
-      <!-- ==========================================================
-     TWITTER CARDS
-========================================================== -->
-
-      <meta content='summary_large_image' name='twitter:card' />
-
-      <b:if cond='data:blog.pageType == &quot;index&quot;'>
-
-        <meta expr:content='data:blog.title'
-          name='twitter:title' />
-
-        <meta
-          expr:content='data:blog.metaDescription ?: data:blog.title'
-          name='twitter:description' />
-
-        <b:else />
-
-        <meta expr:content='data:blog.pageName' name='twitter:title' />
-
-        <meta expr:content='data:blog.metaDescription' name='twitter:description' />
-
-      </b:if>
-
-      <b:elseif cond='data:blog.pageType == &quot;static_page&quot;'>
-
-        <title><data:blog.pageName /> | <data:blog.title /></title>
-
-      </b:elseif>
-
-      <b:elseif cond='data:blog.pageType == &quot;item&quot;'>
-
-        <title><data:blog.pageName /> | <data:blog.title /></title>
-
-      </b:elseif>
-
-      <b:elseif cond='data:blog.searchLabel'>
-
-        <title><data:blog.searchLabel /> Articles | <data:blog.title /></title>
-
-      </b:elseif>
-
-      <b:elseif cond='data:view.isSearch'>
-
-        <title>Search Results | <data:blog.title /></title>
-
-      </b:elseif>
-
-      <b:else />
-
-      <title>
-        <data:blog.title />
-      </title>
-
+    <!-- Keyword-search pages should not be indexed.
+         Curated label archives retain Blogger's default crawl policy. -->
+    <b:if cond='data:blog.searchQuery'>
+      <meta content='noindex,follow' name='robots'/>
     </b:if>
 
     <!-- ==========================================================
